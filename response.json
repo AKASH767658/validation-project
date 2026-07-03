@@ -1,0 +1,123 @@
+{
+  "extracted_fields": [
+    {
+      "field_key": "planName",
+      "field_label": "401(k) Plan Name",
+      "value": "ABC Retirement Plan",
+      "is_present": true,
+      "confidence_score": 0.98
+    },
+
+    {
+      "field_key": "planNumber",
+      "field_label": "401(k) Plan Number",
+      "value": "12",
+      "is_present": true,
+      "confidence_score": 0.95
+    },
+
+    {
+      "field_key": "employerLegalName",
+      "field_label": "Employer Legal Name",
+      "value": "ABC Company Pvt Ltd",
+      "is_present": true,
+      "confidence_score": 0.96
+    },
+
+    {
+      "field_key": "employerEin",
+      "field_label": "Employer EIN",
+      "value": "12345",
+      "is_present": true,
+      "confidence_score": 0.91
+    },
+
+    {
+      "field_key": "planEffectiveDate",
+      "field_label": "Plan Effective Date",
+      "value": "6/12/2003",
+      "is_present": true,
+      "confidence_score": 0.89
+    },
+
+    {
+      "field_key": "contributionType",
+      "field_label": "Contribution Type",
+      "value": "Employer Only",
+      "is_present": true,
+      "confidence_score": 0.94
+    },
+
+    {
+      "field_key": "employeeContributionPercentage",
+      "field_label": "Employee Contribution Percentage",
+      "value": "-1%",
+      "is_present": true,
+      "confidence_score": 0.97
+    },
+
+    {
+      "field_key": "employerMatchFormula",
+      "field_label": "Employer Match Formula",
+      "value": null,
+      "is_present": true,
+      "confidence_score": 0.92
+    },
+
+    {
+      "field_key": "loanPermitted",
+      "field_label": "Loan Permitted",
+      "value": "Maybe",
+      "is_present": true,
+      "confidence_score": 0.88
+    },
+
+    {
+      "field_key": "automaticEnrollmentType",
+      "field_label": "Automatic Enrollment Type",
+       "value": "Automatic Contribution Arrangement",
+      "is_present": true,
+      "confidence_score": 0.93
+    },
+
+    {
+      "field_key": "defaultAutomaticEnrollmentPercentage",
+      "field_label": "Default Automatic Enrollment Percentage",
+      "value": "10.5%",
+      "is_present": true,
+      "confidence_score": 0.90
+    },
+
+    {
+      "field_key": "automaticAnnualIncreaseEnabled",
+      "field_label": "Automatic Annual Increase Enabled",
+      "value": "True",
+      "is_present": true,
+      "confidence_score": 0.87
+    },
+
+    {
+      "field_key": "vestingSchedule",
+      "field_label": "Vesting Schedule",
+      "value": "5-Year Plan",
+      "is_present": true,
+      "confidence_score": 0.95
+    },
+
+    {
+      "field_key": "eligibilityRequirement",
+      "field_label": "Eligibility Requirement",
+      "value": "2 Years Service",
+      "is_present": true,
+      "confidence_score": 0.91
+    },
+
+    {
+      "field_key": "permittedWithdrawalTypes",
+      "field_label": "Permitted Withdrawal Types",
+      "value": "Hospital",
+      "is_present": true,
+      "confidence_score": 0.86
+    }
+  ]
+}

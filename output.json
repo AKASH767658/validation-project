@@ -1,0 +1,122 @@
+{
+    "is_valid": false,
+    "errors": [
+        {
+            "field_key": "planNumber",
+            "field_label": "401(k) Plan Number",
+            "error_code": "INVALID_FORMAT",
+            "error": "Plan Number must be 3 digits.",
+            "received": "12",
+            "suggested_value": "012"
+        },
+        {
+            "field_key": "employerEin",
+            "field_label": "Employer EIN",
+            "error_code": "INVALID_FORMAT",
+            "error": "Employer EIN must be in ##-####### format.",
+            "received": "12345",
+            "suggested_value": null
+        },
+        {
+            "field_key": "employeeContributionPercentage",
+            "field_label": "Employee Contribution Percentage",
+            "error_code": "MIN_VALUE_ERROR",
+            "error": "Employee Contribution Percentage cannot be less than 0%.",
+            "received": "-1%",
+            "suggested_value": null
+        },
+        {
+            "field_key": "loanPermitted",
+            "field_label": "Loan Permitted",
+            "error_code": "INVALID_OPTIONS",
+            "error": "Loan Permitted must be Yes or No.",
+            "received": "Maybe",
+            "suggested_value": null
+        },
+        {
+            "field_key": "automaticAnnualIncreaseEnabled",
+            "field_label": "Automatic Annual Increase Enabled",
+            "error_code": "INVALID_OPTIONS",
+            "error": "Automatic Annual Increase Enabled must be Yes or No.",
+            "received": "True",
+            "suggested_value": null
+        },
+        {
+            "field_key": "vestingSchedule",
+            "field_label": "Vesting Schedule",
+            "error_code": "INVALID_OPTIONS",
+            "error": "Invalid Vesting Schedule.",
+            "received": "5-Year Plan",
+            "suggested_value": null
+        },
+        {
+            "field_key": "eligibilityRequirement",
+            "field_label": "Eligibility Requirement",
+            "error_code": "INVALID_OPTIONS",
+            "error": "Invalid Eligibility Requirement.",
+            "received": "2 Years Service",
+            "suggested_value": null
+        },
+        {
+            "field_key": "permittedWithdrawalTypes",
+            "field_label": "Permitted Withdrawal Types",
+            "error_code": "INVALID_OPTIONS",
+            "error": "Invalid Permitted Withdrawal Type.",
+            "received": "Hospital",
+            "suggested_value": null
+        },
+        {
+            "field_key": "employerMatchFormula",
+            "field_label": "Employer Match Formula",
+            "error_code": "DEPENDENCY_ERROR",
+            "error": "Employer Match Formula is required when Contribution Type includes employer matching contribution.",
+            "received": null,
+            "suggested_value": null
+        }
+    ],
+    "warnings": [
+        {
+            "field_key": "planEffectiveDate",
+            "field_label": "Plan Effective Date",
+            "warning_code": "LOW_CONFIDENCE",
+            "warning": "Low confidence score",
+            "received": 0.89
+        },
+        {
+            "field_key": "loanPermitted",
+            "field_label": "Loan Permitted",
+            "warning_code": "LOW_CONFIDENCE",
+            "warning": "Low confidence score",
+            "received": 0.88
+        },
+        {
+            "field_key": "automaticAnnualIncreaseEnabled",
+            "field_label": "Automatic Annual Increase Enabled",
+            "warning_code": "LOW_CONFIDENCE",
+            "warning": "Low confidence score",
+            "received": 0.87
+        },
+        {
+            "field_key": "permittedWithdrawalTypes",
+            "field_label": "Permitted Withdrawal Types",
+            "warning_code": "LOW_CONFIDENCE",
+            "warning": "Low confidence score",
+            "received": 0.86
+        }
+    ],
+    "summary": {
+        "total_fields": 15,
+        "passed_fields": 6,
+        "failed_fields": 9,
+        "warning_fields": 4,
+        "error_summary": {
+            "INVALID_FORMAT": 2,
+            "MIN_VALUE_ERROR": 1,
+            "INVALID_OPTIONS": 5,
+            "DEPENDENCY_ERROR": 1
+        },
+        "warning_summary": {
+            "LOW_CONFIDENCE": 4
+        }
+    }
+}
