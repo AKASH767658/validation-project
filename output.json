@@ -29,7 +29,7 @@
             "field_key": "loanPermitted",
             "field_label": "Loan Permitted",
             "error_code": "INVALID_OPTIONS",
-            "error": "Loan Permitted must be Yes or No.",
+            "error": "Loan Permitted contains an invalid option.",
             "received": "Maybe",
             "suggested_value": null
         },
@@ -37,7 +37,7 @@
             "field_key": "automaticAnnualIncreaseEnabled",
             "field_label": "Automatic Annual Increase Enabled",
             "error_code": "INVALID_OPTIONS",
-            "error": "Automatic Annual Increase Enabled must be Yes or No.",
+            "error": "Automatic Annual Increase Enabled contains an invalid option.",
             "received": "True",
             "suggested_value": null
         },
@@ -45,7 +45,7 @@
             "field_key": "vestingSchedule",
             "field_label": "Vesting Schedule",
             "error_code": "INVALID_OPTIONS",
-            "error": "Invalid Vesting Schedule.",
+            "error": "Vesting Schedule contains an invalid option.",
             "received": "5-Year Plan",
             "suggested_value": null
         },
@@ -53,7 +53,7 @@
             "field_key": "eligibilityRequirement",
             "field_label": "Eligibility Requirement",
             "error_code": "INVALID_OPTIONS",
-            "error": "Invalid Eligibility Requirement.",
+            "error": "Eligibility Requirement contains an invalid option.",
             "received": "2 Years Service",
             "suggested_value": null
         },
@@ -61,7 +61,7 @@
             "field_key": "permittedWithdrawalTypes",
             "field_label": "Permitted Withdrawal Types",
             "error_code": "INVALID_OPTIONS",
-            "error": "Invalid Permitted Withdrawal Type.",
+            "error": "Permitted Withdrawal Types contains an invalid option.",
             "received": "Hospital",
             "suggested_value": null
         },
@@ -81,34 +81,13 @@
             "warning_code": "LOW_CONFIDENCE",
             "warning": "Low confidence score",
             "received": 0.89
-        },
-        {
-            "field_key": "loanPermitted",
-            "field_label": "Loan Permitted",
-            "warning_code": "LOW_CONFIDENCE",
-            "warning": "Low confidence score",
-            "received": 0.88
-        },
-        {
-            "field_key": "automaticAnnualIncreaseEnabled",
-            "field_label": "Automatic Annual Increase Enabled",
-            "warning_code": "LOW_CONFIDENCE",
-            "warning": "Low confidence score",
-            "received": 0.87
-        },
-        {
-            "field_key": "permittedWithdrawalTypes",
-            "field_label": "Permitted Withdrawal Types",
-            "warning_code": "LOW_CONFIDENCE",
-            "warning": "Low confidence score",
-            "received": 0.86
         }
     ],
     "summary": {
         "total_fields": 15,
         "passed_fields": 6,
         "failed_fields": 9,
-        "warning_fields": 4,
+        "warning_fields": 1,
         "error_summary": {
             "INVALID_FORMAT": 2,
             "MIN_VALUE_ERROR": 1,
@@ -116,7 +95,7 @@
             "DEPENDENCY_ERROR": 1
         },
         "warning_summary": {
-            "LOW_CONFIDENCE": 4
+            "LOW_CONFIDENCE": 1
         }
     }
 }

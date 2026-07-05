@@ -109,10 +109,40 @@ for item in response_data[
     schema = schema_dict[
         field_key
     ]
+         # -------------------------
+# schema options validation
+# -------------------------
+    if schema.options is not None:
+
+       if value not in schema.options:
+
+        errors.append({
+
+            "field_key": field_key,
+
+            "field_label": field_label,
+
+            "error_code": "INVALID_OPTIONS",
+
+            "error": f"{field_label} contains an invalid option.",
+
+            "received": value,
+
+            "suggested_value": None
+        })
+
+        invalid_fields.add(field_key)
+
+        continue
+
+          
 
 
     # -------------------------
     # low confidence warning
+    
+    
+    
     # -------------------------
     if item[
         "confidence_score"
@@ -341,43 +371,7 @@ for item in response_data[
                     pass
 
 
-            # -------------------------
-            # options validation
-            # -------------------------
-            elif rule_type == "options":
-
-                allowed_values = rule[
-                    "value"
-                ]
-
-                if value not in allowed_values:
-
-                    suggested_value = (
-                        allowed_values
-                    )
-
-                    errors.append({
-
-                        "field_key": field_key,
-
-                        "field_label": field_label,
-
-                        "error_code":
-                        "INVALID_OPTIONS",
-
-                        "error":
-                        rule["message"],
-
-                        "received": value,
-
-                        "suggested_value":
-                        None
-        
-                    })
-
-                    invalid_fields.add(
-                        field_key
-                    )
+            
 # -------------------------
 # create response map
 # -------------------------
