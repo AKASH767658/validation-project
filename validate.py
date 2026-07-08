@@ -8,7 +8,7 @@ from models import SchemaField, ResponseField
 # -------------------------
 # load demo.json
 # -------------------------
-with open("demo.json", "r") as file:
+with open("data/input_schema.json", "r") as file:
     data = json.load(file)
 
 field_schema = data["field_schema"]
@@ -28,7 +28,7 @@ for rule in validation_rules:
 # -------------------------
 # load response.json
 # -------------------------
-with open("response.json", "r") as file:
+with open("data/response.json", "r") as file:
     response_data = json.load(file)
 
 
