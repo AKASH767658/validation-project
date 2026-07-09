@@ -4,7 +4,7 @@ from pydantic import (
 )
 
 from typing import Optional, List, Literal
-
+from typing import Any
 
 # -------------------------
 # Schema Model
@@ -19,13 +19,16 @@ class SchemaField(BaseModel):
     label: str
 
     type: Literal[
-        "text",
-        "enum_single",
-        "enum_multi",
-        "boolean",
-        "date",
-        "percentage"
-    ]
+    "text",
+    "enum_single",
+    "enum_multi",
+    "boolean",
+    "date",
+    "percentage",
+    "number",
+    "currency"
+]
+    
 
     options: Optional[
         List[str]
@@ -48,9 +51,7 @@ class ResponseField(BaseModel):
     # display label
     field_label: str
 
-    value: Optional[
-        str
-    ] = None
+    value: Optional[Any] = None
 
     is_present: Optional[
         bool

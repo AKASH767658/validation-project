@@ -36,14 +36,18 @@ with open("data/response.json", "r") as file:
 # schema dictionary
 # -------------------------
 schema_dict = {}
+duplicate_fields = []
 
 for item in field_schema:
 
     schema = SchemaField(
         **item
     )
+    if schema.key in schema_dict:
 
-    schema_dict[
+        duplicate_fields.append(schema.key)
+    else:
+        schema_dict[
         schema.key
     ] = schema
 
@@ -105,38 +109,108 @@ for item in response_data[
 
         continue
 
-
     schema = schema_dict[
         field_key
     ]
+    
          # -------------------------
+# -------------------------
 # schema options validation
 # -------------------------
+
     if schema.options is not None:
 
-       if value not in schema.options:
+    # enum_single / boolean
+      if schema.type in ["enum_single", "boolean"]:
 
-        errors.append({
+        if value not in schema.options:
+
+            errors.append({
+                "field_key": field_key,
+                "field_label": field_label,
+                "error_code": "INVALID_OPTIONS",
+                "error": f"{field_label} contains an invalid option.",
+                "received": value,
+                "suggested_value": None
+            })
+            
+
+            invalid_fields.add(field_key)
+
+            if item["confidence_score"] < 0.90:
+
+              warnings.append({
 
             "field_key": field_key,
-
             "field_label": field_label,
+            "warning_code": "LOW_CONFIDENCE",
+            "warning": "Low confidence score",
+            "received": item["confidence_score"]
 
-            "error_code": "INVALID_OPTIONS",
-
-            "error": f"{field_label} contains an invalid option.",
-
-            "received": value,
-
-            "suggested_value": None
         })
+            continue
 
-        invalid_fields.add(field_key)
+    # enum_multi
+      elif schema.type == "enum_multi":
+       
 
-        continue
+        if not isinstance(value, list):
 
-          
+            errors.append({
+                "field_key": field_key,
+                "field_label": field_label,
+                "error_code": "INVALID_OPTIONS",
+                "error": f"{field_label} should contain multiple values.",
+                "received": value,
+                "suggested_value": None
+            })
 
+            invalid_fields.add(field_key)
+            if item["confidence_score"] < 0.90:
+
+                 warnings.append({
+
+                "field_key": field_key,
+                "field_label": field_label,
+                "warning_code": "LOW_CONFIDENCE",
+                "warning": "Low confidence score",
+                "received": item["confidence_score"]
+
+            })
+            
+            continue
+        invalid = False
+        for option in value:
+
+            if option not in schema.options:
+                invalid = True
+                break
+        if invalid:        
+
+                errors.append({
+                    "field_key": field_key,
+                    "field_label": field_label,
+                    "error_code": "INVALID_OPTIONS",
+                    "error": f"{field_label} contains an invalid option.",
+                    "received": value,
+                    "suggested_value": None
+                })
+
+                invalid_fields.add(field_key)
+                if item["confidence_score"] < 0.90:
+
+                 warnings.append({
+
+                "field_key": field_key,
+                "field_label": field_label,
+                "warning_code": "LOW_CONFIDENCE",
+                "warning": "Low confidence score",
+                "received": item["confidence_score"]
+
+            })
+
+                continue
+                
 
     # -------------------------
     # low confidence warning
@@ -165,7 +239,7 @@ for item in response_data[
         })
 
 
-    # -------------------------
+    # ------------------ -------
     # pydantic validation
     # -------------------------
     try:
@@ -198,6 +272,17 @@ for item in response_data[
         invalid_fields.add(
             field_key
         )
+        if item["confidence_score"] < 0.90:
+
+              warnings.append({
+
+            "field_key": field_key,
+            "field_label": field_label,
+            "warning_code": "LOW_CONFIDENCE",
+            "warning": "Low confidence score",
+            "received": item["confidence_score"]
+
+        })
 
         continue
     # -------------------------
@@ -231,6 +316,9 @@ for item in response_data[
                     pattern,
                     value
                 ):
+                    if "-" in value:
+                        year, month, day = value.split("-")
+                        suggested_value = f"{month}/{day}/{year}"
 
                     # safe suggestion only
                     if field_key == "planNumber":
@@ -259,6 +347,7 @@ for item in response_data[
 
                                 + parts[2]
                             )
+                                      
 
                     errors.append({
 
@@ -334,13 +423,10 @@ for item in response_data[
 
                 try:
 
-                    num = float(
-
-                        value.replace(
-                            "%",
-                            ""
-                        )
-                    )
+                    if isinstance(value, (int, float)):
+                        num = float(value)
+                    else:
+                       num = float(str(value).replace("%", ""))
 
                     if num > rule[
                         "value"
@@ -671,6 +757,7 @@ result = {
 
         "warning_fields":
         warning_fields,
+        "duplicate_schema_fields": list(set(duplicate_fields)),
 
         "error_summary":
         error_summary,

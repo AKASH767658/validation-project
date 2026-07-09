@@ -139,6 +139,439 @@
         "Termination Distribution"
       ],
       "format": null
+    },
+    {
+      "key": "employerNonElectiveContributionPermitted",
+      "label": "Employer Non-Elective Contribution Permitted",
+      "type": "boolean",
+      "options": ["Yes", "No"],
+      "format": null
+    },
+    {
+      "key": "employerNonElectiveContributionType",
+      "label": "Employer Non-Elective Contribution Type",
+      "type": "enum_single",
+      "options": [
+        "Discretionary",
+        "Fixed",
+        "Profit Sharing",
+        "Prevailing Wage",
+        "Other"
+      ],
+      "format": null
+    },
+    {
+      "key": "employerNonElectiveContributionTypeOther",
+      "label": "Employer Non-Elective Contribution Type - Other",
+      "type": "text",
+      "options": null,
+      "format": null
+    },
+    {
+      "key": "employerNonElectiveContributionFormula",
+      "label": "Employer Non-Elective Contribution Formula",
+      "type": "text",
+      "options": null,
+      "format": null
+    },
+    {
+      "key": "employerNonElectiveContributionAllocationMethod",
+      "label": "Employer Non-Elective Contribution Allocation Method",
+      "type": "enum_single",
+      "options": [
+        "Pro Rata",
+        "Integrated",
+        "New Comparability",
+        "Flat Dollar",
+        "Other"
+      ],
+      "format": null
+    },
+    {
+      "key": "employerNonElectiveContributionAllocationMethodOther",
+      "label": "Employer Non-Elective Contribution Allocation Method - Other",
+      "type": "text",
+      "options": null,
+      "format": null
+    },
+    {
+      "key": "employerNonElectiveContributionAllocationConditionAllowed",
+      "label": "Employer Non-Elective Contribution Allocation Condition Allowed",
+      "type": "boolean",
+      "options": ["Yes", "No"],
+      "format": null
+    },
+    {
+      "key": "employerNonElectiveContributionAllocationCondition",
+      "label": "Employer Non-Elective Contribution Allocation Condition",
+      "type": "enum_multi",
+      "options": [
+        "Last Day Requirement",
+        "Hours Requirement",
+        "Employed on Allocation Date",
+        "No Allocation Condition",
+        "Other"
+      ],
+      "format": null
+    },
+    {
+      "key": "employerNonElectiveContributionHoursRequired",
+      "label": "Employer Non-Elective Contribution Hours Required",
+      "type": "number",
+      "options": null,
+      "format": null
+    },
+    {
+      "key": "employerNonElectiveContributionAllocationConditionOther",
+      "label": "Employer Non-Elective Contribution Allocation Condition - Other",
+      "type": "text",
+      "options": null,
+      "format": null
+    },
+    {
+      "key": "employerNonElectiveContributionFrequency",
+      "label": "Employer Non-Elective Contribution Frequency",
+      "type": "enum_single",
+      "options": [
+        "Each Payroll Period",
+        "Monthly",
+        "Quarterly",
+        "Semi-Annually",
+        "Annually",
+        "Discretionary"
+      ],
+      "format": null
+    },
+    {
+      "key": "employerNonElectiveContributionDefaultExceptions",
+      "label": "Employer Non-Elective Contribution Default Exceptions",
+      "type": "enum_multi",
+      "options": [
+        "Death",
+        "Disability",
+        "Retirement",
+        "Termination",
+        "None"
+      ],
+      "format": null
+    },
+    {
+      "key": "employerNonElectiveContributionEeCanDesignateRoth",
+      "label": "Employer Non-Elective Contribution - EE can designate Roth",
+      "type": "boolean",
+      "options": ["Yes", "No"],
+      "format": null
+    },
+
+    {
+      "key": "employerMatchContributionPermitted",
+      "label": "Employer Match Contribution Permitted",
+      "type": "boolean",
+      "options": ["Yes", "No"],
+      "format": null
+    },
+    {
+      "key": "employerMatchContributionType",
+      "label": "Employer Match Contribution Type",
+      "type": "enum_single",
+      "options": [
+        "Discretionary",
+        "Fixed",
+        "Tiered",
+        "Safe Harbor Match",
+        "Other"
+      ],
+      "format": null
+    },
+    {
+      "key": "employerMatchContributionTypeOther",
+      "label": "Employer Match Contribution Type - Other",
+      "type": "text",
+      "options": null,
+      "format": null
+    },
+    {
+      "key": "employerMatchContributionFormula",
+      "label": "Employer Match Contribution Formula",
+      "type": "text",
+      "options": null,
+      "format": null
+    },
+    {
+      "key": "employerMatchContributionMaximumDeferralPercent",
+      "label": "Employer Match Contribution Maximum Deferral Percent",
+      "type": "percentage",
+      "options": null,
+      "format": "0.00%"
+    },
+    {
+      "key": "employerMatchContributionAllowedForStudentLoanPayments",
+      "label": "Employer Match Contribution - Allowed for Student Loan Pmts",
+      "type": "boolean",
+      "options": ["Yes", "No"],
+      "format": null
+    },
+    {
+      "key": "employerMatchContributionStudentLoanEffectiveDate",
+      "label": "Employer Match Contribution Student Loan Effective Date",
+      "type": "date",
+      "options": null,
+      "format": "MM/DD/YYYY"
+    },
+    {
+      "key": "employerMatchContributionEeCanDesignateRoth",
+      "label": "Employer Match Contribution - EE can designate Roth",
+      "type": "boolean",
+      "options": ["Yes", "No"],
+      "format": null
+    },
+    {
+      "key": "employerMatchContributionAllocationConditionAllowed",
+      "label": "Employer Match Contribution Allocation Condition Allowed",
+      "type": "boolean",
+      "options": ["Yes", "No"],
+      "format": null
+    },
+    {
+      "key": "employerMatchContributionAllocationCondition",
+      "label": "Employer Match Contribution Allocation Condition",
+      "type": "enum_multi",
+      "options": [
+        "Last Day Requirement",
+        "Hours Requirement",
+        "Employed on Allocation Date",
+        "No Allocation Condition",
+        "Other"
+      ],
+      "format": null
+    },
+    {
+      "key": "employerMatchContributionHoursRequired",
+      "label": "Employer Match Contribution Hours Required",
+      "type": "number",
+      "options": null,
+      "format": null
+    },
+    {
+      "key": "employerMatchContributionAllocationConditionOther",
+      "label": "Employer Match Contribution Allocation Condition - Other",
+      "type": "text",
+      "options": null,
+      "format": null
+    },
+    {
+      "key": "employerMatchContributionFrequency",
+      "label": "Employer Match Contribution Frequency",
+      "type": "enum_single",
+      "options": [
+        "Each Payroll Period",
+        "Monthly",
+        "Quarterly",
+        "Semi-Annually",
+        "Annually",
+        "Discretionary"
+      ],
+      "format": null
+    },
+    {
+      "key": "employerMatchContributionDefaultExceptions",
+      "label": "Employer Match Contribution Default Exceptions",
+      "type": "enum_multi",
+      "options": [
+        "Death",
+        "Disability",
+        "Retirement",
+        "Termination",
+        "None"
+      ],
+      "format": null
+    },
+
+    {
+      "key": "safeHarborContributionPermitted",
+      "label": "Safe Harbor Contribution Permitted",
+      "type": "boolean",
+      "options": ["Yes", "No"],
+      "format": null
+    },
+    {
+      "key": "safeHarborFormulaType",
+      "label": "Safe Harbor Formula Type",
+      "type": "enum_single",
+      "options": [
+        "Basic Match",
+        "Enhanced Match",
+        "Non-Elective",
+        "QACA Basic Match",
+        "QACA Enhanced Match"
+      ],
+      "format": null
+    },
+    {
+      "key": "safeHarborFrequency",
+      "label": "Safe Harbor Frequency",
+      "type": "enum_single",
+      "options": [
+        "Each Payroll Period",
+        "Monthly",
+        "Quarterly",
+        "Semi-Annually",
+        "Annually"
+      ],
+      "format": null
+    },
+    {
+      "key": "safeHarborNoticeRequired",
+      "label": "Safe Harbor Notice Required",
+      "type": "boolean",
+      "options": ["Yes", "No"],
+      "format": null
+    },
+    {
+      "key": "safeHarborVestingSchedule",
+      "label": "Safe Harbor Vesting Schedule",
+      "type": "enum_single",
+      "options": [
+        "Immediate Vesting",
+        "2-Year Cliff",
+        "Other"
+      ],
+      "format": null
+    },
+    {
+      "key": "safeHarborVestingScheduleOther",
+      "label": "Safe Harbor Vesting Schedule - Other",
+      "type": "text",
+      "options": null,
+      "format": null
+    },
+
+    {
+      "key": "automaticEnrollmentType",
+      "label": "Automatic Enrollment Type",
+      "type": "enum_single",
+      "options": [
+        "None",
+        "ACA",
+        "EACA",
+        "QACA"
+      ],
+      "format": null
+    },
+    {
+      "key": "automaticEnrollmentDefaultPercent",
+      "label": "Automatic Enrollment Default Percent",
+      "type": "percentage",
+      "options": null,
+      "format": "0.00%"
+    },
+    {
+      "key": "automaticEnrollmentAnnualIncreaseAllowed",
+      "label": "Automatic Enrollment Annual Increase Allowed",
+      "type": "boolean",
+      "options": ["Yes", "No"],
+      "format": null
+    },
+    {
+      "key": "automaticEnrollmentAnnualIncreasePercent",
+      "label": "Automatic Enrollment Annual Increase Percent",
+      "type": "percentage",
+      "options": null,
+      "format": "0.00%"
+    },
+    {
+      "key": "automaticEnrollmentMaximumPercent",
+      "label": "Automatic Enrollment Maximum Percent",
+      "type": "percentage",
+      "options": null,
+      "format": "0.00%"
+    },
+    {
+      "key": "automaticEnrollmentWithdrawalWindowDays",
+      "label": "Automatic Enrollment Withdrawal Window Days",
+      "type": "number",
+      "options": null,
+      "format": null
+    },
+
+    {
+      "key": "loansNumber",
+      "label": "Loans - Number",
+      "type": "enum_single",
+      "options": [
+        "None",
+        "One",
+        "Two",
+        "Unlimited"
+      ],
+      "format": null
+    },
+    {
+      "key": "loansFrequency",
+      "label": "Loans - Frequency",
+      "type": "enum_single",
+      "options": [
+        "One at a time",
+        "One per calendar year",
+        "One per plan year",
+        "Unlimited"
+      ],
+      "format": null
+    },
+    {
+      "key": "loansRestrictions",
+      "label": "Loans - Restrictions",
+      "type": "enum_multi",
+      "options": [
+        "General Purpose Loans",
+        "Primary Residence Loans",
+        "Hardship Loans Only",
+        "Participant Directed Accounts Only",
+        "Other"
+      ],
+      "format": null
+    },
+    {
+      "key": "loansRestrictionsOther",
+      "label": "Loans - Restrictions - Other",
+      "type": "text",
+      "options": null,
+      "format": null
+    },
+    {
+      "key": "loansMinimum",
+      "label": "Loans - Minimum",
+      "type": "currency",
+      "options": null,
+      "format": "$0.00"
+    },
+    {
+      "key": "loansMaximum",
+      "label": "Loans - Maximum",
+      "type": "currency",
+      "options": null,
+      "format": "$0.00"
+    },
+    {
+      "key": "loansRate",
+      "label": "Loans - Rate",
+      "type": "text",
+      "options": null,
+      "format": null
+    },
+    {
+      "key": "loansRepaymentPeriodYears",
+      "label": "Loans - Repayment Period Years",
+      "type": "number",
+      "options": null,
+      "format": null
+    },
+    {
+      "key": "loansHardshipOnly",
+      "label": "Loans - Hardship Only",
+      "type": "boolean",
+      "options": ["Yes", "No"],
+      "format": null
     }
   ],
   "dependency_rules": [
@@ -384,6 +817,751 @@
         "maximumLoanAmount": "Maximum Loan Amount is required when Loan Permitted is Yes.",
         "loanRepaymentPeriod": "Loan Repayment Period is required when Loan Permitted is Yes."
       }
+    },
+    {
+      "id": "employer-nonelective-dependent-fields",
+      "description": "Employer Non-Elective Contribution dependent fields are hidden and cleared when Employer Non-Elective Contribution is not permitted.",
+      "when": {
+        "field": "employerNonElectiveContributionPermitted",
+        "operator": "in",
+        "value": ["No", null]
+      },
+      "then": [
+        {
+          "action": "hide",
+          "fields": [
+            "employerNonElectiveContributionType",
+            "employerNonElectiveContributionTypeOther",
+            "employerNonElectiveContributionFormula",
+            "employerNonElectiveContributionAllocationMethod",
+            "employerNonElectiveContributionAllocationMethodOther",
+            "employerNonElectiveContributionAllocationConditionAllowed",
+            "employerNonElectiveContributionAllocationCondition",
+            "employerNonElectiveContributionHoursRequired",
+            "employerNonElectiveContributionAllocationConditionOther",
+            "employerNonElectiveContributionFrequency",
+            "employerNonElectiveContributionDefaultExceptions",
+            "employerNonElectiveContributionEeCanDesignateRoth"
+          ]
+        },
+        {
+          "action": "clearValue",
+          "fields": [
+            "employerNonElectiveContributionType",
+            "employerNonElectiveContributionTypeOther",
+            "employerNonElectiveContributionFormula",
+            "employerNonElectiveContributionAllocationMethod",
+            "employerNonElectiveContributionAllocationMethodOther",
+            "employerNonElectiveContributionAllocationConditionAllowed",
+            "employerNonElectiveContributionAllocationCondition",
+            "employerNonElectiveContributionHoursRequired",
+            "employerNonElectiveContributionAllocationConditionOther",
+            "employerNonElectiveContributionFrequency",
+            "employerNonElectiveContributionDefaultExceptions",
+            "employerNonElectiveContributionEeCanDesignateRoth"
+          ]
+        }
+      ],
+      "else": [
+        {
+          "action": "show",
+          "fields": [
+            "employerNonElectiveContributionType",
+            "employerNonElectiveContributionFormula",
+            "employerNonElectiveContributionAllocationMethod",
+            "employerNonElectiveContributionAllocationConditionAllowed",
+            "employerNonElectiveContributionFrequency",
+            "employerNonElectiveContributionEeCanDesignateRoth"
+          ]
+        },
+        {
+          "action": "require",
+          "fields": [
+            "employerNonElectiveContributionType",
+            "employerNonElectiveContributionAllocationMethod",
+            "employerNonElectiveContributionAllocationConditionAllowed",
+            "employerNonElectiveContributionFrequency"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "employer-nonelective-type-other-dependent-field",
+      "description": "Other text is required only when Employer Non-Elective Contribution Type is Other.",
+      "when": {
+        "field": "employerNonElectiveContributionType",
+        "operator": "equals",
+        "value": "Other"
+      },
+      "then": [
+        {
+          "action": "show",
+          "fields": ["employerNonElectiveContributionTypeOther"]
+        },
+        {
+          "action": "require",
+          "fields": ["employerNonElectiveContributionTypeOther"]
+        }
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": ["employerNonElectiveContributionTypeOther"]
+        },
+        {
+          "action": "clearValue",
+          "fields": ["employerNonElectiveContributionTypeOther"]
+        }
+      ]
+    },
+    {
+      "id": "employer-nonelective-allocation-method-other-dependent-field",
+      "description": "Other allocation method text is required only when Employer Non-Elective Contribution Allocation Method is Other.",
+      "when": {
+        "field": "employerNonElectiveContributionAllocationMethod",
+        "operator": "equals",
+        "value": "Other"
+      },
+      "then": [
+        {
+          "action": "show",
+          "fields": ["employerNonElectiveContributionAllocationMethodOther"]
+        },
+        {
+          "action": "require",
+          "fields": ["employerNonElectiveContributionAllocationMethodOther"]
+        }
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": ["employerNonElectiveContributionAllocationMethodOther"]
+        },
+        {
+          "action": "clearValue",
+          "fields": ["employerNonElectiveContributionAllocationMethodOther"]
+        }
+      ]
+    },
+    {
+      "id": "employer-nonelective-allocation-condition-dependent-fields",
+      "description": "Employer Non-Elective Contribution allocation condition fields are hidden and cleared when allocation conditions are not allowed.",
+      "when": {
+        "field": "employerNonElectiveContributionAllocationConditionAllowed",
+        "operator": "in",
+        "value": ["No", null]
+      },
+      "then": [
+        {
+          "action": "hide",
+          "fields": [
+            "employerNonElectiveContributionAllocationCondition",
+            "employerNonElectiveContributionHoursRequired",
+            "employerNonElectiveContributionAllocationConditionOther",
+            "employerNonElectiveContributionDefaultExceptions"
+          ]
+        },
+        {
+          "action": "clearValue",
+          "fields": [
+            "employerNonElectiveContributionAllocationCondition",
+            "employerNonElectiveContributionHoursRequired",
+            "employerNonElectiveContributionAllocationConditionOther",
+            "employerNonElectiveContributionDefaultExceptions"
+          ]
+        }
+      ],
+      "else": [
+        {
+          "action": "show",
+          "fields": [
+            "employerNonElectiveContributionAllocationCondition",
+            "employerNonElectiveContributionDefaultExceptions"
+          ]
+        },
+        {
+          "action": "require",
+          "fields": ["employerNonElectiveContributionAllocationCondition"]
+        }
+      ]
+    },
+    {
+      "id": "employer-nonelective-hours-required-dependent-field",
+      "description": "Hours required is required only when Hours Requirement is selected.",
+      "when": {
+        "field": "employerNonElectiveContributionAllocationCondition",
+        "operator": "contains",
+        "value": "Hours Requirement"
+      },
+      "then": [
+        {
+          "action": "show",
+          "fields": ["employerNonElectiveContributionHoursRequired"]
+        },
+        {
+          "action": "require",
+          "fields": ["employerNonElectiveContributionHoursRequired"]
+        }
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": ["employerNonElectiveContributionHoursRequired"]
+        },
+        {
+          "action": "clearValue",
+          "fields": ["employerNonElectiveContributionHoursRequired"]
+        }
+      ]
+    },
+    {
+      "id": "employer-nonelective-allocation-condition-other-dependent-field",
+      "description": "Other allocation condition text is required only when Other allocation condition is selected.",
+      "when": {
+        "field": "employerNonElectiveContributionAllocationCondition",
+        "operator": "contains",
+        "value": "Other"
+      },
+      "then": [
+        {
+          "action": "show",
+          "fields": ["employerNonElectiveContributionAllocationConditionOther"]
+        },
+        {
+          "action": "require",
+          "fields": ["employerNonElectiveContributionAllocationConditionOther"]
+        }
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": ["employerNonElectiveContributionAllocationConditionOther"]
+        },
+        {
+          "action": "clearValue",
+          "fields": ["employerNonElectiveContributionAllocationConditionOther"]
+        }
+      ]
+    },
+
+    {
+      "id": "employer-match-dependent-fields",
+      "description": "Employer Match Contribution dependent fields are hidden and cleared when Employer Match Contribution is not permitted.",
+      "when": {
+        "field": "employerMatchContributionPermitted",
+        "operator": "in",
+        "value": ["No", null]
+      },
+      "then": [
+        {
+          "action": "hide",
+          "fields": [
+            "employerMatchContributionType",
+            "employerMatchContributionTypeOther",
+            "employerMatchContributionFormula",
+            "employerMatchContributionMaximumDeferralPercent",
+            "employerMatchContributionAllowedForStudentLoanPayments",
+            "employerMatchContributionStudentLoanEffectiveDate",
+            "employerMatchContributionEeCanDesignateRoth",
+            "employerMatchContributionAllocationConditionAllowed",
+            "employerMatchContributionAllocationCondition",
+            "employerMatchContributionHoursRequired",
+            "employerMatchContributionAllocationConditionOther",
+            "employerMatchContributionFrequency",
+            "employerMatchContributionDefaultExceptions"
+          ]
+        },
+        {
+          "action": "clearValue",
+          "fields": [
+            "employerMatchContributionType",
+            "employerMatchContributionTypeOther",
+            "employerMatchContributionFormula",
+            "employerMatchContributionMaximumDeferralPercent",
+            "employerMatchContributionAllowedForStudentLoanPayments",
+            "employerMatchContributionStudentLoanEffectiveDate",
+            "employerMatchContributionEeCanDesignateRoth",
+            "employerMatchContributionAllocationConditionAllowed",
+            "employerMatchContributionAllocationCondition",
+            "employerMatchContributionHoursRequired",
+            "employerMatchContributionAllocationConditionOther",
+            "employerMatchContributionFrequency",
+            "employerMatchContributionDefaultExceptions"
+          ]
+        }
+      ],
+      "else": [
+        {
+          "action": "show",
+          "fields": [
+            "employerMatchContributionType",
+            "employerMatchContributionFormula",
+            "employerMatchContributionMaximumDeferralPercent",
+            "employerMatchContributionAllowedForStudentLoanPayments",
+            "employerMatchContributionEeCanDesignateRoth",
+            "employerMatchContributionAllocationConditionAllowed",
+            "employerMatchContributionFrequency"
+          ]
+        },
+        {
+          "action": "require",
+          "fields": [
+            "employerMatchContributionType",
+            "employerMatchContributionFormula",
+            "employerMatchContributionAllocationConditionAllowed",
+            "employerMatchContributionFrequency"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "employer-match-type-other-dependent-field",
+      "description": "Other text is required only when Employer Match Contribution Type is Other.",
+      "when": {
+        "field": "employerMatchContributionType",
+        "operator": "equals",
+        "value": "Other"
+      },
+      "then": [
+        {
+          "action": "show",
+          "fields": ["employerMatchContributionTypeOther"]
+        },
+        {
+          "action": "require",
+          "fields": ["employerMatchContributionTypeOther"]
+        }
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": ["employerMatchContributionTypeOther"]
+        },
+        {
+          "action": "clearValue",
+          "fields": ["employerMatchContributionTypeOther"]
+        }
+      ]
+    },
+    {
+      "id": "employer-match-student-loan-effective-date-dependent-field",
+      "description": "Student loan effective date is required only when student loan match is allowed.",
+      "when": {
+        "field": "employerMatchContributionAllowedForStudentLoanPayments",
+        "operator": "equals",
+        "value": "Yes"
+      },
+      "then": [
+        {
+          "action": "show",
+          "fields": ["employerMatchContributionStudentLoanEffectiveDate"]
+        },
+        {
+          "action": "require",
+          "fields": ["employerMatchContributionStudentLoanEffectiveDate"]
+        }
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": ["employerMatchContributionStudentLoanEffectiveDate"]
+        },
+        {
+          "action": "clearValue",
+          "fields": ["employerMatchContributionStudentLoanEffectiveDate"]
+        }
+      ]
+    },
+    {
+      "id": "employer-match-allocation-condition-dependent-fields",
+      "description": "Employer Match Contribution allocation condition fields are hidden and cleared when allocation conditions are not allowed.",
+      "when": {
+        "field": "employerMatchContributionAllocationConditionAllowed",
+        "operator": "in",
+        "value": ["No", null]
+      },
+      "then": [
+        {
+          "action": "hide",
+          "fields": [
+            "employerMatchContributionAllocationCondition",
+            "employerMatchContributionHoursRequired",
+            "employerMatchContributionAllocationConditionOther",
+            "employerMatchContributionDefaultExceptions"
+          ]
+        },
+        {
+          "action": "clearValue",
+          "fields": [
+            "employerMatchContributionAllocationCondition",
+            "employerMatchContributionHoursRequired",
+            "employerMatchContributionAllocationConditionOther",
+            "employerMatchContributionDefaultExceptions"
+          ]
+        }
+      ],
+      "else": [
+        {
+          "action": "show",
+          "fields": [
+            "employerMatchContributionAllocationCondition",
+            "employerMatchContributionDefaultExceptions"
+          ]
+        },
+        {
+          "action": "require",
+          "fields": ["employerMatchContributionAllocationCondition"]
+        }
+      ]
+    },
+    {
+      "id": "employer-match-hours-required-dependent-field",
+      "description": "Hours required is required only when Hours Requirement is selected.",
+      "when": {
+        "field": "employerMatchContributionAllocationCondition",
+        "operator": "contains",
+        "value": "Hours Requirement"
+      },
+      "then": [
+        {
+          "action": "show",
+          "fields": ["employerMatchContributionHoursRequired"]
+        },
+        {
+          "action": "require",
+          "fields": ["employerMatchContributionHoursRequired"]
+        }
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": ["employerMatchContributionHoursRequired"]
+        },
+        {
+          "action": "clearValue",
+          "fields": ["employerMatchContributionHoursRequired"]
+        }
+      ]
+    },
+    {
+      "id": "employer-match-allocation-condition-other-dependent-field",
+      "description": "Other allocation condition text is required only when Other allocation condition is selected.",
+      "when": {
+        "field": "employerMatchContributionAllocationCondition",
+        "operator": "contains",
+        "value": "Other"
+      },
+      "then": [
+        {
+          "action": "show",
+          "fields": ["employerMatchContributionAllocationConditionOther"]
+        },
+        {
+          "action": "require",
+          "fields": ["employerMatchContributionAllocationConditionOther"]
+        }
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": ["employerMatchContributionAllocationConditionOther"]
+        },
+        {
+          "action": "clearValue",
+          "fields": ["employerMatchContributionAllocationConditionOther"]
+        }
+      ]
+    },
+
+    {
+      "id": "safe-harbor-dependent-fields",
+      "description": "Safe Harbor dependent fields are hidden and cleared when Safe Harbor Contribution is not permitted.",
+      "when": {
+        "field": "safeHarborContributionPermitted",
+        "operator": "in",
+        "value": ["No", null]
+      },
+      "then": [
+        {
+          "action": "hide",
+          "fields": [
+            "safeHarborFormulaType",
+            "safeHarborFrequency",
+            "safeHarborNoticeRequired",
+            "safeHarborVestingSchedule",
+            "safeHarborVestingScheduleOther"
+          ]
+        },
+        {
+          "action": "clearValue",
+          "fields": [
+            "safeHarborFormulaType",
+            "safeHarborFrequency",
+            "safeHarborNoticeRequired",
+            "safeHarborVestingSchedule",
+            "safeHarborVestingScheduleOther"
+          ]
+        }
+      ],
+      "else": [
+        {
+          "action": "show",
+          "fields": [
+            "safeHarborFormulaType",
+            "safeHarborFrequency",
+            "safeHarborNoticeRequired",
+            "safeHarborVestingSchedule"
+          ]
+        },
+        {
+          "action": "require",
+          "fields": [
+            "safeHarborFormulaType",
+            "safeHarborFrequency",
+            "safeHarborNoticeRequired",
+            "safeHarborVestingSchedule"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "safe-harbor-vesting-other-dependent-field",
+      "description": "Other vesting schedule text is required only when Safe Harbor Vesting Schedule is Other.",
+      "when": {
+        "field": "safeHarborVestingSchedule",
+        "operator": "equals",
+        "value": "Other"
+      },
+      "then": [
+        {
+          "action": "show",
+          "fields": ["safeHarborVestingScheduleOther"]
+        },
+        {
+          "action": "require",
+          "fields": ["safeHarborVestingScheduleOther"]
+        }
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": ["safeHarborVestingScheduleOther"]
+        },
+        {
+          "action": "clearValue",
+          "fields": ["safeHarborVestingScheduleOther"]
+        }
+      ]
+    },
+
+    {
+      "id": "automatic-enrollment-dependent-fields",
+      "description": "Automatic enrollment fields are hidden and cleared when Automatic Enrollment Type is None.",
+      "when": {
+        "field": "automaticEnrollmentType",
+        "operator": "in",
+        "value": ["None", null]
+      },
+      "then": [
+        {
+          "action": "hide",
+          "fields": [
+            "automaticEnrollmentDefaultPercent",
+            "automaticEnrollmentAnnualIncreaseAllowed",
+            "automaticEnrollmentAnnualIncreasePercent",
+            "automaticEnrollmentMaximumPercent",
+            "automaticEnrollmentWithdrawalWindowDays"
+          ]
+        },
+        {
+          "action": "clearValue",
+          "fields": [
+            "automaticEnrollmentDefaultPercent",
+            "automaticEnrollmentAnnualIncreaseAllowed",
+            "automaticEnrollmentAnnualIncreasePercent",
+            "automaticEnrollmentMaximumPercent",
+            "automaticEnrollmentWithdrawalWindowDays"
+          ]
+        }
+      ],
+      "else": [
+        {
+          "action": "show",
+          "fields": [
+            "automaticEnrollmentDefaultPercent",
+            "automaticEnrollmentAnnualIncreaseAllowed"
+          ]
+        },
+        {
+          "action": "require",
+          "fields": [
+            "automaticEnrollmentDefaultPercent",
+            "automaticEnrollmentAnnualIncreaseAllowed"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "automatic-enrollment-annual-increase-dependent-fields",
+      "description": "Annual increase percent and maximum percent are required only when automatic annual increase is allowed.",
+      "when": {
+        "field": "automaticEnrollmentAnnualIncreaseAllowed",
+        "operator": "equals",
+        "value": "Yes"
+      },
+      "then": [
+        {
+          "action": "show",
+          "fields": [
+            "automaticEnrollmentAnnualIncreasePercent",
+            "automaticEnrollmentMaximumPercent"
+          ]
+        },
+        {
+          "action": "require",
+          "fields": [
+            "automaticEnrollmentAnnualIncreasePercent",
+            "automaticEnrollmentMaximumPercent"
+          ]
+        }
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": [
+            "automaticEnrollmentAnnualIncreasePercent",
+            "automaticEnrollmentMaximumPercent"
+          ]
+        },
+        {
+          "action": "clearValue",
+          "fields": [
+            "automaticEnrollmentAnnualIncreasePercent",
+            "automaticEnrollmentMaximumPercent"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "eaca-qaca-withdrawal-window-dependent-field",
+      "description": "Withdrawal window days is required only for EACA or QACA automatic enrollment.",
+      "when": {
+        "field": "automaticEnrollmentType",
+        "operator": "in",
+        "value": ["EACA", "QACA"]
+      },
+      "then": [
+        {
+          "action": "show",
+          "fields": ["automaticEnrollmentWithdrawalWindowDays"]
+        },
+        {
+          "action": "require",
+          "fields": ["automaticEnrollmentWithdrawalWindowDays"]
+        }
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": ["automaticEnrollmentWithdrawalWindowDays"]
+        },
+        {
+          "action": "clearValue",
+          "fields": ["automaticEnrollmentWithdrawalWindowDays"]
+        }
+      ]
+    },
+
+    {
+      "id": "loans-dependent-fields",
+      "description": "Loan dependent fields are hidden and cleared when Loans - Number is None.",
+      "when": {
+        "field": "loansNumber",
+        "operator": "in",
+        "value": ["None", null]
+      },
+      "then": [
+        {
+          "action": "hide",
+          "fields": [
+            "loansFrequency",
+            "loansRestrictions",
+            "loansRestrictionsOther",
+            "loansMinimum",
+            "loansMaximum",
+            "loansRate",
+            "loansRepaymentPeriodYears",
+            "loansHardshipOnly"
+          ]
+        },
+        {
+          "action": "clearValue",
+          "fields": [
+            "loansFrequency",
+            "loansRestrictions",
+            "loansRestrictionsOther",
+            "loansMinimum",
+            "loansMaximum",
+            "loansRate",
+            "loansRepaymentPeriodYears",
+            "loansHardshipOnly"
+          ]
+        }
+      ],
+      "else": [
+        {
+          "action": "show",
+          "fields": [
+            "loansFrequency",
+            "loansRestrictions",
+            "loansMinimum",
+            "loansMaximum",
+            "loansRate",
+            "loansRepaymentPeriodYears",
+            "loansHardshipOnly"
+          ]
+        },
+        {
+          "action": "require",
+          "fields": [
+            "loansFrequency",
+            "loansMinimum",
+            "loansMaximum",
+            "loansRate",
+            "loansRepaymentPeriodYears",
+            "loansHardshipOnly"
+          ]
+        }
+      ]
+    },
+    {
+      "id": "loans-restrictions-other-dependent-field",
+      "description": "Other loan restriction text is required only when Other loan restriction is selected.",
+      "when": {
+        "field": "loansRestrictions",
+        "operator": "contains",
+        "value": "Other"
+      },
+      "then": [
+        {
+          "action": "show",
+          "fields": ["loansRestrictionsOther"]
+        },
+        {
+          "action": "require",
+          "fields": ["loansRestrictionsOther"]
+        }
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": ["loansRestrictionsOther"]
+        },
+        {
+          "action": "clearValue",
+          "fields": ["loansRestrictionsOther"]
+        }
+      ]
     }
   ],
   "validation_rules": [
@@ -450,7 +1628,317 @@
         "message": "Default Automatic Enrollment Percentage cannot be greater than 100%."
       }
     ]
-  }
+  },
+  {
+      "field": "employerNonElectiveContributionTypeOther",
+      "rules": [
+        {
+          "type": "maxLength",
+          "value": 500,
+          "message": "Employer Non-Elective Contribution Type - Other cannot exceed 500 characters."
+        }
+      ]
+    },
+    {
+      "field": "employerNonElectiveContributionFormula",
+      "rules": [
+        {
+          "type": "maxLength",
+          "value": 1000,
+          "message": "Employer Non-Elective Contribution Formula cannot exceed 1000 characters."
+        }
+      ]
+    },
+    {
+      "field": "employerNonElectiveContributionAllocationMethodOther",
+      "rules": [
+        {
+          "type": "maxLength",
+          "value": 500,
+          "message": "Employer Non-Elective Contribution Allocation Method - Other cannot exceed 500 characters."
+        }
+      ]
+    },
+    {
+      "field": "employerNonElectiveContributionHoursRequired",
+      "rules": [
+        {
+          "type": "min",
+          "value": 1,
+          "message": "Employer Non-Elective Contribution Hours Required must be greater than 0."
+        },
+        {
+          "type": "max",
+          "value": 1000,
+          "message": "Employer Non-Elective Contribution Hours Required cannot be greater than 1000."
+        }
+      ]
+    },
+    {
+      "field": "employerNonElectiveContributionAllocationConditionOther",
+      "rules": [
+        {
+          "type": "maxLength",
+          "value": 500,
+          "message": "Employer Non-Elective Contribution Allocation Condition - Other cannot exceed 500 characters."
+        }
+      ]
+    },
+    {
+      "field": "employerNonElectiveContributionDefaultExceptions",
+      "rules": [
+        {
+          "type": "mutuallyExclusive",
+          "value": {
+            "exclusive_value": "None"
+          },
+          "message": "Employer Non-Elective Contribution Default Exceptions cannot include None with other exceptions."
+        }
+      ]
+    },
+
+    {
+      "field": "employerMatchContributionTypeOther",
+      "rules": [
+        {
+          "type": "maxLength",
+          "value": 500,
+          "message": "Employer Match Contribution Type - Other cannot exceed 500 characters."
+        }
+      ]
+    },
+    {
+      "field": "employerMatchContributionFormula",
+      "rules": [
+        {
+          "type": "maxLength",
+          "value": 1000,
+          "message": "Employer Match Contribution Formula cannot exceed 1000 characters."
+        }
+      ]
+    },
+    {
+      "field": "employerMatchContributionMaximumDeferralPercent",
+      "rules": [
+        {
+          "type": "min",
+          "value": 0,
+          "message": "Employer Match Contribution Maximum Deferral Percent cannot be less than 0%."
+        },
+        {
+          "type": "max",
+          "value": 100,
+          "message": "Employer Match Contribution Maximum Deferral Percent cannot be greater than 100%."
+        }
+      ]
+    },
+    {
+      "field": "employerMatchContributionStudentLoanEffectiveDate",
+      "rules": [
+        {
+          "type": "pattern",
+          "value": "^\\d{1,2}/\\d{1,2}/\\d{4}$",
+          "message": "Employer Match Contribution Student Loan Effective Date must be in MM/DD/YYYY format."
+        }
+      ]
+    },
+    {
+      "field": "employerMatchContributionHoursRequired",
+      "rules": [
+        {
+          "type": "min",
+          "value": 1,
+          "message": "Employer Match Contribution Hours Required must be greater than 0."
+        },
+        {
+          "type": "max",
+          "value": 1000,
+          "message": "Employer Match Contribution Hours Required cannot be greater than 1000."
+        }
+      ]
+    },
+    {
+      "field": "employerMatchContributionAllocationConditionOther",
+      "rules": [
+        {
+          "type": "maxLength",
+          "value": 500,
+          "message": "Employer Match Contribution Allocation Condition - Other cannot exceed 500 characters."
+        }
+      ]
+    },
+    {
+      "field": "employerMatchContributionDefaultExceptions",
+      "rules": [
+        {
+          "type": "mutuallyExclusive",
+          "value": {
+            "exclusive_value": "None"
+          },
+          "message": "Employer Match Contribution Default Exceptions cannot include None with other exceptions."
+        }
+      ]
+    },
+
+    {
+      "field": "safeHarborVestingScheduleOther",
+      "rules": [
+        {
+          "type": "maxLength",
+          "value": 500,
+          "message": "Safe Harbor Vesting Schedule - Other cannot exceed 500 characters."
+        }
+      ]
+    },
+
+    {
+      "field": "automaticEnrollmentDefaultPercent",
+      "rules": [
+        {
+          "type": "min",
+          "value": 0,
+          "message": "Automatic Enrollment Default Percent cannot be less than 0%."
+        },
+        {
+          "type": "max",
+          "value": 100,
+          "message": "Automatic Enrollment Default Percent cannot be greater than 100%."
+        }
+      ]
+    },
+    {
+      "field": "automaticEnrollmentAnnualIncreasePercent",
+      "rules": [
+        {
+          "type": "min",
+          "value": 0,
+          "message": "Automatic Enrollment Annual Increase Percent cannot be less than 0%."
+        },
+        {
+          "type": "max",
+          "value": 100,
+          "message": "Automatic Enrollment Annual Increase Percent cannot be greater than 100%."
+        }
+      ]
+    },
+    {
+      "field": "automaticEnrollmentMaximumPercent",
+      "rules": [
+        {
+          "type": "min",
+          "value": 0,
+          "message": "Automatic Enrollment Maximum Percent cannot be less than 0%."
+        },
+        {
+          "type": "max",
+          "value": 100,
+          "message": "Automatic Enrollment Maximum Percent cannot be greater than 100%."
+        },
+        {
+          "type": "greaterThanOrEqualToField",
+          "value": "automaticEnrollmentDefaultPercent",
+          "message": "Automatic Enrollment Maximum Percent must be greater than or equal to Automatic Enrollment Default Percent."
+        }
+      ]
+    },
+    {
+      "field": "automaticEnrollmentWithdrawalWindowDays",
+      "rules": [
+        {
+          "type": "min",
+          "value": 1,
+          "message": "Automatic Enrollment Withdrawal Window Days must be greater than 0."
+        },
+        {
+          "type": "max",
+          "value": 90,
+          "message": "Automatic Enrollment Withdrawal Window Days cannot be greater than 90."
+        }
+      ]
+    },
+
+    {
+      "field": "loansRestrictions",
+      "rules": [
+        {
+          "type": "mutuallyExclusive",
+          "value": {
+            "exclusive_value": "Hardship Loans Only"
+          },
+          "message": "Loans - Restrictions cannot include Hardship Loans Only with general loan restriction options."
+        }
+      ]
+    },
+    {
+      "field": "loansRestrictionsOther",
+      "rules": [
+        {
+          "type": "maxLength",
+          "value": 500,
+          "message": "Loans - Restrictions - Other cannot exceed 500 characters."
+        }
+      ]
+    },
+    {
+      "field": "loansMinimum",
+      "rules": [
+        {
+          "type": "pattern",
+          "value": "^\\$?\\d+(\\.\\d{2})?$",
+          "message": "Loans - Minimum must be a valid currency amount."
+        },
+        {
+          "type": "min",
+          "value": 0,
+          "message": "Loans - Minimum cannot be less than 0."
+        }
+      ]
+    },
+    {
+      "field": "loansMaximum",
+      "rules": [
+        {
+          "type": "pattern",
+          "value": "^\\$?\\d+(\\.\\d{2})?$",
+          "message": "Loans - Maximum must be a valid currency amount."
+        },
+        {
+          "type": "min",
+          "value": 0,
+          "message": "Loans - Maximum cannot be less than 0."
+        },
+        {
+          "type": "greaterThanOrEqualToField",
+          "value": "loansMinimum",
+          "message": "Loans - Maximum must be greater than or equal to Loans - Minimum."
+        }
+      ]
+    },
+    {
+      "field": "loansRate",
+      "rules": [
+        {
+          "type": "maxLength",
+          "value": 250,
+          "message": "Loans - Rate cannot exceed 250 characters."
+        }
+      ]
+    },
+    {
+      "field": "loansRepaymentPeriodYears",
+      "rules": [
+        {
+          "type": "min",
+          "value": 1,
+          "message": "Loans - Repayment Period Years must be greater than 0."
+        },
+        {
+          "type": "max",
+          "value": 30,
+          "message": "Loans - Repayment Period Years cannot be greater than 30."
+        }
+      ]
+    }
 ]
   
 }

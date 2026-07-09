@@ -61,8 +61,56 @@
             "field_key": "permittedWithdrawalTypes",
             "field_label": "Permitted Withdrawal Types",
             "error_code": "INVALID_OPTIONS",
-            "error": "Permitted Withdrawal Types contains an invalid option.",
-            "received": "Hospital",
+            "error": "Permitted Withdrawal Types should contain multiple values.",
+            "received": "Hardship Withdrawal",
+            "suggested_value": null
+        },
+        {
+            "field_key": "employerNonElectiveContributionHoursRequired",
+            "field_label": "Employer Non-Elective Contribution Hours Required",
+            "error_code": "MAX_VALUE_ERROR",
+            "error": "Employer Non-Elective Contribution Hours Required cannot be greater than 1000.",
+            "received": 1200,
+            "suggested_value": null
+        },
+        {
+            "field_key": "employerMatchContributionMaximumDeferralPercent",
+            "field_label": "Employer Match Contribution Maximum Deferral Percent",
+            "error_code": "MAX_VALUE_ERROR",
+            "error": "Employer Match Contribution Maximum Deferral Percent cannot be greater than 100%.",
+            "received": 125,
+            "suggested_value": null
+        },
+        {
+            "field_key": "employerMatchContributionStudentLoanEffectiveDate",
+            "field_label": "Employer Match Contribution Student Loan Effective Date",
+            "error_code": "INVALID_FORMAT",
+            "error": "Employer Match Contribution Student Loan Effective Date must be in MM/DD/YYYY format.",
+            "received": "2025-01-01",
+            "suggested_value": "01/01/2025"
+        },
+        {
+            "field_key": "automaticEnrollmentType",
+            "field_label": "Automatic Enrollment Type",
+            "error_code": "INVALID_OPTIONS",
+            "error": "Automatic Enrollment Type contains an invalid option.",
+            "received": "QACA",
+            "suggested_value": null
+        },
+        {
+            "field_key": "automaticEnrollmentWithdrawalWindowDays",
+            "field_label": "Automatic Enrollment Withdrawal Window Days",
+            "error_code": "MAX_VALUE_ERROR",
+            "error": "Automatic Enrollment Withdrawal Window Days cannot be greater than 90.",
+            "received": 120,
+            "suggested_value": null
+        },
+        {
+            "field_key": "loansRepaymentPeriodYears",
+            "field_label": "Loans - Repayment Period Years",
+            "error_code": "MAX_VALUE_ERROR",
+            "error": "Loans - Repayment Period Years cannot be greater than 30.",
+            "received": 35,
             "suggested_value": null
         },
         {
@@ -71,6 +119,38 @@
             "error_code": "DEPENDENCY_ERROR",
             "error": "Employer Match Formula is required when Contribution Type includes employer matching contribution.",
             "received": null,
+            "suggested_value": null
+        },
+        {
+            "field_key": "employerNonElectiveContributionHoursRequired",
+            "field_label": "Employer Non-Elective Contribution Hours Required",
+            "error_code": "DEPENDENCY_ERROR",
+            "error": "Field should not be present because parent condition is not satisfied.",
+            "received": 1200,
+            "suggested_value": null
+        },
+        {
+            "field_key": "employerNonElectiveContributionAllocationConditionOther",
+            "field_label": "Employer Non-Elective Contribution Allocation Condition - Other",
+            "error_code": "DEPENDENCY_ERROR",
+            "error": "Field should not be present because parent condition is not satisfied.",
+            "received": "Participant must be employed on the last business day of the Plan Year.",
+            "suggested_value": null
+        },
+        {
+            "field_key": "employerMatchContributionHoursRequired",
+            "field_label": "Employer Match Contribution Hours Required",
+            "error_code": "DEPENDENCY_ERROR",
+            "error": "Field should not be present because parent condition is not satisfied.",
+            "received": 1000,
+            "suggested_value": null
+        },
+        {
+            "field_key": "loansRestrictionsOther",
+            "field_label": "Loans - Restrictions - Other",
+            "error_code": "DEPENDENCY_ERROR",
+            "error": "Field should not be present because parent condition is not satisfied.",
+            "received": "Loans are limited to active employees only.",
             "suggested_value": null
         }
     ],
@@ -81,21 +161,144 @@
             "warning_code": "LOW_CONFIDENCE",
             "warning": "Low confidence score",
             "received": 0.89
+        },
+        {
+            "field_key": "loanPermitted",
+            "field_label": "Loan Permitted",
+            "warning_code": "LOW_CONFIDENCE",
+            "warning": "Low confidence score",
+            "received": 0.88
+        },
+        {
+            "field_key": "automaticAnnualIncreaseEnabled",
+            "field_label": "Automatic Annual Increase Enabled",
+            "warning_code": "LOW_CONFIDENCE",
+            "warning": "Low confidence score",
+            "received": 0.87
+        },
+        {
+            "field_key": "permittedWithdrawalTypes",
+            "field_label": "Permitted Withdrawal Types",
+            "warning_code": "LOW_CONFIDENCE",
+            "warning": "Low confidence score",
+            "received": 0.86
+        },
+        {
+            "field_key": "employerNonElectiveContributionAllocationMethodOther",
+            "field_label": "Employer Non-Elective Contribution Allocation Method - Other",
+            "warning_code": "LOW_CONFIDENCE",
+            "warning": "Low confidence score",
+            "received": 0.89
+        },
+        {
+            "field_key": "employerNonElectiveContributionHoursRequired",
+            "field_label": "Employer Non-Elective Contribution Hours Required",
+            "warning_code": "LOW_CONFIDENCE",
+            "warning": "Low confidence score",
+            "received": 0.88
+        },
+        {
+            "field_key": "employerNonElectiveContributionAllocationConditionOther",
+            "field_label": "Employer Non-Elective Contribution Allocation Condition - Other",
+            "warning_code": "LOW_CONFIDENCE",
+            "warning": "Low confidence score",
+            "received": 0.86
+        },
+        {
+            "field_key": "employerNonElectiveContributionDefaultExceptions",
+            "field_label": "Employer Non-Elective Contribution Default Exceptions",
+            "warning_code": "LOW_CONFIDENCE",
+            "warning": "Low confidence score",
+            "received": 0.85
+        },
+        {
+            "field_key": "employerMatchContributionMaximumDeferralPercent",
+            "field_label": "Employer Match Contribution Maximum Deferral Percent",
+            "warning_code": "LOW_CONFIDENCE",
+            "warning": "Low confidence score",
+            "received": 0.89
+        },
+        {
+            "field_key": "employerMatchContributionStudentLoanEffectiveDate",
+            "field_label": "Employer Match Contribution Student Loan Effective Date",
+            "warning_code": "LOW_CONFIDENCE",
+            "warning": "Low confidence score",
+            "received": 0.87
+        },
+        {
+            "field_key": "employerMatchContributionAllocationCondition",
+            "field_label": "Employer Match Contribution Allocation Condition",
+            "warning_code": "LOW_CONFIDENCE",
+            "warning": "Low confidence score",
+            "received": 0.82
+        },
+        {
+            "field_key": "employerMatchContributionHoursRequired",
+            "field_label": "Employer Match Contribution Hours Required",
+            "warning_code": "LOW_CONFIDENCE",
+            "warning": "Low confidence score",
+            "received": 0.81
+        },
+        {
+            "field_key": "employerMatchContributionAllocationConditionOther",
+            "field_label": "Employer Match Contribution Allocation Condition - Other",
+            "warning_code": "LOW_CONFIDENCE",
+            "warning": "Low confidence score",
+            "received": 0.72
+        },
+        {
+            "field_key": "safeHarborVestingScheduleOther",
+            "field_label": "Safe Harbor Vesting Schedule - Other",
+            "warning_code": "LOW_CONFIDENCE",
+            "warning": "Low confidence score",
+            "received": 0.86
+        },
+        {
+            "field_key": "automaticEnrollmentWithdrawalWindowDays",
+            "field_label": "Automatic Enrollment Withdrawal Window Days",
+            "warning_code": "LOW_CONFIDENCE",
+            "warning": "Low confidence score",
+            "received": 0.88
+        },
+        {
+            "field_key": "loansRestrictions",
+            "field_label": "Loans - Restrictions",
+            "warning_code": "LOW_CONFIDENCE",
+            "warning": "Low confidence score",
+            "received": 0.89
+        },
+        {
+            "field_key": "loansRestrictionsOther",
+            "field_label": "Loans - Restrictions - Other",
+            "warning_code": "LOW_CONFIDENCE",
+            "warning": "Low confidence score",
+            "received": 0.87
+        },
+        {
+            "field_key": "loansRepaymentPeriodYears",
+            "field_label": "Loans - Repayment Period Years",
+            "warning_code": "LOW_CONFIDENCE",
+            "warning": "Low confidence score",
+            "received": 0.88
         }
     ],
     "summary": {
-        "total_fields": 15,
-        "passed_fields": 6,
-        "failed_fields": 9,
-        "warning_fields": 1,
+        "total_fields": 63,
+        "passed_fields": 45,
+        "failed_fields": 18,
+        "warning_fields": 18,
+        "duplicate_schema_fields": [
+            "automaticEnrollmentType"
+        ],
         "error_summary": {
-            "INVALID_FORMAT": 2,
+            "INVALID_FORMAT": 3,
             "MIN_VALUE_ERROR": 1,
-            "INVALID_OPTIONS": 5,
-            "DEPENDENCY_ERROR": 1
+            "INVALID_OPTIONS": 6,
+            "MAX_VALUE_ERROR": 4,
+            "DEPENDENCY_ERROR": 5
         },
         "warning_summary": {
-            "LOW_CONFIDENCE": 1
+            "LOW_CONFIDENCE": 18
         }
     }
 }
