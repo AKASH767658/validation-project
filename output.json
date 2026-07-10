@@ -60,8 +60,8 @@
         {
             "field_key": "permittedWithdrawalTypes",
             "field_label": "Permitted Withdrawal Types",
-            "error_code": "INVALID_OPTIONS",
-            "error": "Permitted Withdrawal Types should contain multiple values.",
+            "error_code": "INVALID_TYPE",
+            "error": "Permitted Withdrawal Types  must be a list of values.",
             "received": "Hardship Withdrawal",
             "suggested_value": null
         },
@@ -293,7 +293,8 @@
         "error_summary": {
             "INVALID_FORMAT": 3,
             "MIN_VALUE_ERROR": 1,
-            "INVALID_OPTIONS": 6,
+            "INVALID_OPTIONS": 5,
+            "INVALID_TYPE": 1,
             "MAX_VALUE_ERROR": 4,
             "DEPENDENCY_ERROR": 5
         },

@@ -219,6 +219,7 @@
       "label": "Employer Non-Elective Contribution Hours Required",
       "type": "number",
       "options": null,
+      
       "format": null
     },
     {
@@ -306,7 +307,7 @@
     },
     {
       "key": "employerMatchContributionAllowedForStudentLoanPayments",
-      "label": "Employer Match Contribution - Allowed for Student Loan Pmts",
+      "label":"Employer Match Contribution - Allowed for Student Loan Pmts",
       "type": "boolean",
       "options": ["Yes", "No"],
       "format": null

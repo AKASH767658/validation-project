@@ -56,7 +56,7 @@ errors = []
 warnings = []
 response_keys = []
 invalid_fields = set()
-
+duplicate_response_fields = []
 
 # -------------------------
 # validation loop
@@ -77,9 +77,12 @@ for item in response_data[
         "value"
     ]
 
-    response_keys.append(
-        field_key
-    )
+    if field_key in response_keys:
+        duplicate_response_fields.append(field_key)
+    else:
+        response_keys.append(field_key)
+
+    
 
 
     # -------------------------
@@ -121,7 +124,7 @@ for item in response_data[
     if schema.options is not None:
 
     # enum_single / boolean
-      if schema.type in ["enum_single", "boolean"]:
+     if schema.type in ["enum_single", "boolean"]:
 
         if value not in schema.options:
 
@@ -151,16 +154,16 @@ for item in response_data[
             continue
 
     # enum_multi
-      elif schema.type == "enum_multi":
+     elif schema.type == "enum_multi":
        
-
+        print(field_key, schema.type, type(value), value)
         if not isinstance(value, list):
 
             errors.append({
                 "field_key": field_key,
                 "field_label": field_label,
-                "error_code": "INVALID_OPTIONS",
-                "error": f"{field_label} should contain multiple values.",
+                "error_code": "INVALID_TYPE",
+                "error": f"{field_label}  must be a list of values.",
                 "received": value,
                 "suggested_value": None
             })
@@ -757,7 +760,7 @@ result = {
 
         "warning_fields":
         warning_fields,
-        "duplicate_schema_fields": list(set(duplicate_fields)),
+        "duplicate_schema_fields": list(set(duplicate_response_fields)),
 
         "error_summary":
         error_summary,
