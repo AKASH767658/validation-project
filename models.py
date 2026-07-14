@@ -5,6 +5,19 @@ from pydantic import (
 
 from typing import Optional, List, Literal
 from typing import Any
+from enum import Enum
+
+
+# -------------------------
+# Dependency Operator
+# -------------------------
+class DependencyOperator(str, Enum):
+
+    EQUALS = "equals"
+
+    NOT_EQUALS = "notEquals"
+
+    IN = "in"
 
 # -------------------------
 # Schema Model
@@ -22,11 +35,7 @@ class SchemaField(BaseModel):
     "text",
     "enum_single",
     "enum_multi",
-    "boolean",
-    "date",
-    "percentage",
-    "number",
-    "currency"
+    "boolean"
 ]
     
 
