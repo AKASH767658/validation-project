@@ -9,15 +9,16 @@ from models import (
 )
 CONFIDENCE_THRESHOLD = 0.90
 
+#load input_shema file 
 with open("data/input_schema.json", "r") as file:
     data = json.load(file)
 
+#Validate schema keys
 required_keys = {
     "field_schema": False,      # False = should not be empty
     "validation_rules": True,   # True = can be empty
     "dependency_rules": True    # True = can be empty
 }
-
 for key, can_be_empty in required_keys.items():
 
     if key not in data:
@@ -28,14 +29,15 @@ for key, can_be_empty in required_keys.items():
 
     if not can_be_empty and len(data[key]) == 0:
         raise ValueError(f"{key} must not be empty")
-
+    
+#Extract schema sections
 field_schema = data["field_schema"]
 validation_rules = data["validation_rules"]
 dependency_rules = data["dependency_rules"]
 
-# -------------------------
+
 # validation rules dict
-# -------------------------
+
 rules_dict = {}
 
 for rule in validation_rules:
@@ -60,7 +62,7 @@ duplicate_response_fields = []
 
 
 
-#HELPER  FUN
+#HELPER  FUNction
 def validate_required_keys(item):
 
     for key in ["key", "label", "type"]:
@@ -370,9 +372,13 @@ if error:
         "error_code": "RESPONSE_ERROR",
         "error": error
     })
-# -------------------------
+extracted_fields = response_data.get("extracted_fields")
+
+if not isinstance(extracted_fields, list):
+    extracted_fields = []
+
 # schema dictionary
-# -------------------------
+
 schema_dict = {}
 duplicate_fields = []
 
@@ -416,15 +422,12 @@ for item in field_schema:
         schema_dict[
         schema.key
     ] = schema
-print("Duplicate fields:", duplicate_fields)
 
 
-# -------------------------
 # validation loop
-# -------------------------
-for item in response_data[ 
-    "extracted_fields"
-]:
+
+for item in extracted_fields:
+
     error = validate_response_keys(item)
 
     if error:
@@ -452,11 +455,8 @@ for item in response_data[
         response_keys.append(field_key)
 
     
-
-
-    # -------------------------
     # invalid field_key
-    # -------------------------
+
     if field_key not in schema_dict:
 
         errors.append({
@@ -485,10 +485,10 @@ for item in response_data[
         field_key
     ]
     
-         # -------------------------
-# -------------------------
+
+
 # schema options validation
-# -------------------------
+
 
     if schema.options is not None:
 
@@ -569,12 +569,9 @@ for item in response_data[
                 continue
                 
 
-    # -------------------------
     # low confidence warning
     
     
-    
-    # -------------------------
     add_low_confidence_warning(
     warnings,
     field_key,
@@ -583,9 +580,8 @@ for item in response_data[
 )
 
 
-    # ------------------ -------
     # pydantic validation
-    # -------------------------
+    
     try:
 
         ResponseField(
@@ -624,9 +620,9 @@ for item in response_data[
 )
 
         continue
-    # -------------------------
+  
     # validation_rules
-    # -------------------------
+  
     if field_key in rules_dict:
 
         field_rules = rules_dict[
@@ -642,9 +638,9 @@ for item in response_data[
             suggested_value = None
 
 
-            # -------------------------
+           
             # pattern validation
-            # -------------------------
+         
             if rule_type == "pattern":
                 validate_pattern(
                     value,
@@ -654,9 +650,9 @@ for item in response_data[
                     errors,
                     invalid_fields
                     )
-            # -------------------------
+          
             # min validation
-            # -------------------------
+        
             elif rule_type == "min":
                 validate_min(
         value,
@@ -668,9 +664,9 @@ for item in response_data[
     )
 
 
-            # -------------------------
+           
             # max validation
-            # -------------------------
+           
             elif rule_type == "max":
                 validate_max(
         value,
@@ -680,24 +676,20 @@ for item in response_data[
         errors,
         invalid_fields
     )
-            
-# -------------------------
+
 # create response map
-# -------------------------
+
 response_map = {}
 
-for item in response_data[
-    "extracted_fields"
-]:
+for item in extracted_fields:
 
     response_map[
         item["field_key"]
     ] = item["value"]
 
 
-# -------------------------
 # dependency validation
-# -------------------------
+
 dependency_checked = set()
 
 for dep_rule in dependency_rules:
@@ -725,12 +717,17 @@ for dep_rule in dependency_rules:
     operator,
     expected_value
 )
+    print("Parent:", parent_field)
+    print("Actual:", repr(actual_value))
+    print("Expected:", repr(expected_value))
+    print(type(actual_value))
+    print(type(expected_value))
+    print("Condition:", condition_met)
 
 
-    # -------------------------
     # THEN actions
     # parent valid -> child required
-    # -------------------------
+   
     if condition_met:
 
         for action in dep_rule["then"]:
@@ -744,11 +741,11 @@ for dep_rule in dependency_rules:
                  )
 
 
-    # -------------------------
+   
     # ELSE actions
     # parent not applicable
     # child should NOT exist
-    # -------------------------
+  
     else:
 
         for action in dep_rule["else"]:
@@ -770,9 +767,7 @@ for dep_rule in dependency_rules:
                     )
 
 
-# -------------------------
 # missing field warning
-# -------------------------
 for key in schema_dict:
 
     if key not in response_keys:
@@ -793,10 +788,7 @@ for key in schema_dict:
             "received": None
         })
 
-
-# -------------------------
 # summary
-# -------------------------
 total_fields = len(
     field_schema
 )
@@ -805,9 +797,11 @@ failed_field_names = set()
 
 for err in errors:
 
-    failed_field_names.add(
-        err["field_key"]
-    )
+    if "field_key" in err:
+
+        failed_field_names.add(
+            err["field_key"]
+        )
 
 failed_fields = len(
     failed_field_names
@@ -823,9 +817,7 @@ passed_fields = (
 )
 
 
-# -------------------------
 # error summary
-# -------------------------
 error_summary = {}
 
 for err in errors:
@@ -844,9 +836,8 @@ for err in errors:
             code
         ] += 1
 
-# -------------------------
 # warning summary
-# -------------------------
+
 warning_summary = {}
 
 for warn in warnings:
@@ -866,7 +857,6 @@ for warn in warnings:
         ] += 1
 
 # final output
-# -------------------------
 result = {
 
     "is_valid":

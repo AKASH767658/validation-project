@@ -626,7 +626,7 @@
       "when": {
         "field": "automaticEnrollmentType",
         "operator": "notEquals",
-        "value": "None"
+        "value": null
       },
       "then": [
         {
