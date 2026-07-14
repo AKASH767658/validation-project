@@ -1,0 +1,482 @@
+{
+  "extracted_fields": [
+    {
+      "field_key": "planName",
+      "field_label": "401(k) Plan Name",
+      "value": "ABC Retirement Plan",
+      "is_present": true,
+      "confidence_score": 0.98
+    },
+
+    {
+      "field_key": "planNumber",
+      "field_label": "401(k) Plan Number",
+      "value": "12",
+      "is_present": true,
+      "confidence_score": 0.95
+    },
+
+    {
+      "field_key": "employerLegalName",
+      "field_label": "Employer Legal Name",
+      "value": "ABC Company Pvt Ltd",
+      "is_present": true,
+      "confidence_score": 0.96
+    },
+
+    {
+      "field_key": "employerEin",
+      "field_label": "Employer EIN",
+      "value": "12345",
+      "is_present": true,
+      "confidence_score": 0.91
+    },
+
+    {
+      "field_key": "planEffectiveDate",
+      "field_label": "Plan Effective Date",
+      "value": "6/12/2003",
+      "is_present": true,
+      "confidence_score": 0.89
+    },
+
+    {
+      "field_key": "contributionType",
+      "field_label": "Contribution Type",
+      "value": "Employer Only",
+      "is_present": true,
+      "confidence_score": 0.94
+    },
+
+    {
+      "field_key": "employeeContributionPercentage",
+      "field_label": "Employee Contribution Percentage",
+      "value": "-1%",
+      "is_present": true,
+      "confidence_score": 0.97
+    },
+
+    {
+      "field_key": "employerMatchFormula",
+      "field_label": "Employer Match Formula",
+      "value": null,
+      "is_present": true,
+      "confidence_score": 0.92
+    },
+
+    {
+      "field_key": "loanPermitted",
+      "field_label": "Loan Permitted",
+      "value": "Maybe",
+      "is_present": true,
+      "confidence_score": 0.88
+    },
+
+    {
+      "field_key": "automaticEnrollmentType",
+      "field_label": "Automatic Enrollment Type",
+       "value": "Automatic Contribution Arrangement",
+      "is_present": true,
+      "confidence_score": 0.93
+    },
+    
+
+       
+
+    {
+      "field_key": "defaultAutomaticEnrollmentPercentage",
+      "field_label": "Default Automatic Enrollment Percentage",
+      "value": "10.5%",
+      "is_present": true,
+      "confidence_score": 0.90
+    },
+
+    {
+      "field_key": "automaticAnnualIncreaseEnabled",
+      "field_label": "Automatic Annual Increase Enabled",
+      "value": "True",
+      "is_present": true,
+      "confidence_score": 0.87
+    },
+
+    {
+      
+      "field_key": "vestingSchedule",
+      "field_label": "Vesting Schedule",
+      "value": "5-Year Plan",
+      "is_present": true,
+      "confidence_score": 0.95
+    },
+
+    {
+      "field_key": "eligibilityRequirement",
+      "field_label": "Eligibility Requirement",
+      "value": "2 Years Service",
+      "is_present": true,
+      "confidence_score": 0.91
+    },
+
+    {
+      "field_key": "permittedWithdrawalTypes",
+      "field_label": "Permitted Withdrawal Types",
+      "value": "Hardship Withdrawal",
+      "is_present": true,
+      "confidence_score": 0.86
+    },
+    {
+      "field_key": "employerNonElectiveContributionPermitted",
+      "field_label": "Employer Non-Elective Contribution Permitted",
+      "value": "Yes",
+      "is_present": true,
+      "confidence_score": 0.98
+    },
+    {
+      "field_key": "employerNonElectiveContributionType",
+      "field_label": "Employer Non-Elective Contribution Type",
+      "value": "Other",
+      "is_present": true,
+      "confidence_score": 0.94
+    },
+    {
+      "field_key": "employerNonElectiveContributionTypeOther",
+      "field_label": "Employer Non-Elective Contribution Type - Other",
+      "value": "Custom profit sharing formula",
+      "is_present": true,
+      "confidence_score": 0.91
+    },
+    {
+      "field_key": "employerNonElectiveContributionFormula",
+      "field_label": "Employer Non-Elective Contribution Formula",
+      "value": "Employer may make a discretionary non-elective contribution determined annually.",
+      "is_present": true,
+      "confidence_score": 0.93
+    },
+    {
+      "field_key": "employerNonElectiveContributionAllocationMethod",
+      "field_label": "Employer Non-Elective Contribution Allocation Method",
+      "value": "Other",
+      "is_present": true,
+      "confidence_score": 0.92
+    },
+    {
+      "field_key": "employerNonElectiveContributionAllocationMethodOther",
+      "field_label": "Employer Non-Elective Contribution Allocation Method - Other",
+      "value": "Custom allocation group method",
+      "is_present": true,
+      "confidence_score": 0.89
+    },
+    {
+      "field_key": "employerNonElectiveContributionAllocationConditionAllowed",
+      "field_label": "Employer Non-Elective Contribution Allocation Condition Allowed",
+      "value": "Yes",
+      "is_present": true,
+      "confidence_score": 0.97
+    },
+    {
+      "field_key": "employerNonElectiveContributionAllocationCondition",
+      "field_label": "Employer Non-Elective Contribution Allocation Condition",
+      "value": [
+        "Hours Requirement",
+        "Other"
+      ],
+      "is_present": true,
+      "confidence_score": 0.9
+    },
+    {
+      "field_key": "employerNonElectiveContributionHoursRequired",
+      "field_label": "Employer Non-Elective Contribution Hours Required",
+      "value": 1200,
+      "is_present": true,
+      "confidence_score": 0.88
+    },
+    {
+      "field_key": "employerNonElectiveContributionAllocationConditionOther",
+      "field_label": "Employer Non-Elective Contribution Allocation Condition - Other",
+      "value": "Participant must be employed on the last business day of the Plan Year.",
+      "is_present": true,
+      "confidence_score": 0.86
+    },
+    {
+      "field_key": "employerNonElectiveContributionFrequency",
+      "field_label": "Employer Non-Elective Contribution Frequency",
+      "value": "Annually",
+      "is_present": true,
+      "confidence_score": 0.96
+    },
+    {
+      "field_key": "employerNonElectiveContributionDefaultExceptions",
+      "field_label": "Employer Non-Elective Contribution Default Exceptions",
+      "value": [
+        "Death",
+        "None"
+      ],
+      "is_present": true,
+      "confidence_score": 0.85
+    },
+    {
+      "field_key": "employerNonElectiveContributionEeCanDesignateRoth",
+      "field_label": "Employer Non-Elective Contribution - EE can designate Roth",
+      "value": "Yes",
+      "is_present": true,
+      "confidence_score": 0.95
+    },
+
+    {
+      "field_key": "employerMatchContributionPermitted",
+      "field_label": "Employer Match Contribution Permitted",
+      "value": "Yes",
+      "is_present": true,
+      "confidence_score": 0.98
+    },
+    {
+      "field_key": "employerMatchContributionType",
+      "field_label": "Employer Match Contribution Type",
+      "value": "Other",
+      "is_present": true,
+      "confidence_score": 0.94
+    },
+    {
+      "field_key": "employerMatchContributionTypeOther",
+      "field_label": "Employer Match Contribution Type - Other",
+      "value": "Custom discretionary match formula",
+      "is_present": true,
+      "confidence_score": 0.91
+    },
+    {
+      "field_key": "employerMatchContributionFormula",
+      "field_label": "Employer Match Contribution Formula",
+      "value": "100% of deferrals up to 4% of Compensation.",
+      "is_present": true,
+      "confidence_score": 0.96
+    },
+    {
+      "field_key": "employerMatchContributionMaximumDeferralPercent",
+      "field_label": "Employer Match Contribution Maximum Deferral Percent",
+      "value": 125,
+      "is_present": true,
+      "confidence_score": 0.89
+    },
+    {
+      "field_key": "employerMatchContributionAllowedForStudentLoanPayments",
+      "field_label": "Employer Match Contribution - Allowed for Student Loan Pmts",
+      "value": "Yes",
+      "is_present": true,
+      "confidence_score": 0.94
+    },
+    {
+      "field_key": "employerMatchContributionStudentLoanEffectiveDate",
+      "field_label": "Employer Match Contribution Student Loan Effective Date",
+      "value": "2025-01-01",
+      "is_present": true,
+      "confidence_score": 0.87
+    },
+    {
+      "field_key": "employerMatchContributionEeCanDesignateRoth",
+      "field_label": "Employer Match Contribution - EE can designate Roth",
+      "value": "No",
+      "is_present": true,
+      "confidence_score": 0.95
+    },
+    {
+      "field_key": "employerMatchContributionAllocationConditionAllowed",
+      "field_label": "Employer Match Contribution Allocation Condition Allowed",
+      "value": "No",
+      "is_present": true,
+      "confidence_score": 0.93
+    },
+    {
+      "field_key": "employerMatchContributionAllocationCondition",
+      "field_label": "Employer Match Contribution Allocation Condition",
+      "value": [
+        "Last Day Requirement"
+      ],
+      "is_present": true,
+      "confidence_score": 0.82
+    },
+    {
+      "field_key": "employerMatchContributionHoursRequired",
+      "field_label": "Employer Match Contribution Hours Required",
+      "value": 1000,
+      "is_present": true,
+      "confidence_score": 0.81
+    },
+    {
+      "field_key": "employerMatchContributionAllocationConditionOther",
+      "field_label": "Employer Match Contribution Allocation Condition - Other",
+      "value": null,
+      "is_present": false,
+      "confidence_score": 0.72
+    },
+    {
+      "field_key": "employerMatchContributionFrequency",
+      "field_label": "Employer Match Contribution Frequency",
+      "value": "Each Payroll Period",
+      "is_present": true,
+      "confidence_score": 0.97
+    },
+    {
+      "field_key": "employerMatchContributionDefaultExceptions",
+      "field_label": "Employer Match Contribution Default Exceptions",
+      "value": [
+        "Death",
+        "Retirement"
+      ],
+      "is_present": true,
+      "confidence_score": 0.9
+    },
+
+    {
+      "field_key": "safeHarborContributionPermitted",
+      "field_label": "Safe Harbor Contribution Permitted",
+      "value": "Yes",
+      "is_present": true,
+      "confidence_score": 0.98
+    },
+    {
+      "field_key": "safeHarborFormulaType",
+      "field_label": "Safe Harbor Formula Type",
+      "value": "QACA Enhanced Match",
+      "is_present": true,
+      "confidence_score": 0.96
+    },
+    {
+      "field_key": "safeHarborFrequency",
+      "field_label": "Safe Harbor Frequency",
+      "value": "Each Payroll Period",
+      "is_present": true,
+      "confidence_score": 0.95
+    },
+    {
+      "field_key": "safeHarborNoticeRequired",
+      "field_label": "Safe Harbor Notice Required",
+      "value": "Yes",
+      "is_present": true,
+      "confidence_score": 0.93
+    },
+    {
+      "field_key": "safeHarborVestingSchedule",
+      "field_label": "Safe Harbor Vesting Schedule",
+      "value": "Other",
+      "is_present": true,
+      "confidence_score": 0.9
+    },
+    {
+      "field_key": "safeHarborVestingScheduleOther",
+      "field_label": "Safe Harbor Vesting Schedule - Other",
+      "value": "Immediate vesting after two years of service",
+      "is_present": true,
+      "confidence_score": 0.86
+    },
+
+    {
+      "field_key": "automaticEnrollmentType",
+      "field_label": "Automatic Enrollment Type",
+      "value": "QACA",
+      "is_present": true,
+      "confidence_score": 0.96
+    },
+    {
+      "field_key": "automaticEnrollmentDefaultPercent",
+      "field_label": "Automatic Enrollment Default Percent",
+      "value": 10,
+      "is_present": true,
+      "confidence_score": 0.95
+    },
+    {
+      "field_key": "automaticEnrollmentAnnualIncreaseAllowed",
+      "field_label": "Automatic Enrollment Annual Increase Allowed",
+      "value": "Yes",
+      "is_present": true,
+      "confidence_score": 0.94
+    },
+    {
+      "field_key": "automaticEnrollmentAnnualIncreasePercent",
+      "field_label": "Automatic Enrollment Annual Increase Percent",
+      "value": 2,
+      "is_present": true,
+      "confidence_score": 0.92
+    },
+    {
+      "field_key": "automaticEnrollmentMaximumPercent",
+      "field_label": "Automatic Enrollment Maximum Percent",
+      "value": 8,
+      "is_present": true,
+      "confidence_score": 0.91
+    },
+    {
+      "field_key": "automaticEnrollmentWithdrawalWindowDays",
+      "field_label": "Automatic Enrollment Withdrawal Window Days",
+      "value": 120,
+      "is_present": true,
+      "confidence_score": 0.88
+    },
+
+    {
+      "field_key": "loansNumber",
+      "field_label": "Loans - Number",
+      "value": "None",
+      "is_present": true,
+      "confidence_score": 0.97
+    },
+    {
+      "field_key": "loansFrequency",
+      "field_label": "Loans - Frequency",
+      "value": "One at a time",
+      "is_present": true,
+      "confidence_score": 0.9
+    },
+    {
+      "field_key": "loansRestrictions",
+      "field_label": "Loans - Restrictions",
+      "value": [
+        "General Purpose Loans",
+        "Other"
+      ],
+      "is_present": true,
+      "confidence_score": 0.89
+    },
+    {
+      "field_key": "loansRestrictionsOther",
+      "field_label": "Loans - Restrictions - Other",
+      "value": "Loans are limited to active employees only.",
+      "is_present": true,
+      "confidence_score": 0.87
+    },
+    {
+      "field_key": "loansMinimum",
+      "field_label": "Loans - Minimum",
+      "value": "$1000.00",
+      "is_present": true,
+      "confidence_score": 0.93
+    },
+    {
+      "field_key": "loansMaximum",
+      "field_label": "Loans - Maximum",
+      "value": "$500.00",
+      "is_present": true,
+      "confidence_score": 0.92
+    },
+    {
+      "field_key": "loansRate",
+      "field_label": "Loans - Rate",
+      "value": "Prime rate plus 1%",
+      "is_present": true,
+      "confidence_score": 0.91
+    },
+    {
+      "field_key": "loansRepaymentPeriodYears",
+      "field_label": "Loans - Repayment Period Years",
+      "value": 35,
+      "is_present": true,
+      "confidence_score": 0.88
+    },
+    {
+      "field_key": "loansHardshipOnly",
+      "field_label": "Loans - Hardship Only",
+      "value": "No",
+      "is_present": true,
+      "confidence_score": 0.9
+    }
+  
+  ]
+}

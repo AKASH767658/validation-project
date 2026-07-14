@@ -8,7 +8,7 @@ from models import SchemaField, ResponseField
 # -------------------------
 # load demo.json
 # -------------------------
-with open("demo.json", "r") as file:
+with open("data/input_schema.json", "r") as file:
     data = json.load(file)
 
 field_schema = data["field_schema"]
@@ -28,7 +28,7 @@ for rule in validation_rules:
 # -------------------------
 # load response.json
 # -------------------------
-with open("response.json", "r") as file:
+with open("data/response.json", "r") as file:
     response_data = json.load(file)
 
 
@@ -36,14 +36,18 @@ with open("response.json", "r") as file:
 # schema dictionary
 # -------------------------
 schema_dict = {}
+duplicate_fields = []
 
 for item in field_schema:
 
     schema = SchemaField(
         **item
     )
+    if schema.key in schema_dict:
 
-    schema_dict[
+        duplicate_fields.append(schema.key)
+    else:
+        schema_dict[
         schema.key
     ] = schema
 
@@ -52,7 +56,7 @@ errors = []
 warnings = []
 response_keys = []
 invalid_fields = set()
-
+duplicate_response_fields = []
 
 # -------------------------
 # validation loop
@@ -73,9 +77,12 @@ for item in response_data[
         "value"
     ]
 
-    response_keys.append(
-        field_key
-    )
+    if field_key in response_keys:
+        duplicate_response_fields.append(field_key)
+    else:
+        response_keys.append(field_key)
+
+    
 
 
     # -------------------------
@@ -105,14 +112,114 @@ for item in response_data[
 
         continue
 
-
     schema = schema_dict[
         field_key
     ]
+    
+         # -------------------------
+# -------------------------
+# schema options validation
+# -------------------------
 
+    if schema.options is not None:
+
+    # enum_single / boolean
+     if schema.type in ["enum_single", "boolean"]:
+
+        if value not in schema.options:
+
+            errors.append({
+                "field_key": field_key,
+                "field_label": field_label,
+                "error_code": "INVALID_OPTIONS",
+                "error": f"{field_label} contains an invalid option.",
+                "received": value,
+                "suggested_value": None
+            })
+            
+
+            invalid_fields.add(field_key)
+
+            if item["confidence_score"] < 0.90:
+
+              warnings.append({
+
+            "field_key": field_key,
+            "field_label": field_label,
+            "warning_code": "LOW_CONFIDENCE",
+            "warning": "Low confidence score",
+            "received": item["confidence_score"]
+
+        })
+            continue
+
+    # enum_multi
+     elif schema.type == "enum_multi":
+       
+        print(field_key, schema.type, type(value), value)
+        if not isinstance(value, list):
+
+            errors.append({
+                "field_key": field_key,
+                "field_label": field_label,
+                "error_code": "INVALID_TYPE",
+                "error": f"{field_label}  must be a list of values.",
+                "received": value,
+                "suggested_value": None
+            })
+
+            invalid_fields.add(field_key)
+            if item["confidence_score"] < 0.90:
+
+                 warnings.append({
+
+                "field_key": field_key,
+                "field_label": field_label,
+                "warning_code": "LOW_CONFIDENCE",
+                "warning": "Low confidence score",
+                "received": item["confidence_score"]
+
+            })
+            
+            continue
+        invalid = False
+        for option in value:
+
+            if option not in schema.options:
+                invalid = True
+                break
+        if invalid:        
+
+                errors.append({
+                    "field_key": field_key,
+                    "field_label": field_label,
+                    "error_code": "INVALID_OPTIONS",
+                    "error": f"{field_label} contains an invalid option.",
+                    "received": value,
+                    "suggested_value": None
+                })
+
+                invalid_fields.add(field_key)
+                if item["confidence_score"] < 0.90:
+
+                 warnings.append({
+
+                "field_key": field_key,
+                "field_label": field_label,
+                "warning_code": "LOW_CONFIDENCE",
+                "warning": "Low confidence score",
+                "received": item["confidence_score"]
+
+            })
+
+                continue
+                
 
     # -------------------------
     # low confidence warning
+    
+    
+    
     # -------------------------
     if item[
         "confidence_score"
@@ -135,7 +242,7 @@ for item in response_data[
         })
 
 
-    # -------------------------
+    # ------------------ -------
     # pydantic validation
     # -------------------------
     try:
@@ -168,6 +275,17 @@ for item in response_data[
         invalid_fields.add(
             field_key
         )
+        if item["confidence_score"] < 0.90:
+
+              warnings.append({
+
+            "field_key": field_key,
+            "field_label": field_label,
+            "warning_code": "LOW_CONFIDENCE",
+            "warning": "Low confidence score",
+            "received": item["confidence_score"]
+
+        })
 
         continue
     # -------------------------
@@ -201,6 +319,9 @@ for item in response_data[
                     pattern,
                     value
                 ):
+                    if "-" in value:
+                        year, month, day = value.split("-")
+                        suggested_value = f"{month}/{day}/{year}"
 
                     # safe suggestion only
                     if field_key == "planNumber":
@@ -229,6 +350,7 @@ for item in response_data[
 
                                 + parts[2]
                             )
+                                      
 
                     errors.append({
 
@@ -304,13 +426,10 @@ for item in response_data[
 
                 try:
 
-                    num = float(
-
-                        value.replace(
-                            "%",
-                            ""
-                        )
-                    )
+                    if isinstance(value, (int, float)):
+                        num = float(value)
+                    else:
+                       num = float(str(value).replace("%", ""))
 
                     if num > rule[
                         "value"
@@ -341,43 +460,7 @@ for item in response_data[
                     pass
 
 
-            # -------------------------
-            # options validation
-            # -------------------------
-            elif rule_type == "options":
-
-                allowed_values = rule[
-                    "value"
-                ]
-
-                if value not in allowed_values:
-
-                    suggested_value = (
-                        allowed_values
-                    )
-
-                    errors.append({
-
-                        "field_key": field_key,
-
-                        "field_label": field_label,
-
-                        "error_code":
-                        "INVALID_OPTIONS",
-
-                        "error":
-                        rule["message"],
-
-                        "received": value,
-
-                        "suggested_value":
-                        None
-        
-                    })
-
-                    invalid_fields.add(
-                        field_key
-                    )
+            
 # -------------------------
 # create response map
 # -------------------------
@@ -677,6 +760,7 @@ result = {
 
         "warning_fields":
         warning_fields,
+        "duplicate_schema_fields": list(set(duplicate_response_fields)),
 
         "error_summary":
         error_summary,
