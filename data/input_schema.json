@@ -31,7 +31,7 @@
     {
       "key": "planEffectiveDate",
       "label": "Plan Effective Date",
-      "type": "date",
+      "type": "text",
       "options": null,
       "format": "MM/DD/YYYY"
     },
@@ -51,7 +51,7 @@
     {
       "key": "employeeContributionPercentage",
       "label": "Employee Contribution Percentage",
-      "type": "percentage",
+      "type": "text",
       "options": null,
       "format": "0.00%"
     },
@@ -87,7 +87,7 @@
     {
       "key": "defaultAutomaticEnrollmentPercentage",
       "label": "Default Automatic Enrollment Percentage",
-      "type": "percentage",
+      "type": "text",
       "options": null,
       "format": "0.00%"
     },
@@ -217,7 +217,7 @@
     {
       "key": "employerNonElectiveContributionHoursRequired",
       "label": "Employer Non-Elective Contribution Hours Required",
-      "type": "number",
+      "type": "text",
       "options": null,
       
       "format": null
@@ -301,7 +301,7 @@
     {
       "key": "employerMatchContributionMaximumDeferralPercent",
       "label": "Employer Match Contribution Maximum Deferral Percent",
-      "type": "percentage",
+      "type": "text",
       "options": null,
       "format": "0.00%"
     },
@@ -315,7 +315,7 @@
     {
       "key": "employerMatchContributionStudentLoanEffectiveDate",
       "label": "Employer Match Contribution Student Loan Effective Date",
-      "type": "date",
+      "type": "text",
       "options": null,
       "format": "MM/DD/YYYY"
     },
@@ -349,7 +349,7 @@
     {
       "key": "employerMatchContributionHoursRequired",
       "label": "Employer Match Contribution Hours Required",
-      "type": "number",
+      "type": "text",
       "options": null,
       "format": null
     },
@@ -462,7 +462,7 @@
     {
       "key": "automaticEnrollmentDefaultPercent",
       "label": "Automatic Enrollment Default Percent",
-      "type": "percentage",
+      "type": "text",
       "options": null,
       "format": "0.00%"
     },
@@ -476,21 +476,21 @@
     {
       "key": "automaticEnrollmentAnnualIncreasePercent",
       "label": "Automatic Enrollment Annual Increase Percent",
-      "type": "percentage",
+      "type": "text",
       "options": null,
       "format": "0.00%"
     },
     {
       "key": "automaticEnrollmentMaximumPercent",
       "label": "Automatic Enrollment Maximum Percent",
-      "type": "percentage",
+      "type": "text",
       "options": null,
       "format": "0.00%"
     },
     {
       "key": "automaticEnrollmentWithdrawalWindowDays",
       "label": "Automatic Enrollment Withdrawal Window Days",
-      "type": "number",
+      "type": "text",
       "options": null,
       "format": null
     },
@@ -542,14 +542,14 @@
     {
       "key": "loansMinimum",
       "label": "Loans - Minimum",
-      "type": "currency",
+      "type": "text",
       "options": null,
       "format": "$0.00"
     },
     {
       "key": "loansMaximum",
       "label": "Loans - Maximum",
-      "type": "currency",
+      "type": "text",
       "options": null,
       "format": "$0.00"
     },
@@ -563,7 +563,7 @@
     {
       "key": "loansRepaymentPeriodYears",
       "label": "Loans - Repayment Period Years",
-      "type": "number",
+      "type": "text",
       "options": null,
       "format": null
     },
@@ -626,7 +626,7 @@
       "when": {
         "field": "automaticEnrollmentType",
         "operator": "notEquals",
-        "value": "None"
+        "value": null
       },
       "then": [
         {
