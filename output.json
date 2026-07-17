@@ -2,459 +2,175 @@
     "is_valid": false,
     "errors": [
         {
-            "error_code": "RESPONSE_ERROR",
-            "error": "extracted_fields key is missing."
-        }
-    ],
-    "warnings": [
-        {
-            "field_key": "planName",
-            "field_label": "401(k) Plan Name",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
             "field_key": "planNumber",
             "field_label": "401(k) Plan Number",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "employerLegalName",
-            "field_label": "Employer Legal Name",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
+            "error_code": "INVALID_FORMAT",
+            "error": "Plan Number must be 3 digits.",
+            "received": "12",
+            "suggested_value": "012"
         },
         {
             "field_key": "employerEin",
             "field_label": "Employer EIN",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "planEffectiveDate",
-            "field_label": "Plan Effective Date",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "contributionType",
-            "field_label": "Contribution Type",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
+            "error_code": "INVALID_FORMAT",
+            "error": "Employer EIN must be in ##-####### format.",
+            "received": "12345",
+            "suggested_value": null
         },
         {
             "field_key": "employeeContributionPercentage",
             "field_label": "Employee Contribution Percentage",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "employerMatchFormula",
-            "field_label": "Employer Match Formula",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
+            "error_code": "MIN_VALUE_ERROR",
+            "error": "Employee Contribution Percentage cannot be less than 0%.",
+            "received": "-1%",
+            "suggested_value": null
         },
         {
             "field_key": "loanPermitted",
             "field_label": "Loan Permitted",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "automaticEnrollmentType",
-            "field_label": "Automatic Enrollment Type",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "defaultAutomaticEnrollmentPercentage",
-            "field_label": "Default Automatic Enrollment Percentage",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
+            "error_code": "INVALID_OPTIONS",
+            "error": "Loan Permitted contains an invalid option.",
+            "received": "Maybe",
+            "suggested_value": null
         },
         {
             "field_key": "automaticAnnualIncreaseEnabled",
             "field_label": "Automatic Annual Increase Enabled",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
+            "error_code": "INVALID_OPTIONS",
+            "error": "Automatic Annual Increase Enabled contains an invalid option.",
+            "received": "True",
+            "suggested_value": null
         },
         {
             "field_key": "vestingSchedule",
             "field_label": "Vesting Schedule",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
+            "error_code": "INVALID_OPTIONS",
+            "error": "Vesting Schedule contains an invalid option.",
+            "received": "5-Year Plan",
+            "suggested_value": null
         },
         {
             "field_key": "eligibilityRequirement",
             "field_label": "Eligibility Requirement",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
+            "error_code": "INVALID_OPTIONS",
+            "error": "Eligibility Requirement contains an invalid option.",
+            "received": "2 Years Service",
+            "suggested_value": null
         },
         {
             "field_key": "permittedWithdrawalTypes",
             "field_label": "Permitted Withdrawal Types",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "employerNonElectiveContributionPermitted",
-            "field_label": "Employer Non-Elective Contribution Permitted",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "employerNonElectiveContributionType",
-            "field_label": "Employer Non-Elective Contribution Type",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "employerNonElectiveContributionTypeOther",
-            "field_label": "Employer Non-Elective Contribution Type - Other",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "employerNonElectiveContributionFormula",
-            "field_label": "Employer Non-Elective Contribution Formula",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "employerNonElectiveContributionAllocationMethod",
-            "field_label": "Employer Non-Elective Contribution Allocation Method",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "employerNonElectiveContributionAllocationMethodOther",
-            "field_label": "Employer Non-Elective Contribution Allocation Method - Other",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "employerNonElectiveContributionAllocationConditionAllowed",
-            "field_label": "Employer Non-Elective Contribution Allocation Condition Allowed",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "employerNonElectiveContributionAllocationCondition",
-            "field_label": "Employer Non-Elective Contribution Allocation Condition",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
+            "error_code": "INVALID_TYPE",
+            "error": "Permitted Withdrawal Types  must be a list of values.",
+            "received": "Hardship Withdrawal",
+            "suggested_value": null
         },
         {
             "field_key": "employerNonElectiveContributionHoursRequired",
             "field_label": "Employer Non-Elective Contribution Hours Required",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "employerNonElectiveContributionAllocationConditionOther",
-            "field_label": "Employer Non-Elective Contribution Allocation Condition - Other",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "employerNonElectiveContributionFrequency",
-            "field_label": "Employer Non-Elective Contribution Frequency",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "employerNonElectiveContributionDefaultExceptions",
-            "field_label": "Employer Non-Elective Contribution Default Exceptions",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "employerNonElectiveContributionEeCanDesignateRoth",
-            "field_label": "Employer Non-Elective Contribution - EE can designate Roth",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "employerMatchContributionPermitted",
-            "field_label": "Employer Match Contribution Permitted",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "employerMatchContributionType",
-            "field_label": "Employer Match Contribution Type",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "employerMatchContributionTypeOther",
-            "field_label": "Employer Match Contribution Type - Other",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "employerMatchContributionFormula",
-            "field_label": "Employer Match Contribution Formula",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
+            "error_code": "MAX_VALUE_ERROR",
+            "error": "Employer Non-Elective Contribution Hours Required cannot be greater than 1000.",
+            "received": 1200,
+            "suggested_value": null
         },
         {
             "field_key": "employerMatchContributionMaximumDeferralPercent",
             "field_label": "Employer Match Contribution Maximum Deferral Percent",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "employerMatchContributionAllowedForStudentLoanPayments",
-            "field_label": "Employer Match Contribution - Allowed for Student Loan Pmts",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
+            "error_code": "MAX_VALUE_ERROR",
+            "error": "Employer Match Contribution Maximum Deferral Percent cannot be greater than 100%.",
+            "received": 125,
+            "suggested_value": null
         },
         {
             "field_key": "employerMatchContributionStudentLoanEffectiveDate",
             "field_label": "Employer Match Contribution Student Loan Effective Date",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
+            "error_code": "INVALID_FORMAT",
+            "error": "Employer Match Contribution Student Loan Effective Date must be in MM/DD/YYYY format.",
+            "received": "2025-01-01",
+            "suggested_value": "01/01/2025"
         },
         {
-            "field_key": "employerMatchContributionEeCanDesignateRoth",
-            "field_label": "Employer Match Contribution - EE can designate Roth",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "employerMatchContributionAllocationConditionAllowed",
-            "field_label": "Employer Match Contribution Allocation Condition Allowed",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "employerMatchContributionAllocationCondition",
-            "field_label": "Employer Match Contribution Allocation Condition",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "employerMatchContributionHoursRequired",
-            "field_label": "Employer Match Contribution Hours Required",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "employerMatchContributionAllocationConditionOther",
-            "field_label": "Employer Match Contribution Allocation Condition - Other",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "employerMatchContributionFrequency",
-            "field_label": "Employer Match Contribution Frequency",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "employerMatchContributionDefaultExceptions",
-            "field_label": "Employer Match Contribution Default Exceptions",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "safeHarborContributionPermitted",
-            "field_label": "Safe Harbor Contribution Permitted",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "safeHarborFormulaType",
-            "field_label": "Safe Harbor Formula Type",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "safeHarborFrequency",
-            "field_label": "Safe Harbor Frequency",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "safeHarborNoticeRequired",
-            "field_label": "Safe Harbor Notice Required",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "safeHarborVestingSchedule",
-            "field_label": "Safe Harbor Vesting Schedule",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "safeHarborVestingScheduleOther",
-            "field_label": "Safe Harbor Vesting Schedule - Other",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "automaticEnrollmentDefaultPercent",
-            "field_label": "Automatic Enrollment Default Percent",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "automaticEnrollmentAnnualIncreaseAllowed",
-            "field_label": "Automatic Enrollment Annual Increase Allowed",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "automaticEnrollmentAnnualIncreasePercent",
-            "field_label": "Automatic Enrollment Annual Increase Percent",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "automaticEnrollmentMaximumPercent",
-            "field_label": "Automatic Enrollment Maximum Percent",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
+            "field_key": "automaticEnrollmentType",
+            "field_label": "Automatic Enrollment Type",
+            "error_code": "INVALID_OPTIONS",
+            "error": "Automatic Enrollment Type contains an invalid option.",
+            "received": "QACA",
+            "suggested_value": null
         },
         {
             "field_key": "automaticEnrollmentWithdrawalWindowDays",
             "field_label": "Automatic Enrollment Withdrawal Window Days",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "loansNumber",
-            "field_label": "Loans - Number",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "loansFrequency",
-            "field_label": "Loans - Frequency",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "loansRestrictions",
-            "field_label": "Loans - Restrictions",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "loansRestrictionsOther",
-            "field_label": "Loans - Restrictions - Other",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "loansMinimum",
-            "field_label": "Loans - Minimum",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "loansMaximum",
-            "field_label": "Loans - Maximum",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
-        },
-        {
-            "field_key": "loansRate",
-            "field_label": "Loans - Rate",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
+            "error_code": "MAX_VALUE_ERROR",
+            "error": "Automatic Enrollment Withdrawal Window Days cannot be greater than 90.",
+            "received": 120,
+            "suggested_value": null
         },
         {
             "field_key": "loansRepaymentPeriodYears",
             "field_label": "Loans - Repayment Period Years",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
+            "error_code": "MAX_VALUE_ERROR",
+            "error": "Loans - Repayment Period Years cannot be greater than 30.",
+            "received": 35,
+            "suggested_value": null
         },
         {
-            "field_key": "loansHardshipOnly",
-            "field_label": "Loans - Hardship Only",
-            "warning_code": "MISSING_FIELD",
-            "warning": "Field missing in response",
-            "received": null
+            "field_key": "employerMatchFormula",
+            "field_label": "Employer Match Formula",
+            "error_code": "DEPENDENCY_ERROR",
+            "error": "Employer Match Formula is required when Contribution Type includes employer matching contribution.",
+            "received": null,
+            "suggested_value": null
+        },
+        {
+            "field_key": "employerNonElectiveContributionHoursRequired",
+            "field_label": "Employer Non-Elective Contribution Hours Required",
+            "error_code": "DEPENDENCY_ERROR",
+            "error": "Field should not be present because parent condition is not satisfied.",
+            "received": 1200,
+            "suggested_value": null
+        },
+        {
+            "field_key": "employerNonElectiveContributionAllocationConditionOther",
+            "field_label": "Employer Non-Elective Contribution Allocation Condition - Other",
+            "error_code": "DEPENDENCY_ERROR",
+            "error": "Field should not be present because parent condition is not satisfied.",
+            "received": "Participant must be employed on the last business day of the Plan Year.",
+            "suggested_value": null
+        },
+        {
+            "field_key": "employerMatchContributionHoursRequired",
+            "field_label": "Employer Match Contribution Hours Required",
+            "error_code": "DEPENDENCY_ERROR",
+            "error": "Field should not be present because parent condition is not satisfied.",
+            "received": 1000,
+            "suggested_value": null
+        },
+        {
+            "field_key": "loansRestrictionsOther",
+            "field_label": "Loans - Restrictions - Other",
+            "error_code": "DEPENDENCY_ERROR",
+            "error": "Field should not be present because parent condition is not satisfied.",
+            "received": "Loans are limited to active employees only.",
+            "suggested_value": null
         }
     ],
+    "warnings": [],
     "summary": {
         "total_fields": 63,
-        "passed_fields": 63,
-        "failed_fields": 0,
-        "warning_fields": 62,
+        "passed_fields": 45,
+        "failed_fields": 18,
+        "warning_fields": 0,
         "duplicate_schema_fields": [
             "automaticEnrollmentType"
         ],
         "error_summary": {
-            "RESPONSE_ERROR": 1
+            "INVALID_FORMAT": 3,
+            "MIN_VALUE_ERROR": 1,
+            "INVALID_OPTIONS": 5,
+            "INVALID_TYPE": 1,
+            "MAX_VALUE_ERROR": 4,
+            "DEPENDENCY_ERROR": 5
         },
-        "warning_summary": {
-            "MISSING_FIELD": 62
-        }
+        "warning_summary": {}
     }
 }

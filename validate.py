@@ -5,61 +5,10 @@ from pydantic import ValidationError
 from models import (
     SchemaField,
     ResponseField,
-    DependencyOperator
+    DependencyOperator,ErrorCode,
+    WarningCode,
 )
-CONFIDENCE_THRESHOLD = 0.90
-
-#load input_shema file 
-with open("data/input_schema.json", "r") as file:
-    data = json.load(file)
-
-#Validate schema keys
-required_keys = {
-    "field_schema": False,      # False = should not be empty
-    "validation_rules": True,   # True = can be empty
-    "dependency_rules": True    # True = can be empty
-}
-for key, can_be_empty in required_keys.items():
-
-    if key not in data:
-        raise ValueError(f"{key} key is missing")
-
-    if not isinstance(data[key], list):
-        raise ValueError(f"{key} must be a list")
-
-    if not can_be_empty and len(data[key]) == 0:
-        raise ValueError(f"{key} must not be empty")
-    
-#Extract schema sections
-field_schema = data["field_schema"]
-validation_rules = data["validation_rules"]
-dependency_rules = data["dependency_rules"]
-
-
-# validation rules dict
-
-rules_dict = {}
-
-for rule in validation_rules:
-    rules_dict[rule["field"]] = rule["rules"]
-
-
-# -------------------------
-# load response.json
-# -------------------------
-with open("data/response.json", "r") as file:
-    response_data = json.load(file)
-
-
-errors = []
-warnings = []
-response_keys = []
-invalid_fields = set()
-duplicate_response_fields = []
-
-
-
-
+CONFIDENCE_THRESHOLD = 0.70
 
 
 #HELPER  FUNction
@@ -72,20 +21,6 @@ def validate_required_keys(item):
 
     return None
 
-
-def validate_schema_type(item):
-
-    valid_types = [
-        "text",
-        "enum_single",
-        "enum_multi",
-        "boolean"
-    ]
-
-    if item["type"] not in valid_types:
-        return f"Unsupported type: {item['type']}"
-
-    return None
 
 
 def validate_options(item):
@@ -152,7 +87,7 @@ def add_low_confidence_warning(
         warnings.append({
             "field_key": field_key,
             "field_label": field_label,
-            "warning_code": "LOW_CONFIDENCE",
+           "warning_code": WarningCode.LOW_CONFIDENCE,
             "warning": "Low confidence score",
             "received": confidence_score
         })
@@ -192,7 +127,7 @@ def process_require_action(
             errors.append({
                 "field_key": child_field,
                 "field_label": schema_dict[child_field].label,
-                "error_code": "DEPENDENCY_ERROR",
+                "error_code": ErrorCode.DEPENDENCY_ERROR,
                 "error": dep_rule.get(
                     "messages",
                     {}
@@ -230,7 +165,7 @@ def process_hide_clear_action(
             errors.append({
                 "field_key": child_field,
                 "field_label": schema_dict[child_field].label,
-                "error_code": "DEPENDENCY_ERROR",
+                "error_code": ErrorCode.DEPENDENCY_ERROR,
                 "error": "Field should not be present because parent condition is not satisfied.",
                 "received": child_value,
                 "suggested_value": None
@@ -278,7 +213,7 @@ def validate_pattern(
 
             "field_key": field_key,
             "field_label": field_label,
-            "error_code": "INVALID_FORMAT",
+            "error_code": ErrorCode.INVALID_FORMAT,
             "error": rule["message"],
             "received": value,
             "suggested_value": suggested_value
@@ -311,7 +246,7 @@ def validate_min(
 
                 "field_label": field_label,
 
-                "error_code": "MIN_VALUE_ERROR",
+                "error_code": ErrorCode.MIN_VALUE_ERROR,
 
                 "error": rule["message"],
 
@@ -350,7 +285,7 @@ def validate_max(
 
                 "field_label": field_label,
 
-                "error_code": "MAX_VALUE_ERROR",
+                "error_code": ErrorCode.MAX_VALUE_ERROR,
 
                 "error": rule["message"],
 
@@ -365,109 +300,151 @@ def validate_max(
     except (ValueError, TypeError):
         pass
 
-error = validate_response(response_data)
 
-if error:
-    errors.append({
-        "error_code": "RESPONSE_ERROR",
+def main():
+
+    # load input_schema file
+    with open("data/input_schema.json", "r") as file:
+        data = json.load(file)
+
+    # Validate schema keys
+    required_keys = {
+        "field_schema": False,
+        "validation_rules": True,
+        "dependency_rules": True
+    }
+    for key, can_be_empty in required_keys.items():
+
+        if key not in data:
+            raise ValueError(f"{key} key is missing")
+
+        if not isinstance(data[key], list):
+            raise ValueError(f"{key} must be a list")
+
+        if not can_be_empty and len(data[key]) == 0:
+            raise ValueError(f"{key} must not be empty")
+    
+    #Extract schema sections
+    field_schema = data["field_schema"]
+    validation_rules = data["validation_rules"]
+    dependency_rules = data["dependency_rules"]
+
+
+    # validation rules dict
+
+    rules_dict = {}
+
+    for rule in validation_rules:
+        rules_dict[rule["field"]] = rule["rules"]
+
+
+
+    # load response.json
+
+    with open("data/response.json", "r") as file:
+        response_data = json.load(file)
+
+
+    errors = []
+    warnings = []
+    response_keys = []
+    invalid_fields = set()
+    duplicate_response_fields = []
+
+    error = validate_response(response_data)
+
+    if error:
+        errors.append({
+        "error_code": ErrorCode.RESPONSE_ERROR,
         "error": error
     })
-extracted_fields = response_data.get("extracted_fields")
+    extracted_fields = response_data.get("extracted_fields")
 
-if not isinstance(extracted_fields, list):
-    extracted_fields = []
+    if not isinstance(extracted_fields, list):
+        extracted_fields = []
 
 # schema dictionary
 
-schema_dict = {}
-duplicate_fields = []
+    schema_dict = {}
+    duplicate_fields = []
 
-for item in field_schema:
-    error = validate_required_keys(item)
+    for item in field_schema:
+        error = validate_required_keys(item)
 
-    if error:
-        errors.append({
-            "error_code": "SCHEMA_ERROR",
+        if error:
+            errors.append({
+           "error_code": ErrorCode.SCHEMA_ERROR,
             "error": error
         })
-        continue
+            continue
 
-    error = validate_schema_type(item)
+    
 
-    if error:
-        errors.append({
+        error = validate_options(item)
+
+        if error:
+            errors.append({
             "field_key": item["key"],
-            "error_code": "INVALID_TYPE",
+            "error_code": ErrorCode.INVALID_SCHEMA,
             "error": error
         })
-        continue
-
-    error = validate_options(item)
-
-    if error:
-        errors.append({
-            "field_key": item["key"],
-            "error_code": "INVALID_SCHEMA",
-            "error": error
-        })
-        continue
-
-    schema = SchemaField(
+            continue
+   
+        schema = SchemaField(
         **item
     )
-    if schema.key in schema_dict:
-
-        duplicate_fields.append(schema.key)
-    else:
-        schema_dict[
+        if schema.key in schema_dict:
+            duplicate_fields.append(schema.key)
+        else:
+            schema_dict[
         schema.key
     ] = schema
 
 
 # validation loop
 
-for item in extracted_fields:
+    for item in extracted_fields:
 
-    error = validate_response_keys(item)
+        error = validate_response_keys(item)
 
-    if error:
-        errors.append({
-            "error_code": "RESPONSE_ERROR",
+        if error:
+            errors.append({
+            "error_code": ErrorCode.RESPONSE_ERROR,
             "error": error
         })
-        continue
+            continue
 
-    field_key = item[
+        field_key = item[
         "field_key"
     ]
 
-    field_label = item[
+        field_label = item[
         "field_label"
     ]
 
-    value = item[
+        value = item[
         "value"
     ]
 
-    if field_key in response_keys:
-        duplicate_response_fields.append(field_key)
-    else:
-        response_keys.append(field_key)
+        if field_key in response_keys:
+            duplicate_response_fields.append(field_key)
+        else:
+            response_keys.append(field_key)
 
     
     # invalid field_key
 
-    if field_key not in schema_dict:
+        if field_key not in schema_dict:
 
-        errors.append({
+            errors.append({
 
             "field_key": field_key,
 
             "field_label": None,
 
-            "error_code": "INVALID_FIELD_KEY",
+            "error_code": ErrorCode.INVALID_FIELD_KEY,
 
-            "error":
+             "error":
             "field_key not found in input_schema.json schema",
 
             "received": field_key,
@@ -475,13 +452,13 @@ for item in extracted_fields:
             "suggested_value": None
         })
 
-        invalid_fields.add(
+            invalid_fields.add(
             field_key
         )
 
-        continue
+            continue
 
-    schema = schema_dict[
+        schema = schema_dict[
         field_key
     ]
     
@@ -490,73 +467,47 @@ for item in extracted_fields:
 # schema options validation
 
 
-    if schema.options is not None:
+        if schema.options is not None:
 
     # enum_single / boolean
-     if schema.type in ["enum_single", "boolean"]:
+         if schema.type in ["enum_single", "boolean"]:
 
-        if value not in schema.options:
+            if value not in schema.options:
 
-            errors.append({
+                errors.append({
                 "field_key": field_key,
                 "field_label": field_label,
-                "error_code": "INVALID_OPTIONS",
+                 "error_code": ErrorCode.INVALID_OPTIONS,
                 "error": f"{field_label} contains an invalid option.",
                 "received": value,
                 "suggested_value": None
             })
             
 
-            invalid_fields.add(field_key)
+                invalid_fields.add(field_key)
 
-            add_low_confidence_warning(
+                add_low_confidence_warning(
     warnings,
     field_key,
     field_label,
     item["confidence_score"]
 )
-            continue
+                continue
 
     # enum_multi
-     elif schema.type == "enum_multi":
+         elif schema.type == "enum_multi":
        
         
-        if not isinstance(value, list):
+            if not isinstance(value, list):
 
-            errors.append({
+                errors.append({
                 "field_key": field_key,
                 "field_label": field_label,
-                "error_code": "INVALID_TYPE",
+                "error_code": ErrorCode.INVALID_TYPE,
                 "error": f"{field_label}  must be a list of values.",
                 "received": value,
                 "suggested_value": None
             })
-
-            invalid_fields.add(field_key)
-            add_low_confidence_warning(
-    warnings,
-    field_key,
-    field_label,
-    item["confidence_score"]
-)
-            
-            continue
-        invalid = False
-        for option in value:
-
-            if option not in schema.options:
-                invalid = True
-                break
-        if invalid:        
-
-                errors.append({
-                    "field_key": field_key,
-                    "field_label": field_label,
-                    "error_code": "INVALID_OPTIONS",
-                    "error": f"{field_label} contains an invalid option.",
-                    "received": value,
-                    "suggested_value": None
-                })
 
                 invalid_fields.add(field_key)
                 add_low_confidence_warning(
@@ -565,14 +516,40 @@ for item in extracted_fields:
     field_label,
     item["confidence_score"]
 )
-
+            
                 continue
+            invalid = False
+            for option in value:
+
+                if option not in schema.options:
+                    invalid = True
+                    break
+            if invalid:        
+
+                    errors.append({
+                    "field_key": field_key,
+                    "field_label": field_label,
+                    "error_code": ErrorCode.INVALID_OPTIONS,
+                    "error": f"{field_label} contains an invalid option.",
+                    "received": value,
+                    "suggested_value": None
+                })
+
+                    invalid_fields.add(field_key)
+                    add_low_confidence_warning(
+    warnings,
+    field_key,
+    field_label,
+    item["confidence_score"]
+)
+
+                    continue
                 
 
     # low confidence warning
     
     
-    add_low_confidence_warning(
+        add_low_confidence_warning(
     warnings,
     field_key,
     field_label,
@@ -582,25 +559,24 @@ for item in extracted_fields:
 
     # pydantic validation
     
-    try:
+        try:
 
-        ResponseField(
+            ResponseField(
 
             **item,
 
             schema=schema
         )
 
-    except ValidationError as e:
+        except ValidationError as e:
 
-        errors.append({
+            errors.append({
 
             "field_key": field_key,
 
             "field_label": field_label,
 
-            "error_code":
-            "PYDANTIC_ERROR",
+            "error_code": ErrorCode.PYDANTIC_ERROR,
 
             "error": str(e),
 
@@ -609,40 +585,40 @@ for item in extracted_fields:
             "suggested_value": None
         })
 
-        invalid_fields.add(
+            invalid_fields.add(
             field_key
         )
-        add_low_confidence_warning(
+            add_low_confidence_warning(
     warnings,
     field_key,
     field_label,
     item["confidence_score"]
 )
 
-        continue
+            continue
   
     # validation_rules
   
-    if field_key in rules_dict:
+        if field_key in rules_dict:
 
-        field_rules = rules_dict[
+            field_rules = rules_dict[
             field_key
         ]
 
-        for rule in field_rules:
+            for rule in field_rules:
 
-            rule_type = rule[
+                rule_type = rule[
                 "type"
             ]
 
-            suggested_value = None
+                suggested_value = None
 
 
            
             # pattern validation
          
-            if rule_type == "pattern":
-                validate_pattern(
+                if rule_type == "pattern":
+                    validate_pattern(
                     value,
                     field_key,
                     field_label,
@@ -653,8 +629,8 @@ for item in extracted_fields:
           
             # min validation
         
-            elif rule_type == "min":
-                validate_min(
+                elif rule_type == "min":
+                    validate_min(
         value,
         field_key,
         field_label,
@@ -667,8 +643,8 @@ for item in extracted_fields:
            
             # max validation
            
-            elif rule_type == "max":
-                validate_max(
+                elif rule_type == "max":
+                    validate_max(
         value,
         field_key,
         field_label,
@@ -679,60 +655,55 @@ for item in extracted_fields:
 
 # create response map
 
-response_map = {}
+    response_map = {}
 
-for item in extracted_fields:
+    for item in extracted_fields:
 
-    response_map[
+        response_map[
         item["field_key"]
     ] = item["value"]
 
 
 # dependency validation
 
-dependency_checked = set()
+    dependency_checked = set()
 
-for dep_rule in dependency_rules:
+    for dep_rule in dependency_rules:
 
-    when = dep_rule["when"]
+        when = dep_rule["when"]
 
-    parent_field = when["field"]
+        parent_field = when["field"]
 
-    operator = when["operator"]
+        operator = when["operator"]
 
-    expected_value = when["value"]
+        expected_value = when["value"]
 
 
     # skip if parent already invalid
-    if parent_field in invalid_fields:
-        continue
+        if parent_field in invalid_fields:
+            continue
 
 
-    actual_value = response_map.get(
+        actual_value = response_map.get(
         parent_field
     )
 
-    condition_met = check_condition(
+        condition_met = check_condition(
     actual_value,
     operator,
     expected_value
 )
-    print("Parent:", parent_field)
-    print("Actual:", repr(actual_value))
-    print("Expected:", repr(expected_value))
-    print(type(actual_value))
-    print(type(expected_value))
-    print("Condition:", condition_met)
+    
 
 
     # THEN actions
     # parent valid -> child required
    
-    if condition_met:
+        if condition_met:
 
-        for action in dep_rule["then"]:
-            if action["action"] == "require":
-                process_require_action(
+            for action in dep_rule["then"]:
+                if action["action"] == "require":
+                    process_require_action(
                     action,
                     response_map,
                     schema_dict,
@@ -746,18 +717,18 @@ for dep_rule in dependency_rules:
     # parent not applicable
     # child should NOT exist
   
-    else:
+        else:
 
-        for action in dep_rule["else"]:
+            for action in dep_rule["else"]:
 
-            action_type = action["action"]
+                action_type = action["action"]
 
-            if action_type in [
+                if action_type in [
                 "hide",
                 "clearValue"
             ]:
 
-                process_hide_clear_action(
+                    process_hide_clear_action(
                     action,
                     response_map,
                     schema_dict,
@@ -768,19 +739,18 @@ for dep_rule in dependency_rules:
 
 
 # missing field warning
-for key in schema_dict:
+    for key in schema_dict:
 
-    if key not in response_keys:
+        if key not in response_keys:
 
-        warnings.append({
+            warnings.append({
 
             "field_key": key,
 
             "field_label":
             schema_dict[key].label,
 
-            "warning_code":
-            "MISSING_FIELD",
+            "warning_code": WarningCode.MISSING_FIELD,
 
             "warning":
             "Field missing in response",
@@ -789,77 +759,77 @@ for key in schema_dict:
         })
 
 # summary
-total_fields = len(
+    total_fields = len(
     field_schema
 )
 
-failed_field_names = set()
+    failed_field_names = set()
 
-for err in errors:
+    for err in errors:
 
-    if "field_key" in err:
+        if "field_key" in err:
 
-        failed_field_names.add(
+            failed_field_names.add(
             err["field_key"]
         )
 
-failed_fields = len(
+    failed_fields = len(
     failed_field_names
 )
 
-warning_fields = len(
+    warning_fields = len(
     warnings
 )
 
-passed_fields = (
+    passed_fields = (
     total_fields
     - failed_fields
 )
 
 
 # error summary
-error_summary = {}
+    error_summary = {}
 
-for err in errors:
+    for err in errors:
 
-    code = err["error_code"]
+        code = err["error_code"]
 
-    if code not in error_summary:
+        if code not in error_summary:
 
-        error_summary[
+            error_summary[
             code
         ] = 1
 
-    else:
+        else:
 
-        error_summary[
+            error_summary[
             code
         ] += 1
 
 # warning summary
 
-warning_summary = {}
+    warning_summary = {}
 
-for warn in warnings:
+    for warn in warnings:
 
-    code = warn["warning_code"]
+        code = warn["warning_code"]
 
-    if code not in warning_summary:
+        if code not in warning_summary:
 
-        warning_summary[
+            warning_summary[
             code
         ] = 1
 
-    else:
+        else:
 
-        warning_summary[
+            warning_summary[
             code
         ] += 1
 
 # final output
-result = {
+    result = {
 
-    "is_valid":
+   "is_valid":
     len(errors) == 0,
 
     "errors":
@@ -887,19 +857,19 @@ result = {
         error_summary,
 
         "warning_summary":
-    warning_summary
+        warning_summary
     }
 }
 
-print(
+    print(
     result
 )
-with open(
+    with open(
     "output.json",
     "w"
 ) as file:
 
-    json.dump(
+        json.dump(
 
         result,
 
@@ -907,3 +877,6 @@ with open(
 
         indent=4
     )
+        
+if __name__ == "__main__":
+    main()
