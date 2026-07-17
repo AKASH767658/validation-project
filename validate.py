@@ -1,47 +1,14 @@
 import json
 import re
-from enum import Enum
+
 from pydantic import ValidationError
 from models import (
     SchemaField,
     ResponseField,
-    DependencyOperator
+    DependencyOperator,ErrorCode,
+    WarningCode,
 )
 CONFIDENCE_THRESHOLD = 0.70
-# -------------------------
-# Error Codes
-# -------------------------
-
-class ErrorCode(str, Enum):
-
-    SCHEMA_ERROR = "SCHEMA_ERROR"
-
-    RESPONSE_ERROR = "RESPONSE_ERROR"
-
-    INVALID_FIELD_KEY = "INVALID_FIELD_KEY"
-
-    INVALID_SCHEMA = "INVALID_SCHEMA"
-
-    INVALID_TYPE = "INVALID_TYPE"
-
-    INVALID_OPTIONS = "INVALID_OPTIONS"
-
-    INVALID_FORMAT = "INVALID_FORMAT"
-
-    MIN_VALUE_ERROR = "MIN_VALUE_ERROR"
-
-    MAX_VALUE_ERROR = "MAX_VALUE_ERROR"
-
-    DEPENDENCY_ERROR = "DEPENDENCY_ERROR"
-
-    PYDANTIC_ERROR = "PYDANTIC_ERROR"
-
-class WarningCode(str, Enum):
-
-    LOW_CONFIDENCE = "LOW_CONFIDENCE"
-
-    MISSING_FIELD = "MISSING_FIELD"
-    
 
 
 #HELPER  FUNction
