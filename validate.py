@@ -92,7 +92,18 @@ def add_low_confidence_warning(
             "received": confidence_score
         })
 
+
+def normalize_operator(operator):
+    aliases = {
+        "contains": DependencyOperator.IN,
+        "notContains": DependencyOperator.NOT_IN
+    }
+
+    return aliases.get(operator, operator)
+
+
 def check_condition(actual_value, operator, expected_value):
+    operator = normalize_operator(operator)
 
     if operator == DependencyOperator.EQUALS:
         return actual_value == expected_value
@@ -101,7 +112,65 @@ def check_condition(actual_value, operator, expected_value):
         return actual_value != expected_value
 
     elif operator == DependencyOperator.IN:
-        return actual_value in expected_value
+        if isinstance(actual_value, list) and isinstance(expected_value, list):
+            return any(item in actual_value for item in expected_value)
+
+        elif isinstance(actual_value, list):
+            return expected_value in actual_value
+
+        elif isinstance(expected_value, list):
+            return actual_value in expected_value
+
+        return actual_value == expected_value
+    
+
+    elif operator == DependencyOperator.NOT_IN:
+        if isinstance(actual_value, list) and isinstance(expected_value, list):
+            return not any(item in actual_value for item in expected_value)
+
+        elif isinstance(actual_value, list):
+            return expected_value not in actual_value
+
+        elif isinstance(expected_value, list):
+            return actual_value not in expected_value
+
+        return actual_value != expected_value
+
+    elif operator == DependencyOperator.GREATER_THAN:
+        try:
+            return float(actual_value) > float(expected_value)
+        except (TypeError, ValueError):
+            return False
+
+    elif operator == DependencyOperator.GREATER_THAN_OR_EQUAL:
+        try:
+            return float(actual_value) >= float(expected_value)
+        except (TypeError, ValueError):
+            return False
+
+    elif operator == DependencyOperator.LESS_THAN:
+        try:
+            return float(actual_value) < float(expected_value)
+        except (TypeError, ValueError):
+            return False
+
+    elif operator == DependencyOperator.LESS_THAN_OR_EQUAL:
+        try:
+            return float(actual_value) <= float(expected_value)
+        except (TypeError, ValueError):
+            return False
+
+    elif operator == DependencyOperator.IS_NULL:
+        return actual_value is None
+
+    elif operator == DependencyOperator.IS_NOT_NULL:
+        return actual_value is not None
+
+    elif operator == DependencyOperator.IS_EMPTY:
+        return actual_value in [None, "", []]
+
+    elif operator == DependencyOperator.IS_NOT_EMPTY:
+        return actual_value not in [None, "", []]
 
     return False
 
@@ -172,6 +241,9 @@ def process_hide_clear_action(
             })
 
 
+from datetime import datetime
+import re
+
 def validate_pattern(
     value,
     field_key,
@@ -182,32 +254,33 @@ def validate_pattern(
 ):
 
     suggested_value = None
-
     pattern = rule["value"]
 
-    if not re.match(pattern, value):
+    if value is not None and not re.match(pattern, str(value)):
 
-        if "-" in value:
-            year, month, day = value.split("-")
-            suggested_value = f"{month}/{day}/{year}"
-
+        # Plan Number suggestion
         if field_key == "planNumber":
+            suggested_value = str(value).zfill(3)
 
-            suggested_value = value.zfill(3)
+        # Date suggestion based on pattern
+        elif pattern == r"^\d{1,2}/\d{1,2}/\d{4}$":
 
-        elif field_key == "planEffectiveDate":
+            input_formats = [
+                "%Y-%m-%d",
+                "%Y/%m/%d",
+                "%d-%m-%Y",
+                "%m-%d-%Y",
+                "%d/%m/%Y",
+                "%m/%d/%Y"
+            ]
 
-            parts = value.split("/")
-
-            if len(parts) == 3:
-
-                suggested_value = (
-                    parts[0].zfill(2)
-                    + "/"
-                    + parts[1].zfill(2)
-                    + "/"
-                    + parts[2]
-                )
+            for fmt in input_formats:
+                try:
+                    dt = datetime.strptime(str(value), fmt)
+                    suggested_value = dt.strftime("%m/%d/%Y")
+                    break
+                except ValueError:
+                    pass
 
         errors.append({
 
@@ -300,6 +373,28 @@ def validate_max(
     except (ValueError, TypeError):
         pass
 
+def validate_max_length(
+    value,
+    field_key,
+    field_label,
+    rule,
+    errors,
+    invalid_fields
+):
+    if value is None:
+        return
+
+    if len(str(value)) > rule["value"]:
+        errors.append({
+            "field_key": field_key,
+            "field_label": field_label,
+            "error_code": ErrorCode.MAX_LENGTH_ERROR,
+            "error": rule["message"],
+            "received": value,
+            "suggested_value": None
+        })
+
+        invalid_fields.add(field_key)
 
 def main():
 
@@ -425,6 +520,7 @@ def main():
         value = item[
         "value"
     ]
+        is_present = item["is_present"]
 
         if field_key in response_keys:
             duplicate_response_fields.append(field_key)
@@ -465,12 +561,14 @@ def main():
 
 
 # schema options validation
-
+        
 
         if schema.options is not None:
+         if value is None:
+             pass
 
     # enum_single / boolean
-         if schema.type in ["enum_single", "boolean"]:
+         elif schema.type in ["enum_single", "boolean"]:
 
             if value not in schema.options:
 
@@ -650,8 +748,17 @@ def main():
         field_label,
         rule,
         errors,
+        invalid_fields)
+                elif rule_type == "maxLength":
+                    validate_max_length(
+        value,
+        field_key,
+        field_label,
+        rule,
+        errors,
         invalid_fields
     )
+    
 
 # create response map
 
@@ -676,7 +783,7 @@ def main():
 
         operator = when["operator"]
 
-        expected_value = when["value"]
+        expected_value = when.get("value")
 
 
     # skip if parent already invalid
@@ -723,7 +830,16 @@ def main():
 
                 action_type = action["action"]
 
-                if action_type in [
+                if action_type == "require":
+                    process_require_action(
+                action,
+                response_map,
+                schema_dict,
+                errors,
+                dep_rule
+                    )
+
+                elif action_type in [
                 "hide",
                 "clearValue"
             ]:

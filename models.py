@@ -12,12 +12,23 @@ from enum import Enum
 # Dependency Operator
 # -------------------------
 class DependencyOperator(str, Enum):
-
     EQUALS = "equals"
-
     NOT_EQUALS = "notEquals"
 
     IN = "in"
+    NOT_IN = "notIn"
+
+    GREATER_THAN = "greaterThan"
+    GREATER_THAN_OR_EQUAL = "greaterThanOrEqual"
+
+    LESS_THAN = "lessThan"
+    LESS_THAN_OR_EQUAL = "lessThanOrEqual"
+
+    IS_NULL = "isNull"
+    IS_NOT_NULL = "isNotNull"
+
+    IS_EMPTY = "isEmpty"
+    IS_NOT_EMPTY = "isNotEmpty"
 
 
 class ErrorCode(str, Enum):
@@ -43,6 +54,7 @@ class ErrorCode(str, Enum):
     DEPENDENCY_ERROR = "DEPENDENCY_ERROR"
 
     PYDANTIC_ERROR = "PYDANTIC_ERROR"
+    MAX_LENGTH_ERROR = "MAX_LENGTH_ERROR"
 
 class WarningCode(str, Enum):
 

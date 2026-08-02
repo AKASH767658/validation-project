@@ -6,95 +6,23 @@
             "field_label": "401(k) Plan Number",
             "error_code": "INVALID_FORMAT",
             "error": "Plan Number must be 3 digits.",
-            "received": "12",
-            "suggested_value": "012"
+            "received": "45",
+            "suggested_value": "045"
         },
         {
-            "field_key": "employerEin",
-            "field_label": "Employer EIN",
+            "field_key": "planEffectiveDate",
+            "field_label": "Plan Effective Date",
             "error_code": "INVALID_FORMAT",
-            "error": "Employer EIN must be in ##-####### format.",
-            "received": "12345",
-            "suggested_value": null
-        },
-        {
-            "field_key": "employeeContributionPercentage",
-            "field_label": "Employee Contribution Percentage",
-            "error_code": "MIN_VALUE_ERROR",
-            "error": "Employee Contribution Percentage cannot be less than 0%.",
-            "received": "-1%",
-            "suggested_value": null
-        },
-        {
-            "field_key": "loanPermitted",
-            "field_label": "Loan Permitted",
-            "error_code": "INVALID_OPTIONS",
-            "error": "Loan Permitted contains an invalid option.",
-            "received": "Maybe",
-            "suggested_value": null
-        },
-        {
-            "field_key": "automaticAnnualIncreaseEnabled",
-            "field_label": "Automatic Annual Increase Enabled",
-            "error_code": "INVALID_OPTIONS",
-            "error": "Automatic Annual Increase Enabled contains an invalid option.",
-            "received": "True",
-            "suggested_value": null
-        },
-        {
-            "field_key": "vestingSchedule",
-            "field_label": "Vesting Schedule",
-            "error_code": "INVALID_OPTIONS",
-            "error": "Vesting Schedule contains an invalid option.",
-            "received": "5-Year Plan",
-            "suggested_value": null
-        },
-        {
-            "field_key": "eligibilityRequirement",
-            "field_label": "Eligibility Requirement",
-            "error_code": "INVALID_OPTIONS",
-            "error": "Eligibility Requirement contains an invalid option.",
-            "received": "2 Years Service",
-            "suggested_value": null
-        },
-        {
-            "field_key": "permittedWithdrawalTypes",
-            "field_label": "Permitted Withdrawal Types",
-            "error_code": "INVALID_TYPE",
-            "error": "Permitted Withdrawal Types  must be a list of values.",
-            "received": "Hardship Withdrawal",
-            "suggested_value": null
-        },
-        {
-            "field_key": "employerNonElectiveContributionHoursRequired",
-            "field_label": "Employer Non-Elective Contribution Hours Required",
-            "error_code": "MAX_VALUE_ERROR",
-            "error": "Employer Non-Elective Contribution Hours Required cannot be greater than 1000.",
-            "received": 1200,
-            "suggested_value": null
+            "error": "Plan Effective Date must be in MM/DD/YYYY format.",
+            "received": "2024-01-01",
+            "suggested_value": "01/01/2024"
         },
         {
             "field_key": "employerMatchContributionMaximumDeferralPercent",
             "field_label": "Employer Match Contribution Maximum Deferral Percent",
             "error_code": "MAX_VALUE_ERROR",
             "error": "Employer Match Contribution Maximum Deferral Percent cannot be greater than 100%.",
-            "received": 125,
-            "suggested_value": null
-        },
-        {
-            "field_key": "employerMatchContributionStudentLoanEffectiveDate",
-            "field_label": "Employer Match Contribution Student Loan Effective Date",
-            "error_code": "INVALID_FORMAT",
-            "error": "Employer Match Contribution Student Loan Effective Date must be in MM/DD/YYYY format.",
-            "received": "2025-01-01",
-            "suggested_value": "01/01/2025"
-        },
-        {
-            "field_key": "automaticEnrollmentType",
-            "field_label": "Automatic Enrollment Type",
-            "error_code": "INVALID_OPTIONS",
-            "error": "Automatic Enrollment Type contains an invalid option.",
-            "received": "QACA",
+            "received": 105,
             "suggested_value": null
         },
         {
@@ -102,7 +30,7 @@
             "field_label": "Automatic Enrollment Withdrawal Window Days",
             "error_code": "MAX_VALUE_ERROR",
             "error": "Automatic Enrollment Withdrawal Window Days cannot be greater than 90.",
-            "received": 120,
+            "received": 95,
             "suggested_value": null
         },
         {
@@ -114,62 +42,50 @@
             "suggested_value": null
         },
         {
-            "field_key": "employerMatchFormula",
-            "field_label": "Employer Match Formula",
+            "field_key": "loansHardshipOnly",
+            "field_label": "Loans - Hardship Only",
+            "error_code": "INVALID_OPTIONS",
+            "error": "Loans - Hardship Only contains an invalid option.",
+            "received": "Maybe",
+            "suggested_value": null
+        },
+        {
+            "field_key": "employerMatchContributionTypeOther",
+            "field_label": "Employer Match Contribution Type - Other",
             "error_code": "DEPENDENCY_ERROR",
-            "error": "Employer Match Formula is required when Contribution Type includes employer matching contribution.",
+            "error": "Other match type details are required when Employer Match Contribution Type is Other.",
             "received": null,
             "suggested_value": null
         },
         {
-            "field_key": "employerNonElectiveContributionHoursRequired",
-            "field_label": "Employer Non-Elective Contribution Hours Required",
+            "field_key": "customVestingScheduleDetails",
+            "field_label": "Custom Vesting Schedule Details",
             "error_code": "DEPENDENCY_ERROR",
-            "error": "Field should not be present because parent condition is not satisfied.",
-            "received": 1200,
+            "error": "Dependency validation failed.",
+            "received": null,
             "suggested_value": null
         },
         {
-            "field_key": "employerNonElectiveContributionAllocationConditionOther",
-            "field_label": "Employer Non-Elective Contribution Allocation Condition - Other",
+            "field_key": "customEligibilityRequirementDetails",
+            "field_label": "Custom Eligibility Requirement Details",
             "error_code": "DEPENDENCY_ERROR",
             "error": "Field should not be present because parent condition is not satisfied.",
-            "received": "Participant must be employed on the last business day of the Plan Year.",
-            "suggested_value": null
-        },
-        {
-            "field_key": "employerMatchContributionHoursRequired",
-            "field_label": "Employer Match Contribution Hours Required",
-            "error_code": "DEPENDENCY_ERROR",
-            "error": "Field should not be present because parent condition is not satisfied.",
-            "received": 1000,
-            "suggested_value": null
-        },
-        {
-            "field_key": "loansRestrictionsOther",
-            "field_label": "Loans - Restrictions - Other",
-            "error_code": "DEPENDENCY_ERROR",
-            "error": "Field should not be present because parent condition is not satisfied.",
-            "received": "Loans are limited to active employees only.",
+            "received": "Employees must complete 500 hours of service.",
             "suggested_value": null
         }
     ],
     "warnings": [],
     "summary": {
-        "total_fields": 63,
-        "passed_fields": 45,
-        "failed_fields": 18,
+        "total_fields": 32,
+        "passed_fields": 23,
+        "failed_fields": 9,
         "warning_fields": 0,
-        "duplicate_schema_fields": [
-            "automaticEnrollmentType"
-        ],
+        "duplicate_schema_fields": [],
         "error_summary": {
-            "INVALID_FORMAT": 3,
-            "MIN_VALUE_ERROR": 1,
-            "INVALID_OPTIONS": 5,
-            "INVALID_TYPE": 1,
-            "MAX_VALUE_ERROR": 4,
-            "DEPENDENCY_ERROR": 5
+            "INVALID_FORMAT": 2,
+            "MAX_VALUE_ERROR": 3,
+            "INVALID_OPTIONS": 1,
+            "DEPENDENCY_ERROR": 3
         },
         "warning_summary": {}
     }
