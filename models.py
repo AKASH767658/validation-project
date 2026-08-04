@@ -12,13 +12,55 @@ from enum import Enum
 # Dependency Operator
 # -------------------------
 class DependencyOperator(str, Enum):
-
     EQUALS = "equals"
-
     NOT_EQUALS = "notEquals"
 
     IN = "in"
+    NOT_IN = "notIn"
 
+    GREATER_THAN = "greaterThan"
+    GREATER_THAN_OR_EQUAL = "greaterThanOrEqual"
+
+    LESS_THAN = "lessThan"
+    LESS_THAN_OR_EQUAL = "lessThanOrEqual"
+
+    IS_NULL = "isNull"
+    IS_NOT_NULL = "isNotNull"
+
+    IS_EMPTY = "isEmpty"
+    IS_NOT_EMPTY = "isNotEmpty"
+
+
+class ErrorCode(str, Enum):
+
+    SCHEMA_ERROR = "SCHEMA_ERROR"
+
+    RESPONSE_ERROR = "RESPONSE_ERROR"
+
+    INVALID_FIELD_KEY = "INVALID_FIELD_KEY"
+
+    INVALID_SCHEMA = "INVALID_SCHEMA"
+
+    INVALID_TYPE = "INVALID_TYPE"
+
+    INVALID_OPTIONS = "INVALID_OPTIONS"
+
+    INVALID_FORMAT = "INVALID_FORMAT"
+
+    MIN_VALUE_ERROR = "MIN_VALUE_ERROR"
+
+    MAX_VALUE_ERROR = "MAX_VALUE_ERROR"
+
+    DEPENDENCY_ERROR = "DEPENDENCY_ERROR"
+
+    PYDANTIC_ERROR = "PYDANTIC_ERROR"
+    MAX_LENGTH_ERROR = "MAX_LENGTH_ERROR"
+
+class WarningCode(str, Enum):
+
+    LOW_CONFIDENCE = "LOW_CONFIDENCE"
+
+    MISSING_FIELD = "MISSING_FIELD"
 # -------------------------
 # Schema Model
 # -------------------------
