@@ -2,52 +2,80 @@
   "extracted_fields": [
     {
       "field_key": "planName",
-      "field_label": "401(k) Plan Name",
+      "field_label": "Plan Name",
       "value": "Northstar Employee Retirement Plan",
       "is_present": true,
       "confidence_score": 0.99
     },
     {
       "field_key": "planNumber",
-      "field_label": "401(k) Plan Number",
-      "value": "45",
+      "field_label": "Plan Number",
+      "value": "123",
       "is_present": true,
-      "confidence_score": 0.96
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "planEffectiveDate",
+      "field_label": "Plan Effective Date",
+      "value": "01/01/2024",
+      "is_present": true,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "planStatus",
+      "field_label": "Plan Status",
+      "value": "Active",
+      "is_present": true,
+      "confidence_score": 0.99
     },
     {
       "field_key": "employerLegalName",
       "field_label": "Employer Legal Name",
       "value": "Northstar Manufacturing LLC",
       "is_present": true,
-      "confidence_score": 0.98
+      "confidence_score": 0.99
     },
     {
       "field_key": "employerEin",
       "field_label": "Employer EIN",
       "value": "12-3456789",
       "is_present": true,
-      "confidence_score": 0.97
+      "confidence_score": 0.99
     },
     {
-      "field_key": "planEffectiveDate",
-      "field_label": "Plan Effective Date",
-      "value": "2024-01-01",
+      "field_key": "controlledGroupMember",
+      "field_label": "Controlled Group Member",
+      "value": "No",
       "is_present": true,
-      "confidence_score": 0.93
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "controlledGroupDetails",
+      "field_label": "Controlled Group Details",
+      "value": null,
+      "is_present": false,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "employeeContributionAllowed",
+      "field_label": "Employee Contribution Allowed",
+      "value": "Yes",
+      "is_present": true,
+      "confidence_score": 0.99
     },
     {
       "field_key": "contributionType",
       "field_label": "Contribution Type",
       "value": "Traditional and Roth",
       "is_present": true,
-      "confidence_score": 0.96
+      "confidence_score": 0.99
     },
     {
       "field_key": "employeeContributionPercentage",
       "field_label": "Employee Contribution Percentage",
       "value": 6,
       "is_present": true,
-      "confidence_score": 0.98
+      "confidence_score": 0.99
     },
     {
       "field_key": "employerMatchContributionPermitted",
@@ -59,100 +87,158 @@
     {
       "field_key": "employerMatchContributionType",
       "field_label": "Employer Match Contribution Type",
-      "value": "Other",
+      "value": "Fixed",
       "is_present": true,
-      "confidence_score": 0.94
+      "confidence_score": 0.99
     },
     {
       "field_key": "employerMatchContributionTypeOther",
       "field_label": "Employer Match Contribution Type - Other",
       "value": null,
       "is_present": false,
-      "confidence_score": 0.71
+      "confidence_score": 0.99
     },
     {
       "field_key": "employerMatchContributionFormula",
       "field_label": "Employer Match Contribution Formula",
-      "value": "100% of employee deferrals up to 5% of eligible compensation.",
+      "value": "100% of deferrals up to 5%.",
       "is_present": true,
-      "confidence_score": 0.97
+      "confidence_score": 0.99
     },
     {
       "field_key": "employerMatchContributionMaximumDeferralPercent",
       "field_label": "Employer Match Contribution Maximum Deferral Percent",
-      "value": 105,
+      "value": 5,
       "is_present": true,
-      "confidence_score": 0.92
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "profitSharingPermitted",
+      "field_label": "Profit Sharing Permitted",
+      "value": "No",
+      "is_present": true,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "profitSharingFormula",
+      "field_label": "Profit Sharing Formula",
+      "value": null,
+      "is_present": false,
+      "confidence_score": 0.99
     },
     {
       "field_key": "automaticEnrollmentType",
       "field_label": "Automatic Enrollment Type",
       "value": "QACA",
       "is_present": true,
-      "confidence_score": 0.98
+      "confidence_score": 0.99
     },
     {
       "field_key": "automaticEnrollmentDefaultPercent",
       "field_label": "Automatic Enrollment Default Percent",
-      "value": 8,
+      "value": 5,
       "is_present": true,
-      "confidence_score": 0.96
+      "confidence_score": 0.99
     },
     {
       "field_key": "automaticEnrollmentAnnualIncreaseAllowed",
       "field_label": "Automatic Enrollment Annual Increase Allowed",
       "value": "Yes",
       "is_present": true,
-      "confidence_score": 0.95
+      "confidence_score": 0.99
     },
     {
       "field_key": "automaticEnrollmentAnnualIncreasePercent",
       "field_label": "Automatic Enrollment Annual Increase Percent",
-      "value": 2,
+      "value": 1,
       "is_present": true,
-      "confidence_score": 0.94
+      "confidence_score": 0.99
     },
     {
       "field_key": "automaticEnrollmentMaximumPercent",
       "field_label": "Automatic Enrollment Maximum Percent",
-      "value": 6,
+      "value": 10,
       "is_present": true,
-      "confidence_score": 0.93
+      "confidence_score": 0.99
     },
     {
       "field_key": "automaticEnrollmentWithdrawalWindowDays",
       "field_label": "Automatic Enrollment Withdrawal Window Days",
-      "value": 95,
+      "value": 90,
       "is_present": true,
-      "confidence_score": 0.9
-    },
-    {
-      "field_key": "vestingSchedule",
-      "field_label": "Vesting Schedule",
-      "value": "Custom Schedule",
-      "is_present": true,
-      "confidence_score": 0.96
-    },
-    {
-      "field_key": "customVestingScheduleDetails",
-      "field_label": "Custom Vesting Schedule Details",
-      "value": null,
-      "is_present": false,
-      "confidence_score": 0.74
+      "confidence_score": 0.99
     },
     {
       "field_key": "eligibilityRequirement",
       "field_label": "Eligibility Requirement",
       "value": "90 Days of Service",
       "is_present": true,
-      "confidence_score": 0.97
+      "confidence_score": 0.99
     },
     {
       "field_key": "customEligibilityRequirementDetails",
       "field_label": "Custom Eligibility Requirement Details",
-      "value": "Employees must complete 500 hours of service.",
+      "value": null,
+      "is_present": false,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "minimumAgeRequirement",
+      "field_label": "Minimum Age Requirement",
+      "value": 21,
       "is_present": true,
-      "confidence_score": 0.88
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "excludedEmployeeClasses",
+      "field_label": "Excluded Employee Classes",
+      "value": [
+        "Seasonal Employees"
+      ],
+      "is_present": true,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "excludedEmployeeClassesOther",
+      "field_label": "Excluded Employee Classes - Other",
+      "value": null,
+      "is_present": false,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "vestingSchedule",
+      "field_label": "Vesting Schedule",
+      "value": "Immediate Vesting",
+      "is_present": true,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "customVestingScheduleDetails",
+      "field_label": "Custom Vesting Schedule Details",
+      "value": null,
+      "is_present": false,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "fullVestingOnRetirement",
+      "field_label": "Full Vesting on Retirement",
+      "value": "Yes",
+      "is_present": true,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "fullVestingOnDisability",
+      "field_label": "Full Vesting on Disability",
+      "value": "Yes",
+      "is_present": true,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "fullVestingOnDeath",
+      "field_label": "Full Vesting on Death",
+      "value": "Yes",
+      "is_present": true,
+      "confidence_score": 0.99
     },
     {
       "field_key": "permittedWithdrawalTypes",
@@ -162,74 +248,246 @@
         "Rollover Withdrawal"
       ],
       "is_present": true,
-      "confidence_score": 0.95
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "hardshipWithdrawalPermitted",
+      "field_label": "Hardship Withdrawal Permitted",
+      "value": "Yes",
+      "is_present": true,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "hardshipWithdrawalTypes",
+      "field_label": "Hardship Withdrawal Types",
+      "value": [
+        "Medical",
+        "Education"
+      ],
+      "is_present": true,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "inServiceWithdrawalMinimumAge",
+      "field_label": "In-Service Withdrawal Minimum Age",
+      "value": null,
+      "is_present": false,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "distributionPaymentMethods",
+      "field_label": "Distribution Payment Methods",
+      "value": [
+        "Lump Sum",
+        "Direct Rollover"
+      ],
+      "is_present": true,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "distributionPaymentMethodOther",
+      "field_label": "Distribution Payment Method - Other",
+      "value": null,
+      "is_present": false,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "loansPermitted",
+      "field_label": "Loans Permitted",
+      "value": "Yes",
+      "is_present": true,
+      "confidence_score": 0.99
     },
     {
       "field_key": "loansNumber",
       "field_label": "Loans - Number",
       "value": "Two",
       "is_present": true,
-      "confidence_score": 0.98
+      "confidence_score": 0.99
     },
     {
       "field_key": "loansFrequency",
       "field_label": "Loans - Frequency",
       "value": "One per plan year",
       "is_present": true,
-      "confidence_score": 0.95
+      "confidence_score": 0.99
     },
     {
       "field_key": "loansRestrictions",
       "field_label": "Loans - Restrictions",
       "value": [
-        "Hardship Loans Only",
-        "General Purpose Loans",
-        "Other"
+        "General Purpose Loans"
       ],
       "is_present": true,
-      "confidence_score": 0.92
+      "confidence_score": 0.99
     },
     {
       "field_key": "loansRestrictionsOther",
       "field_label": "Loans - Restrictions - Other",
-      "value": "Only active employees may request a loan.",
-      "is_present": true,
-      "confidence_score": 0.9
+      "value": null,
+      "is_present": false,
+      "confidence_score": 0.99
     },
     {
       "field_key": "loansMinimum",
       "field_label": "Loans - Minimum",
-      "value": "$2000.00",
+      "value": "$1000.00",
       "is_present": true,
-      "confidence_score": 0.96
+      "confidence_score": 0.99
     },
     {
       "field_key": "loansMaximum",
       "field_label": "Loans - Maximum",
-      "value": "$1500.00",
+      "value": "$5000.00",
       "is_present": true,
-      "confidence_score": 0.95
+      "confidence_score": 0.99
     },
     {
       "field_key": "loansRate",
       "field_label": "Loans - Rate",
       "value": "Prime rate plus 1%",
       "is_present": true,
-      "confidence_score": 0.94
+      "confidence_score": 0.99
     },
     {
       "field_key": "loansRepaymentPeriodYears",
       "field_label": "Loans - Repayment Period Years",
-      "value": 35,
+      "value": 5,
       "is_present": true,
-      "confidence_score": 0.91
+      "confidence_score": 0.99
     },
     {
-      "field_key": "loansHardshipOnly",
-      "field_label": "Loans - Hardship Only",
-      "value": "Maybe",
+      "field_key": "primaryResidenceLoanAllowed",
+      "field_label": "Primary Residence Loan Allowed",
+      "value": "No",
       "is_present": true,
-      "confidence_score": 0.84
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "primaryResidenceRepaymentPeriodYears",
+      "field_label": "Primary Residence Repayment Period Years",
+      "value": null,
+      "is_present": false,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "safeHarborPlan",
+      "field_label": "Safe Harbor Plan",
+      "value": "No",
+      "is_present": true,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "safeHarborType",
+      "field_label": "Safe Harbor Type",
+      "value": null,
+      "is_present": false,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "safeHarborContributionFormula",
+      "field_label": "Safe Harbor Contribution Formula",
+      "value": null,
+      "is_present": false,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "rothContributionsAllowed",
+      "field_label": "Roth Contributions Allowed",
+      "value": "Yes",
+      "is_present": true,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "rothEffectiveDate",
+      "field_label": "Roth Effective Date",
+      "value": "1-1-2024",
+      "is_present": false,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "catchUpContributionsAllowed",
+      "field_label": "Catch-Up Contributions Allowed",
+      "value": "Yes",
+      "is_present": true,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "catchUpEligibilityAge",
+      "field_label": "Catch-Up Eligibility Age",
+      "value": 50,
+      "is_present": true,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "participantDirectedInvestments",
+      "field_label": "Participant Directed Investments",
+      "value": "Yes",
+      "is_present": true,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "investmentElectionFrequency",
+      "field_label": "Investment Election Frequency",
+      "value": "Daily",
+      "is_present": true,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "defaultInvestmentType",
+      "field_label": "Default Investment Type",
+      "value": "Target Date Fund",
+      "is_present": true,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "beneficiaryDesignationRequired",
+      "field_label": "Beneficiary Designation Required",
+      "value": "Yes",
+      "is_present": true,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "spousalConsentRequired",
+      "field_label": "Spousal Consent Required",
+      "value": "Yes",
+      "is_present": true,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "automaticSpousalBeneficiary",
+      "field_label": "Automatic Spousal Beneficiary",
+      "value": "Yes",
+      "is_present": true,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "planAdministratorName",
+      "field_label": "Plan Administrator Name",
+      "value": "Northstar Benefits Committee",
+      "is_present": true,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "recordkeeperName",
+      "field_label": "Recordkeeper Name",
+      "value": "Example Retirement Services",
+      "is_present": true,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "valuationFrequency",
+      "field_label": "Valuation Frequency",
+      "value": "Daily",
+      "is_present": true,
+      "confidence_score": 0.99
+    },
+    {
+      "field_key": "electronicDeliveryAllowed",
+      "field_label": "Electronic Delivery Allowed",
+      "value": "Yes",
+      "is_present": true,
+      "confidence_score": 0.99
     }
   ]
 }

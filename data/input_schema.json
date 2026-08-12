@@ -2,17 +2,35 @@
   "field_schema": [
     {
       "key": "planName",
-      "label": "401(k) Plan Name",
+      "label": "Plan Name",
       "type": "text",
       "options": null,
       "format": null
     },
     {
       "key": "planNumber",
-      "label": "401(k) Plan Number",
+      "label": "Plan Number",
       "type": "text",
       "options": null,
       "format": "###"
+    },
+    {
+      "key": "planEffectiveDate",
+      "label": "Plan Effective Date",
+      "type": "text",
+      "options": null,
+      "format": "MM/DD/YYYY"
+    },
+    {
+      "key": "planStatus",
+      "label": "Plan Status",
+      "type": "enum_single",
+      "options": [
+        "Active",
+        "Frozen",
+        "Terminated"
+      ],
+      "format": null
     },
     {
       "key": "employerLegalName",
@@ -29,11 +47,31 @@
       "format": "##-#######"
     },
     {
-      "key": "planEffectiveDate",
-      "label": "Plan Effective Date",
+      "key": "controlledGroupMember",
+      "label": "Controlled Group Member",
+      "type": "boolean",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "format": null
+    },
+    {
+      "key": "controlledGroupDetails",
+      "label": "Controlled Group Details",
       "type": "text",
       "options": null,
-      "format": "MM/DD/YYYY"
+      "format": null
+    },
+    {
+      "key": "employeeContributionAllowed",
+      "label": "Employee Contribution Allowed",
+      "type": "boolean",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "format": null
     },
     {
       "key": "contributionType",
@@ -43,8 +81,7 @@
         "Traditional Pre-Tax",
         "Roth After-Tax",
         "Traditional and Roth",
-        "Employer Only",
-        "Safe Harbor"
+        "Employer Only"
       ],
       "format": null
     },
@@ -100,6 +137,23 @@
       "format": "0.00%"
     },
     {
+      "key": "profitSharingPermitted",
+      "label": "Profit Sharing Permitted",
+      "type": "boolean",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "format": null
+    },
+    {
+      "key": "profitSharingFormula",
+      "label": "Profit Sharing Formula",
+      "type": "text",
+      "options": null,
+      "format": null
+    },
+    {
       "key": "automaticEnrollmentType",
       "label": "Automatic Enrollment Type",
       "type": "enum_single",
@@ -150,25 +204,6 @@
       "format": null
     },
     {
-      "key": "vestingSchedule",
-      "label": "Vesting Schedule",
-      "type": "enum_single",
-      "options": [
-        "Immediate Vesting",
-        "3-Year Cliff",
-        "6-Year Graded",
-        "Custom Schedule"
-      ],
-      "format": null
-    },
-    {
-      "key": "customVestingScheduleDetails",
-      "label": "Custom Vesting Schedule Details",
-      "type": "text",
-      "options": null,
-      "format": null
-    },
-    {
       "key": "eligibilityRequirement",
       "label": "Eligibility Requirement",
       "type": "enum_single",
@@ -190,6 +225,82 @@
       "format": null
     },
     {
+      "key": "minimumAgeRequirement",
+      "label": "Minimum Age Requirement",
+      "type": "text",
+      "options": null,
+      "format": null
+    },
+    {
+      "key": "excludedEmployeeClasses",
+      "label": "Excluded Employee Classes",
+      "type": "enum_multi",
+      "options": [
+        "Union Employees",
+        "Nonresident Aliens",
+        "Seasonal Employees",
+        "Part-Time Employees",
+        "Other"
+      ],
+      "format": null
+    },
+    {
+      "key": "excludedEmployeeClassesOther",
+      "label": "Excluded Employee Classes - Other",
+      "type": "text",
+      "options": null,
+      "format": null
+    },
+    {
+      "key": "vestingSchedule",
+      "label": "Vesting Schedule",
+      "type": "enum_single",
+      "options": [
+        "Immediate Vesting",
+        "3-Year Cliff",
+        "6-Year Graded",
+        "Custom Schedule"
+      ],
+      "format": null
+    },
+    {
+      "key": "customVestingScheduleDetails",
+      "label": "Custom Vesting Schedule Details",
+      "type": "text",
+      "options": null,
+      "format": null
+    },
+    {
+      "key": "fullVestingOnRetirement",
+      "label": "Full Vesting on Retirement",
+      "type": "boolean",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "format": null
+    },
+    {
+      "key": "fullVestingOnDisability",
+      "label": "Full Vesting on Disability",
+      "type": "boolean",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "format": null
+    },
+    {
+      "key": "fullVestingOnDeath",
+      "label": "Full Vesting on Death",
+      "type": "boolean",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "format": null
+    },
+    {
       "key": "permittedWithdrawalTypes",
       "label": "Permitted Withdrawal Types",
       "type": "enum_multi",
@@ -203,11 +314,71 @@
       "format": null
     },
     {
+      "key": "hardshipWithdrawalPermitted",
+      "label": "Hardship Withdrawal Permitted",
+      "type": "boolean",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "format": null
+    },
+    {
+      "key": "hardshipWithdrawalTypes",
+      "label": "Hardship Withdrawal Types",
+      "type": "enum_multi",
+      "options": [
+        "Medical",
+        "Education",
+        "Primary Residence",
+        "Eviction Prevention",
+        "Funeral",
+        "Disaster"
+      ],
+      "format": null
+    },
+    {
+      "key": "inServiceWithdrawalMinimumAge",
+      "label": "In-Service Withdrawal Minimum Age",
+      "type": "text",
+      "options": null,
+      "format": null
+    },
+    {
+      "key": "distributionPaymentMethods",
+      "label": "Distribution Payment Methods",
+      "type": "enum_multi",
+      "options": [
+        "Lump Sum",
+        "Installments",
+        "Annuity",
+        "Direct Rollover",
+        "Other"
+      ],
+      "format": null
+    },
+    {
+      "key": "distributionPaymentMethodOther",
+      "label": "Distribution Payment Method - Other",
+      "type": "text",
+      "options": null,
+      "format": null
+    },
+    {
+      "key": "loansPermitted",
+      "label": "Loans Permitted",
+      "type": "boolean",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "format": null
+    },
+    {
       "key": "loansNumber",
       "label": "Loans - Number",
       "type": "enum_single",
       "options": [
-        "None",
         "One",
         "Two",
         "Unlimited"
@@ -275,8 +446,177 @@
       "format": null
     },
     {
-      "key": "loansHardshipOnly",
-      "label": "Loans - Hardship Only",
+      "key": "primaryResidenceLoanAllowed",
+      "label": "Primary Residence Loan Allowed",
+      "type": "boolean",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "format": null
+    },
+    {
+      "key": "primaryResidenceRepaymentPeriodYears",
+      "label": "Primary Residence Repayment Period Years",
+      "type": "text",
+      "options": null,
+      "format": null
+    },
+    {
+      "key": "safeHarborPlan",
+      "label": "Safe Harbor Plan",
+      "type": "boolean",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "format": null
+    },
+    {
+      "key": "safeHarborType",
+      "label": "Safe Harbor Type",
+      "type": "enum_single",
+      "options": [
+        "Traditional Safe Harbor",
+        "QACA Safe Harbor",
+        "Nonelective Safe Harbor"
+      ],
+      "format": null
+    },
+    {
+      "key": "safeHarborContributionFormula",
+      "label": "Safe Harbor Contribution Formula",
+      "type": "text",
+      "options": null,
+      "format": null
+    },
+    {
+      "key": "rothContributionsAllowed",
+      "label": "Roth Contributions Allowed",
+      "type": "boolean",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "format": null
+    },
+    {
+      "key": "rothEffectiveDate",
+      "label": "Roth Effective Date",
+      "type": "text",
+      "options": null,
+      "format": "MM/DD/YYYY"
+    },
+    {
+      "key": "catchUpContributionsAllowed",
+      "label": "Catch-Up Contributions Allowed",
+      "type": "boolean",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "format": null
+    },
+    {
+      "key": "catchUpEligibilityAge",
+      "label": "Catch-Up Eligibility Age",
+      "type": "text",
+      "options": null,
+      "format": null
+    },
+    {
+      "key": "participantDirectedInvestments",
+      "label": "Participant Directed Investments",
+      "type": "boolean",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "format": null
+    },
+    {
+      "key": "investmentElectionFrequency",
+      "label": "Investment Election Frequency",
+      "type": "enum_single",
+      "options": [
+        "Daily",
+        "Weekly",
+        "Monthly",
+        "Quarterly"
+      ],
+      "format": null
+    },
+    {
+      "key": "defaultInvestmentType",
+      "label": "Default Investment Type",
+      "type": "enum_single",
+      "options": [
+        "Target Date Fund",
+        "Balanced Fund",
+        "Stable Value Fund",
+        "Money Market Fund"
+      ],
+      "format": null
+    },
+    {
+      "key": "beneficiaryDesignationRequired",
+      "label": "Beneficiary Designation Required",
+      "type": "boolean",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "format": null
+    },
+    {
+      "key": "spousalConsentRequired",
+      "label": "Spousal Consent Required",
+      "type": "boolean",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "format": null
+    },
+    {
+      "key": "automaticSpousalBeneficiary",
+      "label": "Automatic Spousal Beneficiary",
+      "type": "boolean",
+      "options": [
+        "Yes",
+        "No"
+      ],
+      "format": null
+    },
+    {
+      "key": "planAdministratorName",
+      "label": "Plan Administrator Name",
+      "type": "text",
+      "options": null,
+      "format": null
+    },
+    {
+      "key": "recordkeeperName",
+      "label": "Recordkeeper Name",
+      "type": "text",
+      "options": null,
+      "format": null
+    },
+    {
+      "key": "valuationFrequency",
+      "label": "Valuation Frequency",
+      "type": "enum_single",
+      "options": [
+        "Daily",
+        "Monthly",
+        "Quarterly",
+        "Annually"
+      ],
+      "format": null
+    },
+    {
+      "key": "electronicDeliveryAllowed",
+      "label": "Electronic Delivery Allowed",
       "type": "boolean",
       "options": [
         "Yes",
@@ -287,8 +627,93 @@
   ],
   "dependency_rules": [
     {
-      "id": "employer-match-dependent-fields",
-      "description": "Employer match fields are shown and required when employer match is permitted.",
+      "id": "controlled-group-details",
+      "description": "Controlled group details are required when the employer is a controlled group member.",
+      "when": {
+        "field": "controlledGroupMember",
+        "operator": "equals",
+        "value": "Yes"
+      },
+      "then": [
+        {
+          "action": "show",
+          "fields": [
+            "controlledGroupDetails"
+          ]
+        },
+        {
+          "action": "require",
+          "fields": [
+            "controlledGroupDetails"
+          ]
+        }
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": [
+            "controlledGroupDetails"
+          ]
+        },
+        {
+          "action": "clearValue",
+          "fields": [
+            "controlledGroupDetails"
+          ]
+        }
+      ],
+      "messages": {
+        "controlledGroupDetails": "Controlled Group Details are required when Controlled Group Member is Yes."
+      }
+    },
+    {
+      "id": "employee-contribution-details",
+      "description": "Contribution details are required when employee contributions are allowed.",
+      "when": {
+        "field": "employeeContributionAllowed",
+        "operator": "equals",
+        "value": "Yes"
+      },
+      "then": [
+        {
+          "action": "show",
+          "fields": [
+            "contributionType",
+            "employeeContributionPercentage"
+          ]
+        },
+        {
+          "action": "require",
+          "fields": [
+            "contributionType",
+            "employeeContributionPercentage"
+          ]
+        }
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": [
+            "contributionType",
+            "employeeContributionPercentage"
+          ]
+        },
+        {
+          "action": "clearValue",
+          "fields": [
+            "contributionType",
+            "employeeContributionPercentage"
+          ]
+        }
+      ],
+      "messages": {
+        "contributionType": "Contribution Type is required when employee contributions are allowed.",
+        "employeeContributionPercentage": "Employee Contribution Percentage is required when employee contributions are allowed."
+      }
+    },
+    {
+      "id": "employer-match-details",
+      "description": "Employer match fields are required when employer match is permitted.",
       "when": {
         "field": "employerMatchContributionPermitted",
         "operator": "equals",
@@ -337,8 +762,8 @@
       }
     },
     {
-      "id": "employer-match-type-other-dependent-field",
-      "description": "Other match type details are required when match type is Other.",
+      "id": "employer-match-other",
+      "description": "Other match details are required when match type is Other.",
       "when": {
         "field": "employerMatchContributionType",
         "operator": "equals",
@@ -377,8 +802,48 @@
       }
     },
     {
-      "id": "automatic-enrollment-dependent-fields",
-      "description": "Automatic enrollment fields are shown when automatic enrollment is enabled.",
+      "id": "profit-sharing-formula",
+      "description": "Profit sharing formula is required when profit sharing is permitted.",
+      "when": {
+        "field": "profitSharingPermitted",
+        "operator": "equals",
+        "value": "Yes"
+      },
+      "then": [
+        {
+          "action": "show",
+          "fields": [
+            "profitSharingFormula"
+          ]
+        },
+        {
+          "action": "require",
+          "fields": [
+            "profitSharingFormula"
+          ]
+        }
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": [
+            "profitSharingFormula"
+          ]
+        },
+        {
+          "action": "clearValue",
+          "fields": [
+            "profitSharingFormula"
+          ]
+        }
+      ],
+      "messages": {
+        "profitSharingFormula": "Profit Sharing Formula is required when profit sharing is permitted."
+      }
+    },
+    {
+      "id": "automatic-enrollment-details",
+      "description": "Automatic enrollment fields are required when enrollment type is not None.",
       "when": {
         "field": "automaticEnrollmentType",
         "operator": "notEquals",
@@ -421,11 +886,15 @@
             "automaticEnrollmentWithdrawalWindowDays"
           ]
         }
-      ]
+      ],
+      "messages": {
+        "automaticEnrollmentDefaultPercent": "Automatic Enrollment Default Percent is required when automatic enrollment is enabled.",
+        "automaticEnrollmentAnnualIncreaseAllowed": "Automatic Enrollment Annual Increase Allowed is required when automatic enrollment is enabled."
+      }
     },
     {
-      "id": "automatic-enrollment-annual-increase-dependent-fields",
-      "description": "Annual increase values are required when annual increase is allowed.",
+      "id": "annual-increase-details",
+      "description": "Annual increase fields are required when annual increase is allowed.",
       "when": {
         "field": "automaticEnrollmentAnnualIncreaseAllowed",
         "operator": "equals",
@@ -462,11 +931,15 @@
             "automaticEnrollmentMaximumPercent"
           ]
         }
-      ]
+      ],
+      "messages": {
+        "automaticEnrollmentAnnualIncreasePercent": "Automatic Enrollment Annual Increase Percent is required when annual increase is allowed.",
+        "automaticEnrollmentMaximumPercent": "Automatic Enrollment Maximum Percent is required when annual increase is allowed."
+      }
     },
     {
-      "id": "eaca-qaca-withdrawal-window-dependent-field",
-      "description": "Withdrawal window days are required for EACA and QACA.",
+      "id": "withdrawal-window",
+      "description": "Withdrawal window is required for EACA or QACA.",
       "when": {
         "field": "automaticEnrollmentType",
         "operator": "in",
@@ -502,47 +975,13 @@
             "automaticEnrollmentWithdrawalWindowDays"
           ]
         }
-      ]
-    },
-    {
-      "id": "custom-vesting-requires-details",
-      "description": "Custom vesting details are required for a custom schedule.",
-      "when": {
-        "field": "vestingSchedule",
-        "operator": "equals",
-        "value": "Custom Schedule"
-      },
-      "then": [
-        {
-          "action": "show",
-          "fields": [
-            "customVestingScheduleDetails"
-          ]
-        },
-        {
-          "action": "require",
-          "fields": [
-            "customVestingScheduleDetails"
-          ]
-        }
       ],
-      "else": [
-        {
-          "action": "hide",
-          "fields": [
-            "customVestingScheduleDetails"
-          ]
-        },
-        {
-          "action": "clearValue",
-          "fields": [
-            "customVestingScheduleDetails"
-          ]
-        }
-      ]
+      "messages": {
+        "automaticEnrollmentWithdrawalWindowDays": "Automatic Enrollment Withdrawal Window Days is required for EACA or QACA."
+      }
     },
     {
-      "id": "custom-eligibility-requires-details",
+      "id": "custom-eligibility",
       "description": "Custom eligibility details are required for custom eligibility.",
       "when": {
         "field": "eligibilityRequirement",
@@ -576,80 +1015,301 @@
             "customEligibilityRequirementDetails"
           ]
         }
-      ]
+      ],
+      "messages": {
+        "customEligibilityRequirementDetails": "Custom Eligibility Requirement Details are required for Custom Eligibility."
+      }
     },
     {
-      "id": "loans-dependent-fields",
-      "description": "Loan fields are hidden and cleared when Loans - Number is None.",
+      "id": "excluded-class-other",
+      "description": "Other excluded employee class details are required when Other is selected.",
       "when": {
-        "field": "loansNumber",
+        "field": "excludedEmployeeClasses",
         "operator": "in",
         "value": [
-          "None",
-          null
+          "Other"
         ]
       },
       "then": [
         {
-          "action": "hide",
-          "fields": [
-            "loansFrequency",
-            "loansRestrictions",
-            "loansRestrictionsOther",
-            "loansMinimum",
-            "loansMaximum",
-            "loansRate",
-            "loansRepaymentPeriodYears",
-            "loansHardshipOnly"
-          ]
-        },
-        {
-          "action": "clearValue",
-          "fields": [
-            "loansFrequency",
-            "loansRestrictions",
-            "loansRestrictionsOther",
-            "loansMinimum",
-            "loansMaximum",
-            "loansRate",
-            "loansRepaymentPeriodYears",
-            "loansHardshipOnly"
-          ]
-        }
-      ],
-      "else": [
-        {
           "action": "show",
           "fields": [
-            "loansFrequency",
-            "loansRestrictions",
-            "loansMinimum",
-            "loansMaximum",
-            "loansRate",
-            "loansRepaymentPeriodYears",
-            "loansHardshipOnly"
+            "excludedEmployeeClassesOther"
           ]
         },
         {
           "action": "require",
           "fields": [
+            "excludedEmployeeClassesOther"
+          ]
+        }
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": [
+            "excludedEmployeeClassesOther"
+          ]
+        },
+        {
+          "action": "clearValue",
+          "fields": [
+            "excludedEmployeeClassesOther"
+          ]
+        }
+      ],
+      "messages": {
+        "excludedEmployeeClassesOther": "Excluded Employee Classes - Other is required when Other is selected."
+      }
+    },
+    {
+      "id": "custom-vesting",
+      "description": "Custom vesting details are required for custom vesting.",
+      "when": {
+        "field": "vestingSchedule",
+        "operator": "equals",
+        "value": "Custom Schedule"
+      },
+      "then": [
+        {
+          "action": "show",
+          "fields": [
+            "customVestingScheduleDetails"
+          ]
+        },
+        {
+          "action": "require",
+          "fields": [
+            "customVestingScheduleDetails"
+          ]
+        }
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": [
+            "customVestingScheduleDetails"
+          ]
+        },
+        {
+          "action": "clearValue",
+          "fields": [
+            "customVestingScheduleDetails"
+          ]
+        }
+      ],
+      "messages": {
+        "customVestingScheduleDetails": "Custom Vesting Schedule Details are required for Custom Schedule."
+      }
+    },
+    {
+      "id": "hardship-withdrawal-types",
+      "description": "Hardship withdrawal types are required when hardship withdrawals are permitted.",
+      "when": {
+        "field": "hardshipWithdrawalPermitted",
+        "operator": "equals",
+        "value": "Yes"
+      },
+      "then": [
+        {
+          "action": "show",
+          "fields": [
+            "hardshipWithdrawalTypes"
+          ]
+        },
+        {
+          "action": "require",
+          "fields": [
+            "hardshipWithdrawalTypes"
+          ]
+        }
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": [
+            "hardshipWithdrawalTypes"
+          ]
+        },
+        {
+          "action": "clearValue",
+          "fields": [
+            "hardshipWithdrawalTypes"
+          ]
+        }
+      ],
+      "messages": {
+        "hardshipWithdrawalTypes": "Hardship Withdrawal Types are required when hardship withdrawals are permitted."
+      }
+    },
+    {
+      "id": "in-service-age",
+      "description": "Minimum age is required when In-Service Withdrawal is selected.",
+      "when": {
+        "field": "permittedWithdrawalTypes",
+        "operator": "in",
+        "value": [
+          "In-Service Withdrawal"
+        ]
+      },
+      "then": [
+        {
+          "action": "show",
+          "fields": [
+            "inServiceWithdrawalMinimumAge"
+          ]
+        },
+        {
+          "action": "require",
+          "fields": [
+            "inServiceWithdrawalMinimumAge"
+          ]
+        }
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": [
+            "inServiceWithdrawalMinimumAge"
+          ]
+        },
+        {
+          "action": "clearValue",
+          "fields": [
+            "inServiceWithdrawalMinimumAge"
+          ]
+        }
+      ],
+      "messages": {
+        "inServiceWithdrawalMinimumAge": "In-Service Withdrawal Minimum Age is required when In-Service Withdrawal is selected."
+      }
+    },
+    {
+      "id": "distribution-other",
+      "description": "Other distribution method details are required when Other is selected.",
+      "when": {
+        "field": "distributionPaymentMethods",
+        "operator": "in",
+        "value": [
+          "Other"
+        ]
+      },
+      "then": [
+        {
+          "action": "show",
+          "fields": [
+            "distributionPaymentMethodOther"
+          ]
+        },
+        {
+          "action": "require",
+          "fields": [
+            "distributionPaymentMethodOther"
+          ]
+        }
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": [
+            "distributionPaymentMethodOther"
+          ]
+        },
+        {
+          "action": "clearValue",
+          "fields": [
+            "distributionPaymentMethodOther"
+          ]
+        }
+      ],
+      "messages": {
+        "distributionPaymentMethodOther": "Distribution Payment Method - Other is required when Other is selected."
+      }
+    },
+    {
+      "id": "loan-details",
+      "description": "Loan fields are required when loans are permitted.",
+      "when": {
+        "field": "loansPermitted",
+        "operator": "equals",
+        "value": "Yes"
+      },
+      "then": [
+        {
+          "action": "show",
+          "fields": [
+            "loansNumber",
             "loansFrequency",
+            "loansRestrictions",
             "loansMinimum",
             "loansMaximum",
             "loansRate",
             "loansRepaymentPeriodYears",
-            "loansHardshipOnly"
+            "primaryResidenceLoanAllowed"
+          ]
+        },
+        {
+          "action": "require",
+          "fields": [
+            "loansNumber",
+            "loansFrequency",
+            "loansMinimum",
+            "loansMaximum",
+            "loansRate",
+            "loansRepaymentPeriodYears"
           ]
         }
-      ]
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": [
+            "loansNumber",
+            "loansFrequency",
+            "loansRestrictions",
+            "loansRestrictionsOther",
+            "loansMinimum",
+            "loansMaximum",
+            "loansRate",
+            "loansRepaymentPeriodYears",
+            "primaryResidenceLoanAllowed",
+            "primaryResidenceRepaymentPeriodYears"
+          ]
+        },
+        {
+          "action": "clearValue",
+          "fields": [
+            "loansNumber",
+            "loansFrequency",
+            "loansRestrictions",
+            "loansRestrictionsOther",
+            "loansMinimum",
+            "loansMaximum",
+            "loansRate",
+            "loansRepaymentPeriodYears",
+            "primaryResidenceLoanAllowed",
+            "primaryResidenceRepaymentPeriodYears"
+          ]
+        }
+      ],
+      "messages": {
+        "loansNumber": "Loans - Number is required when loans are permitted.",
+        "loansFrequency": "Loans - Frequency is required when loans are permitted.",
+        "loansMinimum": "Loans - Minimum is required when loans are permitted.",
+        "loansMaximum": "Loans - Maximum is required when loans are permitted.",
+        "loansRate": "Loans - Rate is required when loans are permitted.",
+        "loansRepaymentPeriodYears": "Loans - Repayment Period Years is required when loans are permitted."
+      }
     },
     {
-      "id": "loans-restrictions-other-dependent-field",
+      "id": "loan-restrictions-other",
       "description": "Other loan restriction details are required when Other is selected.",
       "when": {
         "field": "loansRestrictions",
-        "operator": "contains",
-        "value": "Other"
+        "operator": "in",
+        "value": [
+          "Other"
+        ]
       },
       "then": [
         {
@@ -678,7 +1338,260 @@
             "loansRestrictionsOther"
           ]
         }
-      ]
+      ],
+      "messages": {
+        "loansRestrictionsOther": "Loans - Restrictions - Other is required when Other is selected."
+      }
+    },
+    {
+      "id": "primary-residence-repayment",
+      "description": "Primary residence repayment period is required when primary residence loans are allowed.",
+      "when": {
+        "field": "primaryResidenceLoanAllowed",
+        "operator": "equals",
+        "value": "Yes"
+      },
+      "then": [
+        {
+          "action": "show",
+          "fields": [
+            "primaryResidenceRepaymentPeriodYears"
+          ]
+        },
+        {
+          "action": "require",
+          "fields": [
+            "primaryResidenceRepaymentPeriodYears"
+          ]
+        }
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": [
+            "primaryResidenceRepaymentPeriodYears"
+          ]
+        },
+        {
+          "action": "clearValue",
+          "fields": [
+            "primaryResidenceRepaymentPeriodYears"
+          ]
+        }
+      ],
+      "messages": {
+        "primaryResidenceRepaymentPeriodYears": "Primary Residence Repayment Period Years is required when primary residence loans are allowed."
+      }
+    },
+    {
+      "id": "safe-harbor-details",
+      "description": "Safe harbor details are required when Safe Harbor Plan is Yes.",
+      "when": {
+        "field": "safeHarborPlan",
+        "operator": "equals",
+        "value": "Yes"
+      },
+      "then": [
+        {
+          "action": "show",
+          "fields": [
+            "safeHarborType",
+            "safeHarborContributionFormula"
+          ]
+        },
+        {
+          "action": "require",
+          "fields": [
+            "safeHarborType",
+            "safeHarborContributionFormula"
+          ]
+        }
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": [
+            "safeHarborType",
+            "safeHarborContributionFormula"
+          ]
+        },
+        {
+          "action": "clearValue",
+          "fields": [
+            "safeHarborType",
+            "safeHarborContributionFormula"
+          ]
+        }
+      ],
+      "messages": {
+        "safeHarborType": "Safe Harbor Type is required when Safe Harbor Plan is Yes.",
+        "safeHarborContributionFormula": "Safe Harbor Contribution Formula is required when Safe Harbor Plan is Yes."
+      }
+    },
+    {
+      "id": "roth-effective-date",
+      "description": "Roth effective date is required when Roth contributions are allowed.",
+      "when": {
+        "field": "rothContributionsAllowed",
+        "operator": "equals",
+        "value": "no"
+      },
+      "then": [
+        {
+          "action": "show",
+          "fields": [
+            "rothEffectiveDate"
+          ]
+        },
+        {
+          "action": "require",
+          "fields": [
+            "rothEffectiveDate"
+          ]
+        }
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": [
+            "rothEffectiveDate"
+          ]
+        },
+        {
+          "action": "clearValue",
+          "fields": [
+            "rothEffectiveDate"
+          ]
+        }
+      ],
+      "messages": {
+        "rothEffectiveDate": "Roth Effective Date is required when Roth contributions are allowed."
+      }
+    },
+    {
+      "id": "catch-up-age",
+      "description": "Catch-up eligibility age is required when catch-up contributions are allowed.",
+      "when": {
+        "field": "catchUpContributionsAllowed",
+        "operator": "equals",
+        "value": "Yes"
+      },
+      "then": [
+        {
+          "action": "show",
+          "fields": [
+            "catchUpEligibilityAge"
+          ]
+        },
+        {
+          "action": "require",
+          "fields": [
+            "catchUpEligibilityAge"
+          ]
+        }
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": [
+            "catchUpEligibilityAge"
+          ]
+        },
+        {
+          "action": "clearValue",
+          "fields": [
+            "catchUpEligibilityAge"
+          ]
+        }
+      ],
+      "messages": {
+        "catchUpEligibilityAge": "Catch-Up Eligibility Age is required when catch-up contributions are allowed."
+      }
+    },
+    {
+      "id": "investment-details",
+      "description": "Investment details are required when participants direct investments.",
+      "when": {
+        "field": "participantDirectedInvestments",
+        "operator": "equals",
+        "value": "Yes"
+      },
+      "then": [
+        {
+          "action": "show",
+          "fields": [
+            "investmentElectionFrequency",
+            "defaultInvestmentType"
+          ]
+        },
+        {
+          "action": "require",
+          "fields": [
+            "investmentElectionFrequency",
+            "defaultInvestmentType"
+          ]
+        }
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": [
+            "investmentElectionFrequency",
+            "defaultInvestmentType"
+          ]
+        },
+        {
+          "action": "clearValue",
+          "fields": [
+            "investmentElectionFrequency",
+            "defaultInvestmentType"
+          ]
+        }
+      ],
+      "messages": {
+        "investmentElectionFrequency": "Investment Election Frequency is required when participant-directed investments are enabled.",
+        "defaultInvestmentType": "Default Investment Type is required when participant-directed investments are enabled."
+      }
+    },
+    {
+      "id": "spousal-beneficiary",
+      "description": "Automatic spousal beneficiary is required when spousal consent is required.",
+      "when": {
+        "field": "spousalConsentRequired",
+        "operator": "equals",
+        "value": "Yes"
+      },
+      "then": [
+        {
+          "action": "show",
+          "fields": [
+            "automaticSpousalBeneficiary"
+          ]
+        },
+        {
+          "action": "require",
+          "fields": [
+            "automaticSpousalBeneficiary"
+          ]
+        }
+      ],
+      "else": [
+        {
+          "action": "hide",
+          "fields": [
+            "automaticSpousalBeneficiary"
+          ]
+        },
+        {
+          "action": "clearValue",
+          "fields": [
+            "automaticSpousalBeneficiary"
+          ]
+        }
+      ],
+      "messages": {
+        "automaticSpousalBeneficiary": "Automatic Spousal Beneficiary is required when spousal consent is required."
+      }
     }
   ],
   "validation_rules": [
@@ -713,6 +1626,16 @@
       ]
     },
     {
+      "field": "rothEffectiveDate",
+      "rules": [
+        {
+          "type": "pattern",
+          "value": "^\\d{1,2}/\\d{1,2}/\\d{4}$",
+          "message": "Roth Effective Date must be in MM/DD/YYYY format."
+        }
+      ]
+    },
+    {
       "field": "employeeContributionPercentage",
       "rules": [
         {
@@ -724,26 +1647,6 @@
           "type": "max",
           "value": 100,
           "message": "Employee Contribution Percentage cannot be greater than 100%."
-        }
-      ]
-    },
-    {
-      "field": "employerMatchContributionTypeOther",
-      "rules": [
-        {
-          "type": "maxLength",
-          "value": 500,
-          "message": "Employer Match Contribution Type - Other cannot exceed 500 characters."
-        }
-      ]
-    },
-    {
-      "field": "employerMatchContributionFormula",
-      "rules": [
-        {
-          "type": "maxLength",
-          "value": 1000,
-          "message": "Employer Match Contribution Formula cannot exceed 1000 characters."
         }
       ]
     },
@@ -828,12 +1731,47 @@
       ]
     },
     {
-      "field": "customVestingScheduleDetails",
+      "field": "minimumAgeRequirement",
       "rules": [
         {
-          "type": "maxLength",
-          "value": 500,
-          "message": "Custom Vesting Schedule Details cannot exceed 500 characters."
+          "type": "min",
+          "value": 0,
+          "message": "Minimum Age Requirement cannot be less than 0."
+        },
+        {
+          "type": "max",
+          "value": 99,
+          "message": "Minimum Age Requirement cannot be greater than 99."
+        }
+      ]
+    },
+    {
+      "field": "inServiceWithdrawalMinimumAge",
+      "rules": [
+        {
+          "type": "min",
+          "value": 0,
+          "message": "In-Service Withdrawal Minimum Age cannot be less than 0."
+        },
+        {
+          "type": "max",
+          "value": 99,
+          "message": "In-Service Withdrawal Minimum Age cannot be greater than 99."
+        }
+      ]
+    },
+    {
+      "field": "catchUpEligibilityAge",
+      "rules": [
+        {
+          "type": "min",
+          "value": 0,
+          "message": "Catch-Up Eligibility Age cannot be less than 0."
+        },
+        {
+          "type": "max",
+          "value": 99,
+          "message": "Catch-Up Eligibility Age cannot be greater than 99."
         }
       ]
     },
@@ -848,14 +1786,32 @@
       ]
     },
     {
-      "field": "loansRestrictions",
+      "field": "excludedEmployeeClassesOther",
       "rules": [
         {
-          "type": "mutuallyExclusive",
-          "value": {
-            "exclusive_value": "Hardship Loans Only"
-          },
-          "message": "Loans - Restrictions cannot include Hardship Loans Only with other restrictions."
+          "type": "maxLength",
+          "value": 500,
+          "message": "Excluded Employee Classes - Other cannot exceed 500 characters."
+        }
+      ]
+    },
+    {
+      "field": "customVestingScheduleDetails",
+      "rules": [
+        {
+          "type": "maxLength",
+          "value": 500,
+          "message": "Custom Vesting Schedule Details cannot exceed 500 characters."
+        }
+      ]
+    },
+    {
+      "field": "distributionPaymentMethodOther",
+      "rules": [
+        {
+          "type": "maxLength",
+          "value": 500,
+          "message": "Distribution Payment Method - Other cannot exceed 500 characters."
         }
       ]
     },
@@ -866,6 +1822,18 @@
           "type": "maxLength",
           "value": 500,
           "message": "Loans - Restrictions - Other cannot exceed 500 characters."
+        }
+      ]
+    },
+    {
+      "field": "loansRestrictions",
+      "rules": [
+        {
+          "type": "mutuallyExclusive",
+          "value": {
+            "exclusive_value": "Hardship Loans Only"
+          },
+          "message": "Loans - Restrictions cannot include Hardship Loans Only with other restrictions."
         }
       ]
     },
@@ -905,16 +1873,6 @@
       ]
     },
     {
-      "field": "loansRate",
-      "rules": [
-        {
-          "type": "maxLength",
-          "value": 250,
-          "message": "Loans - Rate cannot exceed 250 characters."
-        }
-      ]
-    },
-    {
       "field": "loansRepaymentPeriodYears",
       "rules": [
         {
@@ -926,6 +1884,41 @@
           "type": "max",
           "value": 30,
           "message": "Loans - Repayment Period Years cannot be greater than 30."
+        }
+      ]
+    },
+    {
+      "field": "primaryResidenceRepaymentPeriodYears",
+      "rules": [
+        {
+          "type": "min",
+          "value": 1,
+          "message": "Primary Residence Repayment Period Years must be greater than 0."
+        },
+        {
+          "type": "max",
+          "value": 40,
+          "message": "Primary Residence Repayment Period Years cannot be greater than 40."
+        }
+      ]
+    },
+    {
+      "field": "planAdministratorName",
+      "rules": [
+        {
+          "type": "maxLength",
+          "value": 200,
+          "message": "Plan Administrator Name cannot exceed 200 characters."
+        }
+      ]
+    },
+    {
+      "field": "recordkeeperName",
+      "rules": [
+        {
+          "type": "maxLength",
+          "value": 200,
+          "message": "Recordkeeper Name cannot exceed 200 characters."
         }
       ]
     }

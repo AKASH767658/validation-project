@@ -51,10 +51,24 @@ class ErrorCode(str, Enum):
 
     MAX_VALUE_ERROR = "MAX_VALUE_ERROR"
 
+    MAX_LENGTH_ERROR = "MAX_LENGTH_ERROR"
+
+    GREATER_THAN_FIELD_ERROR = "GREATER_THAN_FIELD_ERROR"
+
+    GREATER_THAN_OR_EQUAL_TO_FIELD = "GREATER_THAN_OR_EQUAL_TO_FIELD"
+
+    LESS_THAN_FIELD_ERROR = "LESS_THAN_FIELD_ERROR"
+
+    LESS_THAN_OR_EQUAL_TO_FIELD_ERROR = "LESS_THAN_OR_EQUAL_TO_FIELD_ERROR"
+
+    EQUAL_TO_FIELD_ERROR = "EQUAL_TO_FIELD_ERROR"
+
+    NOT_EQUAL_TO_FIELD_ERROR = "NOT_EQUAL_TO_FIELD_ERROR"
+
     DEPENDENCY_ERROR = "DEPENDENCY_ERROR"
 
     PYDANTIC_ERROR = "PYDANTIC_ERROR"
-    MAX_LENGTH_ERROR = "MAX_LENGTH_ERROR"
+    
 
 class WarningCode(str, Enum):
 
@@ -175,5 +189,8 @@ class ResponseField(BaseModel):
 
                     "Value should be null when is_present is false"
                 )
+
+
+            
 
         return v

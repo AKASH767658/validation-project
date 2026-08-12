@@ -2,90 +2,23 @@
     "is_valid": false,
     "errors": [
         {
-            "field_key": "planNumber",
-            "field_label": "401(k) Plan Number",
-            "error_code": "INVALID_FORMAT",
-            "error": "Plan Number must be 3 digits.",
-            "received": "45",
-            "suggested_value": "045"
-        },
-        {
-            "field_key": "planEffectiveDate",
-            "field_label": "Plan Effective Date",
-            "error_code": "INVALID_FORMAT",
-            "error": "Plan Effective Date must be in MM/DD/YYYY format.",
-            "received": "2024-01-01",
-            "suggested_value": "01/01/2024"
-        },
-        {
-            "field_key": "employerMatchContributionMaximumDeferralPercent",
-            "field_label": "Employer Match Contribution Maximum Deferral Percent",
-            "error_code": "MAX_VALUE_ERROR",
-            "error": "Employer Match Contribution Maximum Deferral Percent cannot be greater than 100%.",
-            "received": 105,
-            "suggested_value": null
-        },
-        {
-            "field_key": "automaticEnrollmentWithdrawalWindowDays",
-            "field_label": "Automatic Enrollment Withdrawal Window Days",
-            "error_code": "MAX_VALUE_ERROR",
-            "error": "Automatic Enrollment Withdrawal Window Days cannot be greater than 90.",
-            "received": 95,
-            "suggested_value": null
-        },
-        {
-            "field_key": "loansRepaymentPeriodYears",
-            "field_label": "Loans - Repayment Period Years",
-            "error_code": "MAX_VALUE_ERROR",
-            "error": "Loans - Repayment Period Years cannot be greater than 30.",
-            "received": 35,
-            "suggested_value": null
-        },
-        {
-            "field_key": "loansHardshipOnly",
-            "field_label": "Loans - Hardship Only",
-            "error_code": "INVALID_OPTIONS",
-            "error": "Loans - Hardship Only contains an invalid option.",
-            "received": "Maybe",
-            "suggested_value": null
-        },
-        {
-            "field_key": "employerMatchContributionTypeOther",
-            "field_label": "Employer Match Contribution Type - Other",
-            "error_code": "DEPENDENCY_ERROR",
-            "error": "Other match type details are required when Employer Match Contribution Type is Other.",
-            "received": null,
-            "suggested_value": null
-        },
-        {
-            "field_key": "customVestingScheduleDetails",
-            "field_label": "Custom Vesting Schedule Details",
-            "error_code": "DEPENDENCY_ERROR",
-            "error": "Dependency validation failed.",
-            "received": null,
-            "suggested_value": null
-        },
-        {
-            "field_key": "customEligibilityRequirementDetails",
-            "field_label": "Custom Eligibility Requirement Details",
+            "field_key": "rothEffectiveDate",
+            "field_label": "Roth Effective Date",
             "error_code": "DEPENDENCY_ERROR",
             "error": "Field should not be present because parent condition is not satisfied.",
-            "received": "Employees must complete 500 hours of service.",
+            "received": "1-1-2024",
             "suggested_value": null
         }
     ],
     "warnings": [],
     "summary": {
-        "total_fields": 32,
-        "passed_fields": 23,
-        "failed_fields": 9,
+        "total_fields": 68,
+        "passed_fields": 67,
+        "failed_fields": 1,
         "warning_fields": 0,
         "duplicate_schema_fields": [],
         "error_summary": {
-            "INVALID_FORMAT": 2,
-            "MAX_VALUE_ERROR": 3,
-            "INVALID_OPTIONS": 1,
-            "DEPENDENCY_ERROR": 3
+            "DEPENDENCY_ERROR": 1
         },
         "warning_summary": {}
     }
