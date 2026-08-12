@@ -215,7 +215,7 @@ def process_hide_clear_action(
     schema_dict,
     errors,
     dependency_checked,
-    parent_field
+    parent_field,invalid_fields
 ):
 
     for child_field in action["fields"]:
@@ -239,6 +239,8 @@ def process_hide_clear_action(
                 "received": child_value,
                 "suggested_value": None
             })
+            #beacuse of order of validation. 
+            invalid_fields.add(child_field)
 
 
 from datetime import datetime
@@ -259,8 +261,10 @@ def validate_pattern(
     if value is not None and not re.match(pattern, str(value)):
 
         # Plan Number suggestion
-        if field_key == "planNumber":
-            suggested_value = str(value).zfill(3)
+        if pattern == r"^\d{3}$":
+            if str(value).isdigit():
+                suggested_value = str(value).zfill(3)
+            else:suggested_value = None
 
         # Date suggestion based on pattern
         elif pattern == r"^\d{1,2}/\d{1,2}/\d{4}$":
@@ -396,6 +400,279 @@ def validate_max_length(
 
         invalid_fields.add(field_key)
 
+def validate_greater_than_or_equal_to_field(
+    value,
+    field_key,
+    field_label,
+    rule,
+    response_map,
+    errors,
+    invalid_fields
+):
+
+    if value is None:
+        return
+
+    other_field = rule["value"]
+    other_value = response_map.get(other_field)
+
+    if other_value is None:
+        return
+
+    try:
+
+        current = float(str(value).replace("$", ""))
+        other = float(str(other_value).replace("$", ""))  
+        if current < other:
+            errors.append({
+
+                "field_key": field_key,
+                "field_label": field_label,
+                "error_code": ErrorCode.GREATER_THAN_OR_EQUAL_TO_FIELD,
+                "error": rule["message"],
+                "received": value,
+                "suggested_value": None
+
+            })
+
+            invalid_fields.add(field_key)
+
+    except (ValueError, TypeError):
+        pass
+
+def validate_greater_than_field(
+    value,
+    field_key,
+    field_label,
+    rule,
+    response_map,
+    errors,
+    invalid_fields
+):
+
+    if value is None:
+        return
+
+    other_field = rule["value"]
+    other_value = response_map.get(other_field)
+
+    if other_value is None:
+        return
+
+    try:
+
+        current = float(str(value).replace("$", ""))
+        other = float(str(other_value).replace("$", ""))
+
+        # Strictly equal to
+        if current <= other:
+            errors.append({
+                "field_key": field_key,
+                "field_label": field_label,
+                "error_code": ErrorCode.GREATER_THAN_FIELD_ERROR,
+                "error": rule["message"],
+                "received": value,
+                "suggested_value": None
+            })
+
+            invalid_fields.add(field_key)
+
+    except (ValueError, TypeError):
+        pass
+
+def validate_equal_to_field(
+    value,
+    field_key,
+    field_label,
+    rule,
+    response_map,
+    errors,
+    invalid_fields
+):
+
+    if value is None:
+        return
+
+    other_field = rule["value"]
+    other_value = response_map.get(other_field)
+
+    if other_value is None:
+        return
+
+    try:
+
+        current = float(str(value).replace("$", ""))
+        other = float(str(other_value).replace("$", ""))
+
+        # Strictly equal to
+        if current != other:
+            errors.append({
+                "field_key": field_key,
+                "field_label": field_label,
+                "error_code": ErrorCode.EQUAL_TO_FIELD_ERROR,
+                "error": rule["message"],
+                "received": value,
+                "suggested_value": None
+            })
+
+            invalid_fields.add(field_key)
+
+    except (ValueError, TypeError):
+        pass
+
+def validate_less_than_field(
+    value,
+    field_key,
+    field_label,
+    rule,
+    response_map,
+    errors,
+    invalid_fields
+):
+
+    if value is None:
+        return
+
+    other_field = rule["value"]
+    other_value = response_map.get(other_field)
+
+    if other_value is None:
+        return
+
+    try:
+
+        current = float(str(value).replace("$", ""))
+        other = float(str(other_value).replace("$", ""))
+
+        # Strictly less than
+        if current >= other:
+            errors.append({
+                "field_key": field_key,
+                "field_label": field_label,
+                "error_code": ErrorCode.LESS_THAN_FIELD_ERROR,
+                "error": rule["message"],
+                "received": value,
+                "suggested_value": None
+            })
+
+            invalid_fields.add(field_key)
+
+    except (ValueError, TypeError):
+        pass
+
+
+
+def validate_less_than_or_equal_to_field(
+    value,
+    field_key,
+    field_label,
+    rule,
+    response_map,
+    errors,
+    invalid_fields
+):
+
+    if value is None:
+        return
+
+    other_field = rule["value"]
+    other_value = response_map.get(other_field)
+
+    if other_value is None:
+        return
+
+    try:
+
+        current = float(str(value).replace("$", ""))
+        other = float(str(other_value).replace("$", ""))
+
+        # Must be less than or equal
+        if current > other:
+            errors.append({
+                "field_key": field_key,
+                "field_label": field_label,
+                "error_code": ErrorCode.LESS_THAN_OR_EQUAL_TO_FIELD_ERROR,
+                "error": rule["message"],
+                "received": value,
+                "suggested_value": None
+            })
+
+            invalid_fields.add(field_key)
+
+    except (ValueError, TypeError):
+        pass
+
+def validate_not_equal_to_field(
+    value,
+    field_key,
+    field_label,
+    rule,
+    response_map,
+    errors,
+    invalid_fields
+):
+
+    if value is None:
+        return
+
+    other_field = rule["value"]
+    other_value = response_map.get(other_field)
+
+    if other_value is None:
+        return
+
+    try:
+
+        current = float(str(value).replace("$", ""))
+        other = float(str(other_value).replace("$", ""))
+
+        # Strictly not equal to
+        if current == other:
+            errors.append({
+                "field_key": field_key,
+                "field_label": field_label,
+                "error_code": ErrorCode.NOT_EQUAL_TO_FIELD_ERROR,
+                "error": rule["message"],
+                "received": value,
+                "suggested_value": None
+            })
+
+            invalid_fields.add(field_key)
+
+    except (ValueError, TypeError):
+        pass
+def validate_mutually_exclusive(
+    value,
+    field_key,
+    field_label,
+    rule,
+    errors,
+    invalid_fields
+):
+
+    if value is None:
+        return
+
+    if not isinstance(value, list):
+        return
+
+    exclusive_value = rule["value"]["exclusive_value"]
+
+    if exclusive_value in value and len(value) > 1:
+
+        errors.append({
+
+            "field_key": field_key,
+            "field_label": field_label,
+            "error_code": ErrorCode.INVALID_OPTIONS,
+            "error": rule["message"],
+            "received": value,
+            "suggested_value": None
+
+        })
+
+        invalid_fields.add(field_key)
+
 def main():
 
     # load input_schema file
@@ -495,7 +772,173 @@ def main():
         schema.key
     ] = schema
 
+    response_map = {}
 
+    for item in extracted_fields:
+        response_map[item["field_key"]] = item["value"]
+
+# dependency validation
+
+
+
+    dependency_checked = set()
+
+
+
+    for dep_rule in dependency_rules:
+
+
+
+        when = dep_rule["when"]
+
+
+
+        parent_field = when["field"]
+
+
+
+        operator = when["operator"]
+
+
+
+        expected_value = when.get("value")
+
+
+
+
+
+    # skip if parent already invalid
+
+        if parent_field in invalid_fields:
+
+            continue
+
+
+
+
+
+        actual_value = response_map.get(
+
+        parent_field
+
+    )
+
+
+
+        condition_met = check_condition(
+
+    actual_value,
+
+    operator,
+
+    expected_value
+
+)
+
+    
+
+
+
+
+
+    # THEN actions
+
+    # parent valid -> child required
+
+   
+
+        if condition_met:
+
+
+
+            for action in dep_rule["then"]:
+
+                if action["action"] == "require":
+
+                    process_require_action(
+
+                    action,
+
+                    response_map,
+
+                    schema_dict,
+
+                    errors,
+
+                    dep_rule
+
+                 )
+
+
+
+
+
+   
+
+    # ELSE actions
+
+    # parent not applicable
+
+    # child should NOT exist
+
+  
+
+        else:
+
+
+
+            for action in dep_rule["else"]:
+
+
+
+                action_type = action["action"]
+
+
+
+                if action_type == "require":
+
+                    process_require_action(
+
+                action,
+
+                response_map,
+
+                schema_dict,
+
+                errors,
+
+                dep_rule
+
+                    )
+
+
+
+                elif action_type in [
+
+                "hide",
+
+                "clearValue"
+
+            ]:
+
+
+
+                    process_hide_clear_action(
+
+                    action,
+
+                    response_map,
+
+                    schema_dict,
+
+                    errors,
+
+                    dependency_checked,
+
+                    parent_field,invalid_fields
+
+                    )
+        
 # validation loop
 
     for item in extracted_fields:
@@ -521,12 +964,13 @@ def main():
         "value"
     ]
         is_present = item["is_present"]
-
+       
         if field_key in response_keys:
             duplicate_response_fields.append(field_key)
         else:
             response_keys.append(field_key)
-
+        if field_key in invalid_fields:
+                    continue
     
     # invalid field_key
 
@@ -696,7 +1140,9 @@ def main():
             continue
   
     # validation_rules
-  
+        if field_key in invalid_fields:
+            print("SKIPPED:", field_key)
+            continue
         if field_key in rules_dict:
 
             field_rules = rules_dict[
@@ -756,7 +1202,76 @@ def main():
         field_label,
         rule,
         errors,
+        invalid_fields)
+                elif rule_type == "greaterThanOrEqualToField":
+                    validate_greater_than_or_equal_to_field(
+
+        value,
+        field_key,
+        field_label,
+        rule,
+        response_map,
+        errors,
         invalid_fields
+               )           
+                elif rule_type == "greaterThanField":
+                    validate_greater_than_field(value,
+                        field_key,
+                        field_label,
+                        rule,
+                        response_map,
+                        errors,
+                        invalid_fields)
+                elif rule_type == "lessThanField":
+                    validate_less_than_field(
+        value,
+        field_key,
+        field_label,
+        rule,
+        response_map,
+        errors,
+        invalid_fields
+    )
+                elif rule_type == "lessThanOrEqualToField":
+                    validate_less_than_or_equal_to_field(
+        value,
+        field_key,
+        field_label,
+        rule,
+        response_map,
+        errors,
+        invalid_fields
+    )
+                elif rule_type == "equalToField":
+                    validate_equal_to_field(
+        value,
+        field_key,
+        field_label,
+        rule,
+        response_map,
+        errors,
+        invalid_fields
+    )
+                elif rule_type == "notEqualToField":
+                    validate_not_equal_to_field(
+        value,
+        field_key,
+        field_label,
+        rule,
+        response_map,
+        errors,
+        invalid_fields
+    )
+                elif rule_type == "mutuallyExclusive":
+                    validate_mutually_exclusive(
+
+        value,
+        field_key,
+        field_label,
+        rule,
+        errors,
+        invalid_fields
+
     )
     
 
@@ -771,87 +1286,7 @@ def main():
     ] = item["value"]
 
 
-# dependency validation
 
-    dependency_checked = set()
-
-    for dep_rule in dependency_rules:
-
-        when = dep_rule["when"]
-
-        parent_field = when["field"]
-
-        operator = when["operator"]
-
-        expected_value = when.get("value")
-
-
-    # skip if parent already invalid
-        if parent_field in invalid_fields:
-            continue
-
-
-        actual_value = response_map.get(
-        parent_field
-    )
-
-        condition_met = check_condition(
-    actual_value,
-    operator,
-    expected_value
-)
-    
-
-
-    # THEN actions
-    # parent valid -> child required
-   
-        if condition_met:
-
-            for action in dep_rule["then"]:
-                if action["action"] == "require":
-                    process_require_action(
-                    action,
-                    response_map,
-                    schema_dict,
-                    errors,
-                    dep_rule
-                 )
-
-
-   
-    # ELSE actions
-    # parent not applicable
-    # child should NOT exist
-  
-        else:
-
-            for action in dep_rule["else"]:
-
-                action_type = action["action"]
-
-                if action_type == "require":
-                    process_require_action(
-                action,
-                response_map,
-                schema_dict,
-                errors,
-                dep_rule
-                    )
-
-                elif action_type in [
-                "hide",
-                "clearValue"
-            ]:
-
-                    process_hide_clear_action(
-                    action,
-                    response_map,
-                    schema_dict,
-                    errors,
-                    dependency_checked,
-                    parent_field
-                    )
 
 
 # missing field warning
